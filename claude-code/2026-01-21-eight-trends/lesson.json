@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "id": "claude-reading-2026-01-21",
+  "storageKey": "claude-reading-2026-01-21-v1",
+  "collection": "Claude Code",
+  "ordinal": 1,
+  "article": {
+    "title": "Eight trends defining how software gets built in 2026",
+    "subtitle": "How is AI changing the way software gets built—and what should engineering leaders expect in 2026? We analyzed the patterns emerging across the industry.",
+    "author": "Anthropic",
+    "date": "2026-01-21",
+    "url": "https://claude.com/resources/articles/eight-trends-defining-how-software-gets-built-in-2026",
+    "body": "Coding agents are now collaborators.\n\nIn 2025, engineering teams discovered AI could handle entire implementation workflows: writing tests, debugging failures, navigating complex codebases. In 2026, we predict these capabilities will expand significantly.\n\nOur new report identifies eight trends we predict will define agentic coding this year, organized into three categories: **foundation trends** that change how development happens, **capability trends** expanding what agents accomplish, and **impact trends** affecting business outcomes.\n\nThe organizations pulling ahead aren't removing engineers from the loop, they're making engineer expertise count where it matters most.\n\n### What we're seeing\n\nThe software development lifecycle is undergoing one of its most significant changes since the graphical user interface. Engineers are shifting from writing code to coordinating agents that write code, focusing their own expertise on architecture, system design, and strategic decisions.\n\nA critical nuance has emerged from studying how developers actually work with AI: this transformation relies on active collaboration.\n\nResearch from our Societal Impacts team reveals that while developers use AI in roughly 60% of their work, they report being able to \"fully delegate\" only 0-20% of tasks. AI serves as a constant collaborator, but using it effectively requires supervision, validation, and human judgment.\n\n### What this looks like in practice\n\nOrganizations across industries are putting these patterns into practice, balancing agent autonomy with human oversight to ship faster without sacrificing quality.\n\n[Rakuten](https://claude.com/customers/rakuten) engineers tested Claude Code on a complex technical task: implementing an activation vector extraction method in vLLM, a 12.5-million-line codebase. Claude Code finished the job in seven hours of autonomous work, achieving 99.9% numerical accuracy.\n\n[TELUS](https://claude.com/customers/telus) teams created over 13,000 custom AI solutions while shipping engineering code 30% faster, saving over 500,000 hours total.\n\n[Zapier](https://claude.com/customers/zapier) achieved 89% AI adoption across their entire organization with 800+ agents deployed internally.\n\n### The path forward\n\nFor organizations planning their 2026 priorities, four areas demand immediate attention: mastering multi-agent coordination, scaling human-agent oversight through AI-automated review, extending agentic coding beyond engineering teams, and embedding security architecture from the earliest stages.\n\nOrganizations that treat agentic coding as a strategic priority will define what becomes possible.\n\nRead the full **2026 Agentic Coding Trends Report** [here](https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en).",
+    "sourceLabel": "Official blog"
+  },
+  "exercise": {
+    "startNumber": 147,
+    "suggestedMinutes": 12,
+    "note": "自编 TOEIC Part 7 风格拓展练习；题量与建议时间为学习设置。"
+  },
+  "questions": [
+    {
+      "type": "主旨 / Purpose",
+      "stem": "What is the main purpose of the article?",
+      "options": [
+        "To provide instructions for installing a software tool",
+        "To compare subscription plans for engineering teams",
+        "To discuss emerging development practices and organizational priorities",
+        "To announce changes to a professional certification exam"
+      ],
+      "answer": 2,
+      "where": "全文，尤其是开头与结尾",
+      "needle": "Our new report identifies",
+      "explain": "选择能覆盖全文的概括，兼顾趋势与行动建议。",
+      "traps": [
+        "A：全文没有安装步骤。",
+        "B：没有价格或套餐比较。",
+        "D：没有考试公告。"
+      ],
+      "tip": "主旨题先概括各段功能，再选择覆盖面合适的选项。",
+      "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"
+    },
+    {
+      "type": "语境词义 / Vocabulary",
+      "stem": "In the opening section, the phrase “pulling ahead” is closest in meaning to",
+      "options": [
+        "leaving the industry",
+        "gaining an advantage",
+        "postponing a decision",
+        "hiring additional employees"
+      ],
+      "answer": 1,
+      "where": "开头，介绍报告之后的一段",
+      "needle": "pulling ahead",
+      "explain": "此处描述组织取得领先，选 B。",
+      "traps": [
+        "A：ahead 并不表示离开行业。",
+        "C：postponing 表示延后。",
+        "D：招聘更多员工不能替换原短语。"
+      ],
+      "tip": "把候选词义放回原句，检查语义与搭配。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "According to the article, which activity is becoming a greater focus for engineers?",
+      "options": [
+        "Designing computer displays",
+        "Preparing customer invoices",
+        "Replacing software documentation with advertisements",
+        "Directing agents and making architectural decisions"
+      ],
+      "answer": 3,
+      "where": "第一个正文小节，关于工程师工作的段落",
+      "needle": "Engineers are shifting",
+      "explain": "工程师把更多精力投入协调、架构和决策。",
+      "traps": [
+        "A：图形界面只是历史参照。",
+        "B：未提到账单处理。",
+        "C：未提到用广告替代文档。"
+      ],
+      "tip": "细节题常用同义表达复述原句，不必寻找逐字匹配。",
+      "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"
+    },
+    {
+      "type": "数据理解 / Detail",
+      "stem": "What does the reported research suggest about developers?",
+      "options": [
+        "Frequent AI use does not mean that most tasks can be fully handed over.",
+        "Every task involving AI is completed without human input.",
+        "Nearly all developers use AI for exactly the same proportion of work.",
+        "AI use is limited to a few isolated experiments."
+      ],
+      "answer": 0,
+      "where": "第一个正文小节，含两组百分比的段落",
+      "needle": "Research from our Societal Impacts",
+      "explain": "约 60% 的工作会用 AI；能完全委派的任务为 0–20%，两者口径不同。",
+      "traps": [
+        "B：把使用工具等同于完全委派。",
+        "C：群体研究不能推出每人比例相同。",
+        "D：与文中的使用范围不符。"
+      ],
+      "tip": "看到百分比，先圈出它衡量的对象，再比较数字。",
+      "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "Which result is attributed to Rakuten’s technical test?",
+      "options": [
+        "A new employee training course was completed in one week.",
+        "A customer survey received more than 13,000 responses.",
+        "A complex coding task was completed in seven hours.",
+        "A software subscription was reduced in price by 89 percent."
+      ],
+      "answer": 2,
+      "where": "企业案例小节，Rakuten 段落",
+      "needle": "Rakuten",
+      "explain": "该案例记录七小时完成任务。",
+      "traps": [
+        "A：文中没有这项培训结果。",
+        "B：将其他案例的数字与虚构指标拼接。",
+        "D：将采用率混成价格降幅。"
+      ],
+      "tip": "把公司、数字和衡量指标绑定，防止跨案例错配。",
+      "source": "https://claude.com/customers/rakuten"
+    },
+    {
+      "type": "跨段匹配 / Matching details",
+      "stem": "Which organization is linked to faster code delivery and substantial time savings?",
+      "options": [
+        "Rakuten",
+        "TELUS",
+        "Zapier",
+        "The exam administrator"
+      ],
+      "answer": 1,
+      "where": "企业案例小节，TELUS 段落",
+      "needle": "TELUS",
+      "explain": "TELUS 对应交付提速与累计节省工时。",
+      "traps": [
+        "A：Rakuten 对应单项技术任务。",
+        "C：Zapier 对应采用范围与部署数量。",
+        "D：考试组织未出现在文章案例中。"
+      ],
+      "tip": "不要只记住出现过的名称，要匹配题干所问的指标。",
+      "source": "https://claude.com/customers/telus"
+    },
+    {
+      "type": "语境词义 / Vocabulary",
+      "stem": "In the discussion of agent autonomy, “oversight” most nearly means",
+      "options": [
+        "a prediction",
+        "an omission",
+        "a sales incentive",
+        "supervision"
+      ],
+      "answer": 3,
+      "where": "企业案例小节开头，讨论自主性与人工介入的句子",
+      "needle": "human oversight",
+      "explain": "语境强调人工监督，选 D。",
+      "traps": [
+        "A：prediction 指预测。",
+        "B：oversight 也可表示疏漏，但不符合本句。",
+        "C：sales incentive 指销售激励。"
+      ],
+      "tip": "熟词可能有多个含义。先看上下文，再选词义。",
+      "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"
+    },
+    {
+      "type": "合理推断 / Inference",
+      "stem": "Which proposed plan best follows the article’s recommendations?",
+      "options": [
+        "Coordinate agents, retain human checks, and consider security early.",
+        "Expand deployment first and decide on security after an incident.",
+        "Allow only engineering staff to explore every possible use of AI.",
+        "Assess success solely by how much source code is generated."
+      ],
+      "answer": 0,
+      "where": "最后一个正文小节，列出四项优先工作的段落",
+      "needle": "four areas demand",
+      "explain": "A 同时符合协调、监督与早期安全的建议。",
+      "traps": [
+        "B：安全介入时间与建议相反。",
+        "C：把应用范围限定在工程团队。",
+        "D：仅统计代码量不足以覆盖文章建议。"
+      ],
+      "tip": "推断应紧贴文章；检查选项中的 only、solely 等范围限定。",
+      "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"
+    },
+    {
+      "type": "写作作用 / Function",
+      "stem": "Why does the author include examples from several companies?",
+      "options": [
+        "To establish a ranking of their financial performance",
+        "To identify organizations that sponsor a new certification",
+        "To illustrate how the discussed practices appear in real organizations",
+        "To explain why all companies should use identical internal processes"
+      ],
+      "answer": 2,
+      "where": "企业案例小节及其引入句",
+      "needle": "Organizations across industries",
+      "explain": "案例为前文观点提供具体应用例证。",
+      "traps": [
+        "A：案例没有统一的财务排名。",
+        "B：没有认证赞助关系。",
+        "D：不能从多个案例推出流程必须完全相同。"
+      ],
+      "tip": "作用题关注这一段对全文的贡献，而非仅复述段落内容。",
+      "source": "https://claude.com/customers/zapier"
+    },
+    {
+      "type": "信息定位 / Next action",
+      "stem": "What does the article invite readers to do at the end?",
+      "options": [
+        "Apply for an engineering position",
+        "Read the complete report",
+        "Download a mandatory software update",
+        "Register for an in-person training session"
+      ],
+      "answer": 1,
+      "where": "正文末尾的链接",
+      "needle": "Read the full",
+      "explain": "末尾引导读者进入完整报告。",
+      "traps": [
+        "A：无职位申请入口。",
+        "C：无强制更新通知。",
+        "D：无培训报名要求。"
+      ],
+      "tip": "行动题常在结尾找到线索，注意识别链接的用途。"
+    }
+  ]
+}

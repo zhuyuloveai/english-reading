@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语阅读练习</title>
+<style>:root{color-scheme:light;--ink:#111;--muted:#606060;--line:#d8d8d8;--accent:#222;--soft:#ededed;--bad:#9c302b;--badbg:#fff1ef;--gold:#806000}
+*{box-sizing:border-box}body{margin:0;background:#eee;color:var(--ink);font:14px/1.5 Arial,"Helvetica Neue","PingFang SC",sans-serif}button,input,textarea{font:inherit}button,a{touch-action:manipulation}a{color:inherit;text-underline-offset:3px}button{cursor:pointer;min-height:36px;padding:7px 12px;border:1px solid #bdbdbd;border-radius:3px;background:#fff;color:#222}button:disabled{opacity:.4;cursor:default}button:hover:not(:disabled){background:#f1f1f1}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:2px solid #555;outline-offset:3px}.primary{background:#222;color:#fff;border-color:#222}.primary:hover:not(:disabled){background:#444}.muted{color:var(--muted)}.small{font-size:12px}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}.row{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.top-inner,.wrap{max-width:940px;margin:0 auto}.top-inner{padding:24px 26px 16px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:700;font-size:16px}.edition{font-size:12px;color:#666}.wrap{padding:0 26px 35px}.intro{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}.intro h1{font-size:16px;margin:0 0 5px}.intro p{font-size:12px;margin:0;color:#666}.modes{display:flex;gap:0;flex-shrink:0}.modes button{border-radius:0}.modes button+button{border-left:0}.modes button[aria-pressed=true]{background:#222;color:white}.practice-head{padding:15px 0 18px}.stats{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}.clock{font-variant-numeric:tabular-nums}.clock button{font-size:12px;padding:4px 9px;min-height:29px}.bar{height:3px;background:#d9d9d9;margin:11px 0 13px}.bar span{display:block;height:100%;background:#333}.nav-row{display:flex;align-items:center;gap:12px}.question-nav{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;flex:1}.question-nav button{padding:0;min-height:31px;font-size:12px;position:relative}.question-nav .answered{background:#ddd}.question-nav .current{outline:1px solid #222;outline-offset:1px;font-weight:bold}.question-nav .flagged:after{content:"";width:4px;height:4px;background:#806000;position:absolute;top:2px;right:2px;border-radius:50%}.question-nav .correct{background:#e4eee6;color:#225a34}.question-nav .incorrect{background:var(--badbg);color:var(--bad)}.flag{font-size:12px;min-height:31px;padding:4px 8px}.flag[aria-pressed=true]{background:#fff4cd}.legend{font-size:11px;color:#666;margin:8px 0 0}.layout{background:#fff;padding:40px 48px;border:1px solid #d5d5d5;box-shadow:0 2px 9px #00000005}.paper-header{margin-bottom:28px}.paper-header h2{font-size:20px;line-height:1.2;text-align:center;margin:0 0 23px;letter-spacing:.5px}.directions{font-size:14px;line-height:1.5;margin:0}.passage-ref{font-size:14px;font-weight:bold;margin:0 0 15px}.panel-head{display:none}.panel-body{padding:0}.source-title{font-size:23px;line-height:1.3;font-weight:700;margin:0 0 13px}.article-lede{font-size:15px;line-height:1.5;margin:0 0 12px;font-style:normal}.meta{font-size:11px;margin:0 0 20px;color:#555}.meta span+span{display:none}.reading p{font-size:16px;line-height:1.5;margin:0 0 13px;padding:0;overflow-wrap:anywhere}.reading h3{font-size:16px;line-height:1.5;margin:20px 0 9px}.reading a{text-decoration:none;color:inherit}.reading a:hover{text-decoration:underline}.reading .evidence-highlight{background:#fff0b1;outline:4px solid #fff0b1}.source-actions,.read-note,.empty-reader,#source-status{font-size:13px}.source-loaded .source-actions,.source-loaded .read-note,.source-loaded #source-status{display:none}.editor{margin:18px 0}.editor textarea{display:block;width:100%;min-height:250px;border:1px solid #aaa;padding:12px;margin:8px 0;font:15px/1.6 Arial,sans-serif}.source-panel{padding-bottom:25px}.question-intro{font-size:13px;margin:0 0 20px}.questions-section{border-top:1px solid #888;padding-top:25px}#question-container{columns:2;column-gap:38px}.question{break-inside:avoid;page-break-inside:avoid;margin:0 0 27px;padding:0;scroll-margin-top:20px}.stem{font-size:15px;line-height:1.5;font-weight:400;margin:0 0 9px}.stem:focus{outline:none}.question-number{font-weight:700}.options{margin:0;padding:0;border:0;min-width:0}.options legend{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}.option{display:flex;align-items:flex-start;gap:6px;position:relative;font-size:15px;line-height:1.5;min-height:29px;margin:0;padding:2px 3px;cursor:pointer;border:1px solid transparent;border-radius:2px}.option input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}.option:has(input:focus-visible){outline:2px solid #555;outline-offset:1px}.letter{display:inline-block;width:27px;min-width:27px;text-align:center;border:1px solid transparent;line-height:1.4}.letter:before{content:"("}.letter:after{content:")"}.option:hover{background:#f5f5f5}.option.selected .letter{border-color:#222;border-radius:50%;font-weight:bold}.option.is-answer{background:#eaf2eb;border-color:#91b09a}.option.is-wrong{background:var(--badbg);border-color:#d68a82}.option.review{cursor:default}.answer-label{display:block;font:11px/1.7 Arial,"PingFang SC",sans-serif;color:#225a34;margin-top:4px}.is-wrong .answer-label{color:var(--bad)}.qmeta{margin-bottom:8px}.qmeta:empty{display:none}.tag{font-size:12px;color:#666}.reviewing #question-container{columns:1}.reviewing .question{margin-bottom:32px;padding-bottom:30px;border-bottom:1px solid #ccc}.analysis{margin-top:20px;border-top:1px dashed #ccc;padding-top:16px;font-family:Arial,"PingFang SC",sans-serif}.analysis h3{font-size:14px;margin:0 0 8px}.analysis p{font-size:14px;line-height:1.8;margin:0 0 13px}.analysis ul{font-size:13px;line-height:1.8;padding-left:20px;margin:8px 0 15px}.analysis details{padding-top:10px;border-top:1px solid #ddd}.analysis summary{cursor:pointer;font-size:13px}.evidence{padding:14px;background:#f4f4f4;margin-bottom:15px}.evidence strong{font-size:12px;color:#666}.evidence p{margin:6px 0 10px}.result{background:#fff;border:1px solid #ccc;padding:16px;margin:0 0 15px}.result-top{display:flex;align-items:baseline;gap:12px}.score{font-size:27px;font-weight:700}.result p{font-size:13px;margin:7px 0 10px}.review-controls{font-size:13px;margin:0 0 15px}.alert{background:#fff5d8;border:1px solid #dac487;padding:14px;margin:0 0 15px;font-size:13px}.alert p{margin:0 0 10px}.empty-filter{padding:15px 0}.actions{padding:20px 0 0;display:flex;justify-content:flex-end;gap:10px}.source-footer{font-size:11px;color:#666;margin:15px 0}.article-tools{display:flex;align-items:center;gap:16px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}#edit-source-again{display:none}.text-button{font-size:12px;border:0;background:none;padding:0;min-height:28px;text-decoration:underline;text-underline-offset:3px}.paper-link{font-size:12px}.status-line{font-size:11px;color:#666;margin-top:15px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}dialog{border:1px solid #aaa;padding:25px;max-width:400px;width:calc(100% - 40px)}dialog::backdrop{background:#0005}dialog h2{font-size:20px;margin-top:0}dialog .row{justify-content:flex-end}
+@media(max-width:650px){.top-inner{padding:18px 14px 13px}.wrap{padding:0 12px 25px}.intro{align-items:flex-start;gap:10px}.intro p{max-width:170px}.modes button{padding:7px 10px;font-size:12px}.edition{font-size:10px}.layout{padding:25px 23px}.source-title{font-size:22px}.nav-row{align-items:flex-start}.question-nav{grid-template-columns:repeat(5,minmax(0,1fr))}.question-nav button{min-height:33px}.nav-row .flag{min-height:33px}.paper-header h2{font-size:19px}.reading p,.reading h3{font-size:16px}#question-container{columns:1}.question{margin-bottom:27px}.option{min-height:35px;padding-top:5px;padding-bottom:5px}.stem{font-size:15px}.directions{font-size:13px}.article-lede{font-size:14px}.source-footer{line-height:1.6}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{@page{size:A4;margin:17mm}body{background:#fff;font-family:Arial,sans-serif}.top,.intro,.practice-head,.result,.review-controls,.alert,.actions,.source-footer,.article-tools,.status-line,.editor,.source-actions,.read-note,.empty-reader,#source-status,.qmeta,.analysis button,.analysis a{display:none!important}.wrap{max-width:none;margin:0;padding:0}.layout{border:0;box-shadow:none;padding:0}.paper-header h2{font-size:15pt}.directions,.passage-ref{font-size:10pt}.source-title{font-size:15pt}.article-lede{font-size:10pt}.meta{font-size:8pt}.reading p,.reading h3{font-size:10.5pt;line-height:1.4}.source-panel{padding-bottom:15pt}.questions-section{padding-top:14pt}.question-intro{font-size:10pt}#question-container{columns:2;column-gap:24pt}.question{margin-bottom:17pt}.stem,.option{font-size:10pt}.option{min-height:0;padding:2pt 0}.letter{width:21px;min-width:21px}.question{break-inside:avoid}.analysis{font-size:9pt}.reviewing #question-container{columns:1}.reading .evidence-highlight{background:none;outline:none}.option.selected .letter{border-color:transparent;font-weight:normal}.option.is-answer,.option.is-wrong{background:none;border-color:transparent}}
+
+/* Shared controls and independently selectable reading presentation. */
+.switches,.switch-group{display:flex;align-items:center;gap:10px}.switches{gap:16px;flex-wrap:wrap}.control-label{font-size:11px;color:#666}.intro{align-items:flex-start}.intro h1{font-size:15px}.reading-kicker,.questions-title{display:none}.reading-finish{display:none}.option .answer-label{line-height:1.6}.qmeta:empty{display:none}
+body[data-layout="reading"]{background:#f5f4ef;color:#28312b}
+body[data-layout="reading"] .top-inner,body[data-layout="reading"] .wrap{max-width:1000px}
+body[data-layout="reading"] .layout{border:0;box-shadow:none;background:#fffefb;padding:46px 68px;border-radius:8px}
+body[data-layout="reading"] .panel-body{max-width:68ch;margin:0 auto;font-family:Georgia,"Times New Roman",serif;font-size:19px}
+body[data-layout="reading"] .paper-header,body[data-layout="reading"] .passage-ref{display:none}
+body[data-layout="reading"] .source-title{font:600 35px/1.25 Georgia,"Times New Roman",serif;letter-spacing:-.6px;margin-bottom:22px;max-width:720px}
+body[data-layout="reading"] .reading-kicker{display:block;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:#617367;margin:0 0 19px}
+body[data-layout="reading"] .article-lede{font:18px/1.7 Georgia,"Times New Roman",serif;color:#637066;max-width:68ch;margin-bottom:20px}
+body[data-layout="reading"] .meta{font-size:12px;color:#758075;margin-bottom:39px}
+body[data-layout="reading"] .reading{max-width:none;margin:0}
+body[data-layout="reading"] .reading p{font:19px/1.9 Georgia,"Times New Roman",serif;margin-bottom:24px;letter-spacing:.05px}
+body[data-layout="reading"] .reading h3{font:700 23px/1.5 Georgia,"Times New Roman",serif;margin:38px 0 17px;letter-spacing:-.2px}
+body[data-layout="reading"] .reading a{text-decoration:underline;text-decoration-color:#b9c7ba;text-underline-offset:4px}
+body[data-layout="reading"] .source-panel{padding-bottom:15px}
+body[data-layout="reading"] .reading-finish{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid #dde2da;padding-top:27px;margin-top:12px;font-size:13px;color:#637066}
+body[data-layout="reading"] .reading-finish button{background:#eaf0e7;border-color:#c9d5c6;color:#2d503c}
+body[data-layout="reading"] .questions-section{margin-top:34px;padding-top:28px;border-color:#dde2da}
+body[data-layout="reading"] .questions-title{display:block;font-size:17px;margin:0 0 28px}
+body[data-layout="reading"] #question-container{columns:1}
+body[data-layout="reading"] .stem{font:600 18px/1.7 Georgia,"Times New Roman",serif;margin-bottom:13px}
+body[data-layout="reading"] .question{margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid #e7e9e1}
+body[data-layout="reading"] .question:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+body[data-layout="reading"] .option{font:16px/1.7 Georgia,"Times New Roman",serif;padding:9px 12px;min-height:45px;border-radius:6px}
+body[data-layout="reading"] .option.selected{background:#edf2e9}
+body[data-layout="reading"] .option.selected .letter{border-color:#6b866f}
+body[data-layout="reading"] .analysis{color:#28312b}
+body[data-layout="reading"] .evidence{background:#f2f5ef}
+body[data-layout="reading"] .analysis p{font:14px/1.9 Arial,"PingFang SC",sans-serif}
+body[data-layout="reading"] .actions{justify-content:space-between}
+body[data-layout="exam"] #close-questions{display:none}
+body[data-layout="exam"] .reading-kicker,body[data-layout="exam"] .questions-title{display:none}
+@media(max-width:780px){.intro{display:block}.switches{margin-top:15px}.switch-group{gap:7px}.switches{gap:12px}.modes button{font-size:12px;padding:6px 11px}.top-inner{padding-left:18px;padding-right:18px}body[data-layout="reading"] .layout{padding:30px 25px}body[data-layout="reading"] .source-title{font-size:29px}body[data-layout="reading"] .article-lede{font-size:17px}body[data-layout="reading"] .reading p{font-size:18px;line-height:1.85}body[data-layout="reading"] .reading h3{font-size:22px}.actions{flex-wrap:wrap}}
+@media(max-width:380px){body[data-layout="reading"] .layout{padding:26px 19px}body[data-layout="reading"] .source-title{font-size:27px}.switches{gap:8px}.switch-group{gap:5px}.modes button{padding:6px 9px}}
+@media screen and (hover:none) and (pointer:coarse){
+ button,.modes button,.question-nav button,.nav-row .flag,.clock button,.text-button{min-height:44px;min-width:44px}
+ .switches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .switch-group{align-items:flex-start;flex-direction:column;gap:5px}
+ .modes button{font-size:13px;padding:8px 10px;min-width:50px}
+ .nav-row{flex-direction:column;align-items:stretch;gap:8px}
+ .question-nav{width:100%;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+ .nav-row .flag{align-self:flex-end}
+ .option{min-height:44px}
+ .review-controls label{min-height:44px}
+ .analysis summary{min-height:44px;line-height:44px}
+ .article-tools a,.status-line a,.top-inner>a,.evidence .row>a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media print{.reading-finish,.switches,.questions-title{display:none!important}body[data-layout="reading"]{background:white}body[data-layout="reading"] .layout{padding:0;border-radius:0;background:white}body[data-layout="reading"] .source-title{font-size:20pt}body[data-layout="reading"] .reading p{font-size:12pt;line-height:1.7}body[data-layout="reading"] .reading h3{font-size:14pt}body[data-layout="reading"] .article-lede{font-size:12pt}body[data-layout="reading"] .meta{margin-bottom:20pt}body[data-layout="reading"] .reading-kicker{display:none}body[data-layout="reading"] .stem{font-size:12pt}body[data-layout="reading"] .option{font-size:11pt;min-height:0;padding:4pt 0}body[data-layout="reading"] .question{margin-bottom:15pt;padding-bottom:15pt}}
+</style>
+</head>
+<body data-layout="reading">
+<header class="top"><div class="top-inner"><div id="brand" class="brand">英语阅读练习</div><a id="catalog-link" class="paper-link" href="../../index.html">练习目录</a></div></header>
+<main class="wrap">
+<div class="intro">
+ <div><h1 id="lesson-label">阅读与练习</h1><p id="lesson-info"></p></div>
+ <div class="switches">
+  <div class="switch-group"><span class="control-label">版式</span><div class="modes" role="group" aria-label="页面版式"><button id="reading-layout" aria-pressed="true">阅读版</button><button id="exam-layout" aria-pressed="false">考卷版</button></div></div>
+  <div class="switch-group"><span class="control-label">阶段</span><div class="modes" role="group" aria-label="练习模式"><button id="answer-mode" aria-pressed="true">答题</button><button id="review-mode" aria-pressed="false">解答</button></div></div>
+ </div>
+</div>
+<section id="exercise-tools" aria-label="答题工具" hidden>
+ <div class="practice-head"><div class="stats"><span id="progress-label"></span><div class="clock"><span id="timer">00:00</span> <button id="timer-toggle" class="small">开始计时</button></div></div><div id="progress" class="bar" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span id="progress-fill" style="width:0%"></span></div><div class="nav-row"><nav id="question-nav" class="question-nav" aria-label="题号导航"></nav><button id="flag-current" class="flag" aria-pressed="false">标记当前题</button></div><p id="nav-legend" class="legend"></p></div>
+ <div id="result" class="result" hidden aria-live="polite"></div>
+ <div id="review-controls" class="review-controls" hidden><label class="row"><input id="wrong-only" type="checkbox">只看错题与未答题</label><span id="filter-count" class="muted"></span></div>
+ <div id="submit-alert" class="alert" hidden role="alert"><p id="submit-alert-text"></p><div class="row"><button id="go-unanswered">去补答</button><button id="submit-anyway" class="primary">仍然交卷</button></div></div>
+</section>
+<div class="layout">
+ <header class="paper-header" lang="en"><h2>PART 7</h2><p class="directions"><strong>Directions:</strong> Read the passage and answer the questions below. Select one answer per question. Choose (A), (B), (C), or (D).</p></header>
+ <section id="article" class="panel source-panel" aria-labelledby="article-title">
+  <p id="passage-ref" class="passage-ref" lang="en"></p>
+  <div class="panel-body"><p id="reading-kicker" class="reading-kicker"></p><h2 id="article-title" class="source-title" lang="en"></h2><p id="article-subtitle" class="article-lede" lang="en"></p><div id="article-meta" class="meta"></div><div id="reader" class="reading" lang="en" aria-label="完整英文原文"></div></div>
+ </section>
+ <div id="reading-finish" class="reading-finish"><span>先读一遍，再检查自己的理解。</span><button id="open-questions">读完了，开始答题 →</button></div>
+ <section id="questions-section" class="panel questions-section" aria-label="阅读理解题目" hidden><h2 id="questions-title" class="questions-title">阅读练习</h2><div id="question-container"></div><div id="empty-filter" class="empty-filter" hidden><strong>全部答对了。</strong><p>可以关闭筛选，回看每题的解题依据。</p><button id="show-all">查看全部题目</button></div></section>
+</div>
+<div id="actions" class="actions" hidden><button id="close-questions">收起题目，回到阅读</button><button id="submit" class="primary">交卷并查看解析</button><button id="back-answer" hidden>返回答题</button></div>
+<div id="source-note" class="source-footer"></div>
+<div class="article-tools"><a id="official-source" class="paper-link" href="#" target="_blank" rel="noopener noreferrer">官网原文 ↗</a><button id="download-paper" class="text-button">导出单一 HTML</button><button id="print-paper" class="text-button">打印当前版式</button></div>
+<div class="status-line"><span id="save-status">进度自动保存在当前浏览器。</span><div class="row"><a href="https://www.ets.org/content/dam/ets-org/pdfs/toeic/toeic-listening-reading-sample-test.pdf" target="_blank" rel="noopener noreferrer">ETS 官方样题 ↗</a><button id="restart" class="text-button">重新练习</button></div></div><div id="live" class="sr-only" aria-live="polite"></div>
+</main>
+<dialog id="reset-dialog"><h2>开始新一轮练习？</h2><p>答案、标记和计时将被清空，保留文章与当前版式。</p><div class="row"><button id="cancel-reset">取消</button><button id="confirm-reset" class="primary">重新开始</button></div></dialog>
+<script id="lesson-data" type="application/json">{"schemaVersion": 1, "id": "claude-reading-2026-01-21", "storageKey": "claude-reading-2026-01-21-v1", "collection": "Claude Code", "ordinal": 1, "article": {"title": "Eight trends defining how software gets built in 2026", "subtitle": "How is AI changing the way software gets built—and what should engineering leaders expect in 2026? We analyzed the patterns emerging across the industry.", "author": "Anthropic", "date": "2026-01-21", "url": "https://claude.com/resources/articles/eight-trends-defining-how-software-gets-built-in-2026", "body": "Coding agents are now collaborators.\n\nIn 2025, engineering teams discovered AI could handle entire implementation workflows: writing tests, debugging failures, navigating complex codebases. In 2026, we predict these capabilities will expand significantly.\n\nOur new report identifies eight trends we predict will define agentic coding this year, organized into three categories: **foundation trends** that change how development happens, **capability trends** expanding what agents accomplish, and **impact trends** affecting business outcomes.\n\nThe organizations pulling ahead aren't removing engineers from the loop, they're making engineer expertise count where it matters most.\n\n### What we're seeing\n\nThe software development lifecycle is undergoing one of its most significant changes since the graphical user interface. Engineers are shifting from writing code to coordinating agents that write code, focusing their own expertise on architecture, system design, and strategic decisions.\n\nA critical nuance has emerged from studying how developers actually work with AI: this transformation relies on active collaboration.\n\nResearch from our Societal Impacts team reveals that while developers use AI in roughly 60% of their work, they report being able to \"fully delegate\" only 0-20% of tasks. AI serves as a constant collaborator, but using it effectively requires supervision, validation, and human judgment.\n\n### What this looks like in practice\n\nOrganizations across industries are putting these patterns into practice, balancing agent autonomy with human oversight to ship faster without sacrificing quality.\n\n[Rakuten](https://claude.com/customers/rakuten) engineers tested Claude Code on a complex technical task: implementing an activation vector extraction method in vLLM, a 12.5-million-line codebase. Claude Code finished the job in seven hours of autonomous work, achieving 99.9% numerical accuracy.\n\n[TELUS](https://claude.com/customers/telus) teams created over 13,000 custom AI solutions while shipping engineering code 30% faster, saving over 500,000 hours total.\n\n[Zapier](https://claude.com/customers/zapier) achieved 89% AI adoption across their entire organization with 800+ agents deployed internally.\n\n### The path forward\n\nFor organizations planning their 2026 priorities, four areas demand immediate attention: mastering multi-agent coordination, scaling human-agent oversight through AI-automated review, extending agentic coding beyond engineering teams, and embedding security architecture from the earliest stages.\n\nOrganizations that treat agentic coding as a strategic priority will define what becomes possible.\n\nRead the full **2026 Agentic Coding Trends Report** [here](https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en).", "sourceLabel": "Official blog"}, "exercise": {"startNumber": 147, "suggestedMinutes": 12, "note": "自编 TOEIC Part 7 风格拓展练习；题量与建议时间为学习设置。"}, "questions": [{"type": "主旨 / Purpose", "stem": "What is the main purpose of the article?", "options": ["To provide instructions for installing a software tool", "To compare subscription plans for engineering teams", "To discuss emerging development practices and organizational priorities", "To announce changes to a professional certification exam"], "answer": 2, "where": "全文，尤其是开头与结尾", "needle": "Our new report identifies", "explain": "选择能覆盖全文的概括，兼顾趋势与行动建议。", "traps": ["A：全文没有安装步骤。", "B：没有价格或套餐比较。", "D：没有考试公告。"], "tip": "主旨题先概括各段功能，再选择覆盖面合适的选项。", "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"}, {"type": "语境词义 / Vocabulary", "stem": "In the opening section, the phrase “pulling ahead” is closest in meaning to", "options": ["leaving the industry", "gaining an advantage", "postponing a decision", "hiring additional employees"], "answer": 1, "where": "开头，介绍报告之后的一段", "needle": "pulling ahead", "explain": "此处描述组织取得领先，选 B。", "traps": ["A：ahead 并不表示离开行业。", "C：postponing 表示延后。", "D：招聘更多员工不能替换原短语。"], "tip": "把候选词义放回原句，检查语义与搭配。"}, {"type": "细节 / Detail", "stem": "According to the article, which activity is becoming a greater focus for engineers?", "options": ["Designing computer displays", "Preparing customer invoices", "Replacing software documentation with advertisements", "Directing agents and making architectural decisions"], "answer": 3, "where": "第一个正文小节，关于工程师工作的段落", "needle": "Engineers are shifting", "explain": "工程师把更多精力投入协调、架构和决策。", "traps": ["A：图形界面只是历史参照。", "B：未提到账单处理。", "C：未提到用广告替代文档。"], "tip": "细节题常用同义表达复述原句，不必寻找逐字匹配。", "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"}, {"type": "数据理解 / Detail", "stem": "What does the reported research suggest about developers?", "options": ["Frequent AI use does not mean that most tasks can be fully handed over.", "Every task involving AI is completed without human input.", "Nearly all developers use AI for exactly the same proportion of work.", "AI use is limited to a few isolated experiments."], "answer": 0, "where": "第一个正文小节，含两组百分比的段落", "needle": "Research from our Societal Impacts", "explain": "约 60% 的工作会用 AI；能完全委派的任务为 0–20%，两者口径不同。", "traps": ["B：把使用工具等同于完全委派。", "C：群体研究不能推出每人比例相同。", "D：与文中的使用范围不符。"], "tip": "看到百分比，先圈出它衡量的对象，再比较数字。", "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"}, {"type": "细节 / Detail", "stem": "Which result is attributed to Rakuten’s technical test?", "options": ["A new employee training course was completed in one week.", "A customer survey received more than 13,000 responses.", "A complex coding task was completed in seven hours.", "A software subscription was reduced in price by 89 percent."], "answer": 2, "where": "企业案例小节，Rakuten 段落", "needle": "Rakuten", "explain": "该案例记录七小时完成任务。", "traps": ["A：文中没有这项培训结果。", "B：将其他案例的数字与虚构指标拼接。", "D：将采用率混成价格降幅。"], "tip": "把公司、数字和衡量指标绑定，防止跨案例错配。", "source": "https://claude.com/customers/rakuten"}, {"type": "跨段匹配 / Matching details", "stem": "Which organization is linked to faster code delivery and substantial time savings?", "options": ["Rakuten", "TELUS", "Zapier", "The exam administrator"], "answer": 1, "where": "企业案例小节，TELUS 段落", "needle": "TELUS", "explain": "TELUS 对应交付提速与累计节省工时。", "traps": ["A：Rakuten 对应单项技术任务。", "C：Zapier 对应采用范围与部署数量。", "D：考试组织未出现在文章案例中。"], "tip": "不要只记住出现过的名称，要匹配题干所问的指标。", "source": "https://claude.com/customers/telus"}, {"type": "语境词义 / Vocabulary", "stem": "In the discussion of agent autonomy, “oversight” most nearly means", "options": ["a prediction", "an omission", "a sales incentive", "supervision"], "answer": 3, "where": "企业案例小节开头，讨论自主性与人工介入的句子", "needle": "human oversight", "explain": "语境强调人工监督，选 D。", "traps": ["A：prediction 指预测。", "B：oversight 也可表示疏漏，但不符合本句。", "C：sales incentive 指销售激励。"], "tip": "熟词可能有多个含义。先看上下文，再选词义。", "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"}, {"type": "合理推断 / Inference", "stem": "Which proposed plan best follows the article’s recommendations?", "options": ["Coordinate agents, retain human checks, and consider security early.", "Expand deployment first and decide on security after an incident.", "Allow only engineering staff to explore every possible use of AI.", "Assess success solely by how much source code is generated."], "answer": 0, "where": "最后一个正文小节，列出四项优先工作的段落", "needle": "four areas demand", "explain": "A 同时符合协调、监督与早期安全的建议。", "traps": ["B：安全介入时间与建议相反。", "C：把应用范围限定在工程团队。", "D：仅统计代码量不足以覆盖文章建议。"], "tip": "推断应紧贴文章；检查选项中的 only、solely 等范围限定。", "source": "https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en"}, {"type": "写作作用 / Function", "stem": "Why does the author include examples from several companies?", "options": ["To establish a ranking of their financial performance", "To identify organizations that sponsor a new certification", "To illustrate how the discussed practices appear in real organizations", "To explain why all companies should use identical internal processes"], "answer": 2, "where": "企业案例小节及其引入句", "needle": "Organizations across industries", "explain": "案例为前文观点提供具体应用例证。", "traps": ["A：案例没有统一的财务排名。", "B：没有认证赞助关系。", "D：不能从多个案例推出流程必须完全相同。"], "tip": "作用题关注这一段对全文的贡献，而非仅复述段落内容。", "source": "https://claude.com/customers/zapier"}, {"type": "信息定位 / Next action", "stem": "What does the article invite readers to do at the end?", "options": ["Apply for an engineering position", "Read the complete report", "Download a mandatory software update", "Register for an in-person training session"], "answer": 1, "where": "正文末尾的链接", "needle": "Read the full", "explain": "末尾引导读者进入完整报告。", "traps": ["A：无职位申请入口。", "C：无强制更新通知。", "D：无培训报名要求。"], "tip": "行动题常在结尾找到线索，注意识别链接的用途。"}]}</script>
+<script id="export-defaults" type="application/json">{"layout":"reading"}</script>
+<script>'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+  const lesson = JSON.parse($('lesson-data').textContent);
+  const defaults = JSON.parse($('export-defaults').textContent);
+  const questions = lesson.questions;
+  const total = questions.length;
+  const start = lesson.exercise.startNumber;
+  const key = lesson.storageKey;
+  const letters = 'ABCD';
+  const fresh = () => ({answers: Array(total).fill(null), flags: Array(total).fill(false), current: 0,
+    mode: 'answer', layout: defaults.layout === 'exam' ? 'exam' : 'reading', questionsOpen: false,
+    elapsed: 0, wrongOnly: false, submitted: false});
+  let state = fresh(), storageOK = true, running = false, startedAt = 0;
+  try {
+    const saved = JSON.parse(localStorage.getItem(key));
+    if (saved && typeof saved === 'object') {
+      const upgraded = saved.layout === 'exam' || saved.layout === 'reading';
+      state = {...fresh(),
+        answers: Array.from({length: total}, (_, i) => Number.isInteger(saved.answers?.[i]) && saved.answers[i] >= 0 && saved.answers[i] < 4 ? saved.answers[i] : null),
+        flags: Array.from({length: total}, (_, i) => saved.flags?.[i] === true),
+        current: Number.isInteger(saved.current) && saved.current >= 0 && saved.current < total ? saved.current : 0,
+        mode: upgraded && saved.mode === 'review' ? 'review' : 'answer',
+        layout: upgraded ? saved.layout : fresh().layout,
+        questionsOpen: upgraded && saved.questionsOpen === true,
+        elapsed: Number.isFinite(saved.elapsed) && saved.elapsed >= 0 ? saved.elapsed : 0,
+        wrongOnly: upgraded && saved.wrongOnly === true, submitted: saved.submitted === true};
+    }
+  } catch { storageOK = false; }
+
+  function el(tag, attributes = {}, text = '') {
+    const node = document.createElement(tag);
+    for (const [name, value] of Object.entries(attributes)) {
+      if (name === 'class') node.className = value;
+      else node.setAttribute(name, value);
+    }
+    node.textContent = text;
+    return node;
+  }
+  function safeURL(value) {
+    try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; }
+    catch { return '#'; }
+  }
+  function save() {
+    try { localStorage.setItem(key, JSON.stringify(state)); } catch { storageOK = false; }
+    $('save-status').textContent = storageOK ? '版式与答题进度自动保存在当前浏览器。' : '浏览器未允许本地保存；可正常使用，关闭页面后进度可能丢失。';
+  }
+  function announce(text) { $('live').textContent = text; }
+  const answerCount = () => state.answers.filter(x => x !== null).length;
+  const correctCount = () => questions.filter((q, i) => state.answers[i] === q.answer).length;
+  const visibleIds = () => questions.map((_, i) => i).filter(i => state.mode !== 'review' || !state.wrongOnly || state.answers[i] !== questions[i].answer);
+  const questionsVisible = () => state.layout === 'exam' || state.questionsOpen || state.mode === 'review';
+
+  function syncTime() {
+    if (running) { const now = Date.now(); state.elapsed += Math.max(0, now - startedAt); startedAt = now; }
+  }
+  function renderTime() {
+    const seconds = Math.floor((state.elapsed + (running ? Math.max(0, Date.now() - startedAt) : 0)) / 1000);
+    $('timer').textContent = String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+    $('timer-toggle').textContent = running ? '暂停' : state.elapsed ? '继续计时' : '开始计时';
+    $('timer-toggle').disabled = state.mode === 'review';
+  }
+  function stopTimer() { syncTime(); running = false; renderTime(); save(); }
+  function startTimer() { if (state.mode === 'review' || running) return; running = true; startedAt = Date.now(); renderTime(); }
+
+  function appendInline(parent, text) {
+    const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
+    let offset = 0;
+    for (const match of text.matchAll(pattern)) {
+      parent.append(document.createTextNode(text.slice(offset, match.index)));
+      if (match[0].startsWith('**')) parent.append(el('strong', {}, match[0].slice(2, -2)));
+      else {
+        const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(match[0]);
+        parent.append(el('a', {href: safeURL(link[2]), target: '_blank', rel: 'noopener noreferrer'}, link[1]));
+      }
+      offset = match.index + match[0].length;
+    }
+    parent.append(document.createTextNode(text.slice(offset)));
+  }
+  function renderArticle() {
+    document.title = lesson.article.title + ' · 阅读练习';
+    $('brand').textContent = '英语阅读练习 · ' + lesson.collection;
+    $('lesson-label').textContent = '第 ' + String(lesson.ordinal || 1).padStart(2, '0') + ' 篇 · 阅读与练习';
+    $('lesson-info').textContent = `${total} 道拓展题 · 练习目标 ${lesson.exercise.suggestedMinutes} 分钟`;
+    $('article-title').textContent = lesson.article.title;
+    $('article-subtitle').textContent = lesson.article.subtitle;
+    $('article-meta').textContent = lesson.article.author + ' · ' + lesson.article.date;
+    $('reading-kicker').textContent = lesson.collection + (lesson.article.sourceLabel ? ' / ' + lesson.article.sourceLabel : '');
+    $('catalog-link').hidden = defaults.standalone === true;
+    $('official-source').href = safeURL(lesson.article.url);
+    $('passage-ref').textContent = `Questions ${start}–${start + total - 1} refer to the following article.`;
+    $('source-note').textContent = lesson.exercise.note || '';
+    $('questions-title').textContent = `阅读练习 · ${total} 题`;
+    $('progress').setAttribute('aria-valuemax', total);
+    const reader = $('reader');
+    reader.replaceChildren();
+    for (const block of lesson.article.body.trim().split(/\n\s*\n/).filter(Boolean)) {
+      const heading = /^###\s+/.test(block);
+      const node = el(heading ? 'h3' : 'p');
+      appendInline(node, heading ? block.replace(/^###\s+/, '') : block);
+      reader.append(node);
+    }
+  }
+
+  function scrollToQuestions() { $('questions-section').scrollIntoView({behavior: 'smooth', block: 'start'}); }
+  function locateEvidence(question) {
+    const paragraphs = [...$('reader').querySelectorAll('p')];
+    paragraphs.forEach(p => p.classList.remove('evidence-highlight'));
+    const found = paragraphs.find(p => p.textContent.toLowerCase().includes(question.needle.toLowerCase()));
+    if (found) { found.classList.add('evidence-highlight'); found.scrollIntoView({behavior: 'smooth', block: 'center'}); announce('已高亮相关原文段落。'); }
+    else announce('未匹配到相关段落，请参考解析中的位置说明。');
+  }
+  function jumpQuestion(i) {
+    state.current = i; state.questionsOpen = true; render(); save();
+    const target = $('question-' + i);
+    if (target) { target.scrollIntoView({behavior: 'smooth', block: 'start'}); target.querySelector('h2').focus({preventScroll: true}); }
+  }
+  function render() {
+    const review = state.mode === 'review';
+    const ids = visibleIds();
+    if (ids.length && !ids.includes(state.current)) state.current = ids[0];
+    document.body.dataset.layout = state.layout;
+    document.body.classList.toggle('reviewing', review);
+    $('reading-layout').setAttribute('aria-pressed', String(state.layout === 'reading'));
+    $('exam-layout').setAttribute('aria-pressed', String(state.layout === 'exam'));
+    $('answer-mode').setAttribute('aria-pressed', String(!review));
+    $('review-mode').setAttribute('aria-pressed', String(review));
+    $('exercise-tools').hidden = !questionsVisible();
+    $('questions-section').hidden = !questionsVisible();
+    $('actions').hidden = !questionsVisible();
+    $('reading-finish').hidden = questionsVisible();
+    $('close-questions').hidden = state.layout !== 'reading';
+    $('flag-current').disabled = ids.length === 0;
+    $('flag-current').setAttribute('aria-pressed', String(state.flags[state.current]));
+    $('flag-current').textContent = (state.flags[state.current] ? '取消标记 ' : '标记 ') + (start + state.current);
+    $('progress-label').textContent = `已答 ${answerCount()} / ${total}`;
+    $('progress-fill').style.width = (answerCount() / total * 100) + '%';
+    $('progress').setAttribute('aria-valuenow', answerCount());
+    $('result').hidden = !review;
+    $('review-controls').hidden = !review;
+    $('wrong-only').checked = state.wrongOnly;
+    $('filter-count').textContent = state.wrongOnly ? `${ids.length} 题` : '';
+    $('submit').hidden = review;
+    $('back-answer').hidden = !review;
+    $('nav-legend').textContent = review ? '绿色表示正确 · 红色表示错误或未答 · 小圆点表示已标记' : '灰色表示已答 · 小圆点表示已标记 · 边框表示当前题';
+    const nav = $('question-nav'); nav.replaceChildren();
+    questions.forEach((question, i) => {
+      const button = el('button', {type: 'button', 'aria-label': `第 ${start + i} 题，${state.answers[i] === null ? '未答' : '已答'}${state.flags[i] ? '，已标记' : ''}`}, String(start + i));
+      button.classList.toggle('answered', state.answers[i] !== null);
+      button.classList.toggle('current', state.current === i && ids.includes(i));
+      button.classList.toggle('flagged', state.flags[i]);
+      if (review) button.classList.add(state.answers[i] === question.answer ? 'correct' : 'incorrect');
+      if (state.current === i) button.setAttribute('aria-current', 'step');
+      button.disabled = !ids.includes(i);
+      button.addEventListener('click', () => jumpQuestion(i)); nav.append(button);
+    });
+    renderTime();
+    if (review) {
+      const result = $('result'); result.replaceChildren();
+      const top = el('div', {class: 'result-top'});
+      top.append(el('span', {class: 'score'}, `${correctCount()} / ${total}`), el('span', {class: 'small'}, `正确率 ${Math.round(correctCount() / total * 100)}%`));
+      result.append(top, el('p', {}, `${state.submitted ? '已交卷' : '解答预览'} · 答错 ${answerCount() - correctCount()} 题 · 未答 ${total - answerCount()} 题 · 用时 ${$('timer').textContent}`), el('span', {class: 'small muted'}, '逐题核对依据，理解干扰项。'));
+    }
+    $('question-container').replaceChildren();
+    $('empty-filter').hidden = ids.length > 0;
+    if (questionsVisible()) ids.forEach(renderQuestion);
+  }
+
+  function renderQuestion(i) {
+    const question = questions[i], review = state.mode === 'review';
+    const article = el('article', {class: 'question', id: 'question-' + i});
+    if (review) article.append(el('div', {class: 'qmeta'}, question.type));
+    const stem = el('h2', {class: 'stem', id: 'question-stem-' + i, lang: 'en', tabindex: '-1'});
+    stem.append(el('span', {class: 'question-number'}, (start + i) + '. '), document.createTextNode(question.stem));
+    article.append(stem);
+    const field = el('fieldset', {class: 'options', lang: 'en'});
+    field.append(el('legend', {}, 'Choose the best answer.'));
+    question.options.forEach((text, j) => {
+      const label = el('label', {class: 'option' + (review ? ' review' : '')});
+      const radio = el('input', {type: 'radio', name: 'q' + i, value: j, 'aria-label': letters[j] + '. ' + text});
+      radio.checked = state.answers[i] === j; radio.disabled = review;
+      const body = el('span', {}, text);
+      label.append(radio, el('span', {class: 'letter'}, letters[j]), body);
+      if (!review && radio.checked) label.classList.add('selected');
+      if (review && j === question.answer) { label.classList.add('is-answer'); body.append(el('span', {class: 'answer-label'}, radio.checked ? '正确答案 · 你的选择' : '正确答案')); }
+      if (review && radio.checked && j !== question.answer) { label.classList.add('is-wrong'); body.append(el('span', {class: 'answer-label'}, '你的选择 · 错误')); }
+      radio.addEventListener('change', () => {
+        state.answers[i] = j; state.current = i; state.submitted = false; startTimer(); render(); save();
+        document.querySelector(`input[name="q${i}"][value="${j}"]`).focus({preventScroll: true});
+        announce(`第 ${start + i} 题已作答，已完成 ${answerCount()} 题。`);
+      });
+      field.append(label);
+    });
+    article.append(field);
+    if (review) {
+      const analysis = el('section', {class: 'analysis', 'aria-label': '答案解析'});
+      analysis.append(el('h3', {}, `答案 ${letters[question.answer]} · ${state.answers[i] === null ? '本题未作答' : state.answers[i] === question.answer ? '回答正确' : '需要复习'}`), el('p', {}, question.explain));
+      const evidence = el('div', {class: 'evidence'}), row = el('div', {class: 'row'});
+      evidence.append(el('strong', {}, '原文依据位置'), el('p', {}, question.where));
+      const locate = el('button', {type: 'button', class: 'small'}, '返回原文依据');
+      locate.addEventListener('click', () => locateEvidence(question));
+      row.append(locate, el('a', {href: safeURL(lesson.article.url), target: '_blank', rel: 'noopener noreferrer', class: 'small'}, '对照官网 ↗'));
+      evidence.append(row); analysis.append(evidence, el('h3', {}, '干扰项分析'));
+      const list = el('ul'); question.traps.forEach(text => list.append(el('li', {}, text))); analysis.append(list);
+      const detail = el('details'); detail.append(el('summary', {}, '解题提示'), el('p', {}, question.tip)); analysis.append(detail);
+      if (question.source) analysis.append(el('a', {href: safeURL(question.source), target: '_blank', rel: 'noopener noreferrer', class: 'small'}, '延伸资料 ↗'));
+      article.append(analysis);
+    }
+    $('question-container').append(article);
+  }
+
+  function hideAlert() { $('submit-alert').hidden = true; }
+  function setLayout(layout) {
+    state.layout = layout;
+    if (!questionsVisible()) stopTimer();
+    hideAlert(); render(); save(); announce('已切换到' + (layout === 'reading' ? '阅读版' : '考卷版') + '，答题进度已保留。');
+  }
+  function setMode(mode, submitted = false) {
+    if (mode === 'review') stopTimer();
+    state.mode = mode; state.questionsOpen = true;
+    if (submitted) state.submitted = true;
+    if (mode === 'answer') state.wrongOnly = false;
+    hideAlert(); render(); save();
+    announce(mode === 'review' ? '已显示答案与解析。' : '已进入答题阶段，答案与解析已隐藏。');
+  }
+  $('reading-layout').addEventListener('click', () => setLayout('reading'));
+  $('exam-layout').addEventListener('click', () => setLayout('exam'));
+  $('answer-mode').addEventListener('click', () => { setMode('answer'); scrollToQuestions(); });
+  $('review-mode').addEventListener('click', () => setMode('review'));
+  $('back-answer').addEventListener('click', () => setMode('answer'));
+  $('open-questions').addEventListener('click', () => { state.questionsOpen = true; render(); save(); scrollToQuestions(); });
+  $('close-questions').addEventListener('click', () => {
+    stopTimer(); state.questionsOpen = false; state.mode = 'answer'; state.wrongOnly = false; hideAlert(); render(); save();
+    $('article').scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  $('flag-current').addEventListener('click', () => { state.flags[state.current] = !state.flags[state.current]; render(); save(); });
+  $('submit').addEventListener('click', () => {
+    const missing = questions.map((_, i) => i).filter(i => state.answers[i] === null);
+    if (missing.length) { $('submit-alert-text').textContent = `还有 ${missing.length} 题未答（${missing.map(i => start + i).join('、')}）。未答题按未得分处理。`; $('submit-alert').hidden = false; $('submit-alert').scrollIntoView({behavior: 'smooth', block: 'center'}); }
+    else { setMode('review', true); $('result').scrollIntoView({behavior: 'smooth', block: 'center'}); }
+  });
+  $('go-unanswered').addEventListener('click', () => { const first = state.answers.findIndex(x => x === null); hideAlert(); if (first >= 0) jumpQuestion(first); });
+  $('submit-anyway').addEventListener('click', () => { setMode('review', true); $('result').scrollIntoView({behavior: 'smooth', block: 'center'}); });
+  $('wrong-only').addEventListener('change', event => { state.wrongOnly = event.target.checked; render(); save(); });
+  $('show-all').addEventListener('click', () => { state.wrongOnly = false; render(); save(); });
+  $('timer-toggle').addEventListener('click', () => { running ? stopTimer() : startTimer(); renderTime(); });
+  $('restart').addEventListener('click', () => $('reset-dialog').showModal());
+  $('cancel-reset').addEventListener('click', () => $('reset-dialog').close());
+  $('confirm-reset').addEventListener('click', () => {
+    running = false; const layout = state.layout; state = fresh(); state.layout = layout; $('reset-dialog').close();
+    hideAlert(); render(); save(); announce('新一轮练习已开始，当前版式已保留。');
+  });
+  $('print-paper').addEventListener('click', () => window.print());
+  $('download-paper').addEventListener('click', () => {
+    const doc = new DOMParser().parseFromString(document.documentElement.outerHTML, 'text/html');
+    doc.getElementById('export-defaults').textContent = JSON.stringify({layout: state.layout, standalone: true});
+    for (const id of ['question-container', 'result', 'question-nav', 'live']) doc.getElementById(id).replaceChildren();
+    for (const node of doc.querySelectorAll('.evidence-highlight')) node.classList.remove('evidence-highlight');
+    doc.getElementById('reset-dialog').removeAttribute('open');
+    const blob = new Blob(['<!doctype html>\n' + doc.documentElement.outerHTML], {type: 'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob), anchor = document.createElement('a');
+    anchor.href = url; anchor.download = lesson.id + '-' + state.layout + '.html'; anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    announce('已导出单一 HTML，包含完整原文、题目、两种版式和解析。');
+  });
+  document.addEventListener('visibilitychange', () => { syncTime(); save(); });
+  window.addEventListener('pagehide', () => { syncTime(); save(); });
+  setInterval(() => { renderTime(); if (running) { syncTime(); save(); } }, 1000);
+  renderArticle(); render(); save();
+})();
+</script>
+</body>
+</html>
