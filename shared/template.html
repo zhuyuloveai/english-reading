@@ -18,7 +18,10 @@
 </div>
 <section id="reading-aid-controls" class="reading-aid-controls" aria-label="阅读辅助设置">
  <div class="switch-group"><span class="control-label">词首强调</span><div class="modes" role="group" aria-label="词首强调强度"><button id="aid-off" aria-pressed="false">原样</button><button id="aid-soft" aria-pressed="false">轻度</button><button id="aid-strong" aria-pressed="true">明显</button></div></div>
- <span class="aid-hint">为英文正文和导语增加视觉落点</span>
+ <div class="switch-group"><span class="control-label">渐变导读</span><div class="modes" role="group" aria-label="渐变导读"><button id="gradient-off" aria-pressed="true">关闭</button><button id="gradient-on" aria-pressed="false">开启</button></div></div>
+ <div class="switch-group"><span class="control-label">正文字号</span><div class="modes" role="group" aria-label="正文字号"><button id="size-standard" aria-pressed="true">标准</button><button id="size-large" aria-pressed="false">大</button><button id="size-xlarge" aria-pressed="false">更大</button></div></div>
+ <div class="switch-group"><span class="control-label">段落聚焦</span><div class="modes" role="group" aria-label="当前段落聚焦"><button id="focus-off" aria-pressed="true">关闭</button><button id="focus-on" aria-pressed="false">开启</button></div></div>
+ <span class="aid-hint">可分别调整、组合使用；聚焦开启后可点击正文段落切换。</span>
 </section>
 <section id="exercise-tools" aria-label="答题工具" hidden>
  <div class="practice-head"><div class="stats"><span id="progress-label"></span><div class="clock"><span id="timer">00:00</span> <button id="timer-toggle" class="small">开始计时</button></div></div><div id="progress" class="bar" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span id="progress-fill" style="width:0%"></span></div><div class="nav-row"><nav id="question-nav" class="question-nav" aria-label="题号导航"></nav><button id="flag-current" class="flag" aria-pressed="false">标记当前题</button></div><p id="nav-legend" class="legend"></p></div>
@@ -30,6 +33,7 @@
  <header class="paper-header" lang="en"><h2>PART 7</h2><p class="directions"><strong>Directions:</strong> Read the passage and answer the questions below. Select one answer per question. Choose (A), (B), (C), or (D).</p></header>
  <section id="article" class="panel source-panel" aria-labelledby="article-title">
   <p id="passage-ref" class="passage-ref" lang="en"></p>
+  <div id="focus-navigation" class="focus-navigation" role="group" aria-label="聚焦段落导航" hidden><button id="focus-prev" aria-label="聚焦上一段">← 上一段</button><span id="focus-position" aria-live="polite"></span><button id="focus-next" aria-label="聚焦下一段">下一段 →</button></div>
   <div class="panel-body"><p id="reading-kicker" class="reading-kicker"></p><h2 id="article-title" class="source-title" lang="en"></h2><p id="article-subtitle" class="article-lede" lang="en"></p><div id="article-meta" class="meta"></div><div id="reader" class="reading" lang="en" aria-label="完整英文原文"></div></div>
  </section>
  <div id="reading-finish" class="reading-finish"><span>先读一遍，再检查自己的理解。</span><button id="open-questions">读完了，开始答题 →</button></div>
