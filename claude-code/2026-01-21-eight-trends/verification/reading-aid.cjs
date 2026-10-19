@@ -6,12 +6,12 @@ const path=require('node:path');const fs=require('node:fs');const {pathToFileURL
  const browser=await (engine==='webkit'?webkit:chromium).launch({headless:true,...(engine==='chromium'?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
  const url=pathToFileURL(path.resolve(__dirname,'../index.html')).href;
  const page=await browser.newPage({viewport:{width:1100,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(url);assert.equal(await page.locator('body').getAttribute('data-reading-aid'),'soft');
+ await page.goto(url);assert.equal(await page.locator('body').getAttribute('data-reading-aid'),'strong');
  const text=await page.locator('#reader').textContent(),subtitle=await page.locator('#article-subtitle').textContent();
  const count=await page.locator('#reader .word-cue').count();assert.ok(count>150);
  assert.equal(await page.locator('#reader strong .word-cue').count(),0);
  assert.equal(await page.locator('#reader h3 .word-cue').count(),0);
- const soft=await page.locator('#reader .word-cue-lead').first().textContent();
+ await page.locator('#aid-soft').click();const soft=await page.locator('#reader .word-cue-lead').first().textContent();
  await page.locator('#aid-strong').click();const strong=await page.locator('#reader .word-cue-lead').first().textContent();assert.ok(strong.length>soft.length);
  for(let i=0;i<3;i++)for(const level of ['off','soft','strong']){
   await page.locator('#aid-'+level).click();

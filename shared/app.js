@@ -11,7 +11,7 @@
   const aidLevels = ['off', 'soft', 'strong'];
   const fresh = () => ({answers: Array(total).fill(null), flags: Array(total).fill(false), current: 0,
     mode: 'answer', layout: defaults.layout === 'exam' ? 'exam' : 'reading', questionsOpen: false,
-    readingAid: aidLevels.includes(defaults.readingAid) ? defaults.readingAid : 'soft',
+    readingAid: aidLevels.includes(defaults.readingAid) ? defaults.readingAid : 'strong',
     elapsed: 0, wrongOnly: false, submitted: false});
   let state = fresh(), storageOK = true, running = false, startedAt = 0;
   try {
