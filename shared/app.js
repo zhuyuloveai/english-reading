@@ -8,13 +8,8 @@
   const start = lesson.exercise.startNumber;
   const key = lesson.storageKey;
   const letters = 'ABCD';
-  const aidLevels = ['off', 'soft', 'strong'];
-  const textSizes = ['standard', 'large', 'xlarge'];
   const fresh = () => ({answers: Array(total).fill(null), flags: Array(total).fill(false), current: 0,
     mode: 'answer', layout: defaults.layout === 'exam' ? 'exam' : 'reading', questionsOpen: false,
-    readingAid: aidLevels.includes(defaults.readingAid) ? defaults.readingAid : 'strong',
-    gradient: defaults.gradient === true, textSize: textSizes.includes(defaults.textSize) ? defaults.textSize : 'standard',
-    paragraphFocus: defaults.paragraphFocus === true, focusParagraph: 0,
     elapsed: 0, wrongOnly: false, submitted: false});
   let state = fresh(), storageOK = true, running = false, startedAt = 0;
   try {
@@ -27,11 +22,6 @@
         current: Number.isInteger(saved.current) && saved.current >= 0 && saved.current < total ? saved.current : 0,
         mode: upgraded && saved.mode === 'review' ? 'review' : 'answer',
         layout: upgraded ? saved.layout : fresh().layout,
-        readingAid: aidLevels.includes(saved.readingAid) ? saved.readingAid : fresh().readingAid,
-        gradient: typeof saved.gradient === 'boolean' ? saved.gradient : fresh().gradient,
-        textSize: textSizes.includes(saved.textSize) ? saved.textSize : fresh().textSize,
-        paragraphFocus: typeof saved.paragraphFocus === 'boolean' ? saved.paragraphFocus : fresh().paragraphFocus,
-        focusParagraph: Number.isInteger(saved.focusParagraph) && saved.focusParagraph >= 0 ? saved.focusParagraph : 0,
         questionsOpen: upgraded && saved.questionsOpen === true,
         elapsed: Number.isFinite(saved.elapsed) && saved.elapsed >= 0 ? saved.elapsed : 0,
         wrongOnly: upgraded && saved.wrongOnly === true, submitted: saved.submitted === true};
@@ -112,129 +102,12 @@
     }
   }
 
-  let renderedAid = null, renderedGradient = false, gradientFrame = 0;
-  const readingRegions = () => [$('article-subtitle'), ...$('reader').querySelectorAll('p')];
-  function clearGradient() {
-    for (const region of readingRegions()) {
-      for (const span of region.querySelectorAll('.gradient-word')) span.replaceWith(document.createTextNode(span.textContent));
-      region.normalize();
-    }
-    renderedGradient = false;
-  }
-  function applyWordEmphasis() {
-    if (renderedAid === state.readingAid) return;
-    clearGradient();
-    const regions = readingRegions();
-    for (const region of regions) {
-      for (const cue of region.querySelectorAll('.word-cue')) cue.replaceWith(document.createTextNode(cue.textContent));
-      region.normalize();
-      if (state.readingAid === 'off') continue;
-      const walker = document.createTreeWalker(region, NodeFilter.SHOW_TEXT);
-      const nodes = [];
-      while (walker.nextNode()) {
-        if (!walker.currentNode.parentElement.closest('strong,b')) nodes.push(walker.currentNode);
-      }
-      for (const node of nodes) {
-        const fragment = document.createDocumentFragment();
-        let offset = 0;
-        for (const match of node.textContent.matchAll(/\b[A-Za-z]+(?:['’][A-Za-z]+)?\b/g)) {
-          const word = match[0];
-          if (word.replace(/['’]/g, '').length < 3) continue;
-          fragment.append(document.createTextNode(node.textContent.slice(offset, match.index)));
-          const amount = Math.min(word.length - 1, Math.max(1, state.readingAid === 'strong' ? Math.ceil(word.length * 0.55) : Math.round(word.length * 0.35)));
-          const cue = el('span', {class: 'word-cue'});
-          cue.append(el('span', {class: 'word-cue-lead'}, word.slice(0, amount)), document.createTextNode(word.slice(amount)));
-          fragment.append(cue); offset = match.index + word.length;
-        }
-        fragment.append(document.createTextNode(node.textContent.slice(offset)));
-        node.replaceWith(fragment);
-      }
-    }
-    renderedAid = state.readingAid;
-  }
-
-  // Measure the rendered lines so resizing and larger fonts keep the color flow aligned.
-  function paintGradient() {
-    gradientFrame = 0;
-    if (!state.gradient || state.layout !== 'reading') return;
-    const blue = [37, 77, 133], plum = [128, 49, 78];
-    const color = (t, reverse) => {
-      if (reverse) t = 1 - t;
-      return 'rgb(' + blue.map((v, i) => Math.round(v + (plum[i] - v) * t)).join(',') + ')';
-    };
-    for (const region of readingRegions()) {
-      const lines = [];
-      for (const node of region.querySelectorAll('.gradient-word')) {
-        const rect = node.getBoundingClientRect();
-        if (!rect.width) continue;
-        // Baselines can vary slightly between normal and bold glyphs.
-        let line = lines.find(item => Math.abs(item.top - rect.top) < 5);
-        if (!line) { line = {top: rect.top, left: rect.left, right: rect.right, words: []}; lines.push(line); }
-        line.left = Math.min(line.left, rect.left); line.right = Math.max(line.right, rect.right);
-        line.words.push({node, rect});
-      }
-      lines.sort((a, b) => a.top - b.top).forEach((line, index) => {
-        const width = Math.max(1, line.right - line.left);
-        for (const {node, rect} of line.words) {
-          const from = color((rect.left - line.left) / width, index % 2);
-          const to = color((rect.right - line.left) / width, index % 2);
-          node.style.setProperty('--word-gradient', `linear-gradient(90deg,${from},${to})`);
-        }
-      });
-    }
-  }
-  function scheduleGradient() {
-    if (gradientFrame) cancelAnimationFrame(gradientFrame);
-    gradientFrame = requestAnimationFrame(paintGradient);
-  }
-  function applyGradient() {
-    if (!state.gradient) { if (renderedGradient) clearGradient(); return; }
-    if (!renderedGradient) {
-      for (const region of readingRegions()) {
-        const walker = document.createTreeWalker(region, NodeFilter.SHOW_TEXT), nodes = [];
-        while (walker.nextNode()) nodes.push(walker.currentNode);
-        for (const node of nodes) {
-          const fragment = document.createDocumentFragment(); let offset = 0;
-          for (const match of node.textContent.matchAll(/\S+/g)) {
-            fragment.append(document.createTextNode(node.textContent.slice(offset, match.index)), el('span', {class: 'gradient-word'}, match[0]));
-            offset = match.index + match[0].length;
-          }
-          fragment.append(document.createTextNode(node.textContent.slice(offset))); node.replaceWith(fragment);
-        }
-      }
-      renderedGradient = true;
-    }
-    scheduleGradient();
-  }
-  function renderParagraphFocus() {
-    const paragraphs = [...$('reader').querySelectorAll('p')];
-    state.focusParagraph = Math.min(state.focusParagraph, Math.max(0, paragraphs.length - 1));
-    const active = state.layout === 'reading' && state.paragraphFocus;
-    paragraphs.forEach((p, i) => {
-      p.classList.toggle('focus-current', active && i === state.focusParagraph);
-      if (active) { p.tabIndex = i === state.focusParagraph ? 0 : -1; }
-      else p.removeAttribute('tabindex');
-    });
-    $('focus-navigation').hidden = !active;
-    $('focus-position').textContent = `${state.focusParagraph + 1} / ${paragraphs.length} 段`;
-    $('focus-prev').disabled = state.focusParagraph === 0;
-    $('focus-next').disabled = state.focusParagraph === paragraphs.length - 1;
-  }
-  function selectParagraph(index, scroll = false, keyboard = false) {
-    const paragraphs = [...$('reader').querySelectorAll('p')];
-    state.focusParagraph = Math.max(0, Math.min(paragraphs.length - 1, index));
-    renderParagraphFocus(); save();
-    const p = paragraphs[state.focusParagraph];
-    if (scroll) p.scrollIntoView({behavior: 'smooth', block: 'center'});
-    if (keyboard) p.focus({preventScroll: true});
-  }
-
   function scrollToQuestions() { $('questions-section').scrollIntoView({behavior: 'smooth', block: 'start'}); }
   function locateEvidence(question) {
     const paragraphs = [...$('reader').querySelectorAll('p')];
     paragraphs.forEach(p => p.classList.remove('evidence-highlight'));
     const found = paragraphs.find(p => p.textContent.toLowerCase().includes(question.needle.toLowerCase()));
-    if (found) { if (state.paragraphFocus) selectParagraph(paragraphs.indexOf(found)); found.classList.add('evidence-highlight'); found.scrollIntoView({behavior: 'smooth', block: 'center'}); announce('已高亮相关原文段落。'); }
+    if (found) { found.classList.add('evidence-highlight'); found.scrollIntoView({behavior: 'smooth', block: 'center'}); announce('已高亮相关原文段落。'); }
     else announce('未匹配到相关段落，请参考解析中的位置说明。');
   }
   function jumpQuestion(i) {
@@ -247,18 +120,6 @@
     const ids = visibleIds();
     if (ids.length && !ids.includes(state.current)) state.current = ids[0];
     document.body.dataset.layout = state.layout;
-    document.body.dataset.readingAid = state.readingAid;
-    $('reading-aid-controls').hidden = state.layout !== 'reading';
-    for (const level of aidLevels) $('aid-' + level).setAttribute('aria-pressed', String(state.readingAid === level));
-    document.body.dataset.gradient = String(state.gradient);
-    document.body.dataset.textSize = state.textSize;
-    document.body.dataset.paragraphFocus = String(state.paragraphFocus);
-    for (const value of ['off', 'on']) {
-      $('gradient-' + value).setAttribute('aria-pressed', String(state.gradient === (value === 'on')));
-      $('focus-' + value).setAttribute('aria-pressed', String(state.paragraphFocus === (value === 'on')));
-    }
-    for (const size of textSizes) $('size-' + size).setAttribute('aria-pressed', String(state.textSize === size));
-    applyWordEmphasis(); applyGradient(); renderParagraphFocus();
     document.body.classList.toggle('reviewing', review);
     $('reading-layout').setAttribute('aria-pressed', String(state.layout === 'reading'));
     $('exam-layout').setAttribute('aria-pressed', String(state.layout === 'exam'));
@@ -364,36 +225,6 @@
   }
   $('reading-layout').addEventListener('click', () => setLayout('reading'));
   $('exam-layout').addEventListener('click', () => setLayout('exam'));
-  for (const level of aidLevels) $('aid-' + level).addEventListener('click', () => {
-    state.readingAid = level; render(); save();
-    announce('词首强调已设为' + ({off: '原样', soft: '轻度', strong: '明显'})[level] + '。');
-  });
-  for (const value of ['off', 'on']) {
-    $('gradient-' + value).addEventListener('click', () => {
-      state.gradient = value === 'on'; render(); save(); announce('渐变导读已' + (state.gradient ? '开启。' : '关闭。'));
-    });
-    $('focus-' + value).addEventListener('click', () => {
-      state.paragraphFocus = value === 'on'; render(); save(); announce('段落聚焦已' + (state.paragraphFocus ? '开启，可点击段落或使用上一段、下一段按钮。' : '关闭。'));
-    });
-  }
-  for (const size of textSizes) $('size-' + size).addEventListener('click', () => {
-    state.textSize = size; render(); save(); announce('正文字号已设为' + ({standard: '标准', large: '大', xlarge: '更大'})[size] + '。');
-  });
-  $('focus-prev').addEventListener('click', () => selectParagraph(state.focusParagraph - 1, true));
-  $('focus-next').addEventListener('click', () => selectParagraph(state.focusParagraph + 1, true));
-  $('reader').addEventListener('click', event => {
-    const p = event.target.closest('p');
-    if (state.layout === 'reading' && state.paragraphFocus && p && !event.target.closest('a') && !window.getSelection()?.toString()) selectParagraph([...$('reader').querySelectorAll('p')].indexOf(p));
-  });
-  $('reader').addEventListener('keydown', event => {
-    if (state.layout !== 'reading' || !state.paragraphFocus || !event.target.matches('#reader > p')) return;
-    if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
-      event.preventDefault(); selectParagraph(state.focusParagraph + (event.key === 'ArrowDown' ? 1 : -1), true, true);
-    }
-  });
-  window.addEventListener('resize', scheduleGradient);
-  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(scheduleGradient).observe($('reader'));
-  document.fonts?.ready.then(scheduleGradient);
   $('answer-mode').addEventListener('click', () => { setMode('answer'); scrollToQuestions(); });
   $('review-mode').addEventListener('click', () => setMode('review'));
   $('back-answer').addEventListener('click', () => setMode('answer'));
@@ -416,13 +247,13 @@
   $('restart').addEventListener('click', () => $('reset-dialog').showModal());
   $('cancel-reset').addEventListener('click', () => $('reset-dialog').close());
   $('confirm-reset').addEventListener('click', () => {
-    running = false; const {layout, readingAid, gradient, textSize, paragraphFocus} = state; state = {...fresh(), layout, readingAid, gradient, textSize, paragraphFocus}; $('reset-dialog').close();
+    running = false; const layout = state.layout; state = fresh(); state.layout = layout; $('reset-dialog').close();
     hideAlert(); render(); save(); announce('新一轮练习已开始，当前版式已保留。');
   });
   $('print-paper').addEventListener('click', () => window.print());
   $('download-paper').addEventListener('click', () => {
     const doc = new DOMParser().parseFromString(document.documentElement.outerHTML, 'text/html');
-    doc.getElementById('export-defaults').textContent = JSON.stringify({layout: state.layout, readingAid: state.readingAid, gradient: state.gradient, textSize: state.textSize, paragraphFocus: state.paragraphFocus, standalone: true});
+    doc.getElementById('export-defaults').textContent = JSON.stringify({layout: state.layout, standalone: true});
     for (const id of ['question-container', 'result', 'question-nav', 'live']) doc.getElementById(id).replaceChildren();
     for (const node of doc.querySelectorAll('.evidence-highlight')) node.classList.remove('evidence-highlight');
     doc.getElementById('reset-dialog').removeAttribute('open');
