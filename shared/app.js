@@ -8,8 +8,10 @@
   const start = lesson.exercise.startNumber;
   const key = lesson.storageKey;
   const letters = 'ABCD';
+  const aidLevels = ['off', 'soft', 'strong'];
   const fresh = () => ({answers: Array(total).fill(null), flags: Array(total).fill(false), current: 0,
     mode: 'answer', layout: defaults.layout === 'exam' ? 'exam' : 'reading', questionsOpen: false,
+    readingAid: aidLevels.includes(defaults.readingAid) ? defaults.readingAid : 'soft',
     elapsed: 0, wrongOnly: false, submitted: false});
   let state = fresh(), storageOK = true, running = false, startedAt = 0;
   try {
@@ -22,6 +24,7 @@
         current: Number.isInteger(saved.current) && saved.current >= 0 && saved.current < total ? saved.current : 0,
         mode: upgraded && saved.mode === 'review' ? 'review' : 'answer',
         layout: upgraded ? saved.layout : fresh().layout,
+        readingAid: aidLevels.includes(saved.readingAid) ? saved.readingAid : fresh().readingAid,
         questionsOpen: upgraded && saved.questionsOpen === true,
         elapsed: Number.isFinite(saved.elapsed) && saved.elapsed >= 0 ? saved.elapsed : 0,
         wrongOnly: upgraded && saved.wrongOnly === true, submitted: saved.submitted === true};
@@ -102,6 +105,38 @@
     }
   }
 
+  let renderedAid = null;
+  function applyWordEmphasis() {
+    if (renderedAid === state.readingAid) return;
+    const regions = [$('article-subtitle'), ...$('reader').querySelectorAll('p')];
+    for (const region of regions) {
+      for (const cue of region.querySelectorAll('.word-cue')) cue.replaceWith(document.createTextNode(cue.textContent));
+      region.normalize();
+      if (state.readingAid === 'off') continue;
+      const walker = document.createTreeWalker(region, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) {
+        if (!walker.currentNode.parentElement.closest('strong,b')) nodes.push(walker.currentNode);
+      }
+      for (const node of nodes) {
+        const fragment = document.createDocumentFragment();
+        let offset = 0;
+        for (const match of node.textContent.matchAll(/\b[A-Za-z]+(?:['’][A-Za-z]+)?\b/g)) {
+          const word = match[0];
+          if (word.replace(/['’]/g, '').length < 3) continue;
+          fragment.append(document.createTextNode(node.textContent.slice(offset, match.index)));
+          const amount = Math.min(word.length - 1, Math.max(1, state.readingAid === 'strong' ? Math.ceil(word.length * 0.55) : Math.round(word.length * 0.35)));
+          const cue = el('span', {class: 'word-cue'});
+          cue.append(el('span', {class: 'word-cue-lead'}, word.slice(0, amount)), document.createTextNode(word.slice(amount)));
+          fragment.append(cue); offset = match.index + word.length;
+        }
+        fragment.append(document.createTextNode(node.textContent.slice(offset)));
+        node.replaceWith(fragment);
+      }
+    }
+    renderedAid = state.readingAid;
+  }
+
   function scrollToQuestions() { $('questions-section').scrollIntoView({behavior: 'smooth', block: 'start'}); }
   function locateEvidence(question) {
     const paragraphs = [...$('reader').querySelectorAll('p')];
@@ -120,6 +155,10 @@
     const ids = visibleIds();
     if (ids.length && !ids.includes(state.current)) state.current = ids[0];
     document.body.dataset.layout = state.layout;
+    document.body.dataset.readingAid = state.readingAid;
+    $('reading-aid-controls').hidden = state.layout !== 'reading';
+    for (const level of aidLevels) $('aid-' + level).setAttribute('aria-pressed', String(state.readingAid === level));
+    applyWordEmphasis();
     document.body.classList.toggle('reviewing', review);
     $('reading-layout').setAttribute('aria-pressed', String(state.layout === 'reading'));
     $('exam-layout').setAttribute('aria-pressed', String(state.layout === 'exam'));
@@ -225,6 +264,10 @@
   }
   $('reading-layout').addEventListener('click', () => setLayout('reading'));
   $('exam-layout').addEventListener('click', () => setLayout('exam'));
+  for (const level of aidLevels) $('aid-' + level).addEventListener('click', () => {
+    state.readingAid = level; render(); save();
+    announce('词首强调已设为' + ({off: '原样', soft: '轻度', strong: '明显'})[level] + '。');
+  });
   $('answer-mode').addEventListener('click', () => { setMode('answer'); scrollToQuestions(); });
   $('review-mode').addEventListener('click', () => setMode('review'));
   $('back-answer').addEventListener('click', () => setMode('answer'));
@@ -247,13 +290,13 @@
   $('restart').addEventListener('click', () => $('reset-dialog').showModal());
   $('cancel-reset').addEventListener('click', () => $('reset-dialog').close());
   $('confirm-reset').addEventListener('click', () => {
-    running = false; const layout = state.layout; state = fresh(); state.layout = layout; $('reset-dialog').close();
+    running = false; const {layout, readingAid} = state; state = fresh(); state.layout = layout; state.readingAid = readingAid; $('reset-dialog').close();
     hideAlert(); render(); save(); announce('新一轮练习已开始，当前版式已保留。');
   });
   $('print-paper').addEventListener('click', () => window.print());
   $('download-paper').addEventListener('click', () => {
     const doc = new DOMParser().parseFromString(document.documentElement.outerHTML, 'text/html');
-    doc.getElementById('export-defaults').textContent = JSON.stringify({layout: state.layout, standalone: true});
+    doc.getElementById('export-defaults').textContent = JSON.stringify({layout: state.layout, readingAid: state.readingAid, standalone: true});
     for (const id of ['question-container', 'result', 'question-nav', 'live']) doc.getElementById(id).replaceChildren();
     for (const node of doc.querySelectorAll('.evidence-highlight')) node.classList.remove('evidence-highlight');
     doc.getElementById('reset-dialog').removeAttribute('open');

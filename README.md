@@ -32,6 +32,8 @@ english-reading/
 
 「版式」和「阶段」独立：两种版式均可答题和查看解析，共用答案、标记、计时和错题筛选。版式与进度自动保存。答题阶段隐藏答案，解答阶段显示中文解析及原文定位。
 
+阅读版提供「词首强调」设置：原样、轻度、明显，默认轻度。英文正文与导语中的词首可使用较粗字重，完整拼写、标点、链接和原有加粗保留。可按自己的阅读感受调整；设置自动保存，导出的单一 HTML 保留当前强度。考卷版使用原字重。
+
 第一篇保留 147–156 共 10 道拓展题，12 分钟为自定练习目标。文章原文完整嵌入，并保留作者与来源。
 
 ## 修改和新增练习
@@ -77,6 +79,9 @@ npm ci
 npx playwright install chromium
 npm test
 npm run test:mobile
+npm run test:reading
 ```
 
 已有 Chrome 的环境也可以设置 `PLAYWRIGHT_CHANNEL=chrome` 使用系统浏览器。验证脚本检查版式切换、答题进度、评分、原文定位、导出文件离线运行和手机触屏布局，生成结果保留在本地 `verification/`，不提交 Git。
+
+可额外运行 `npx playwright install webkit`，然后用 `BROWSER=webkit npm run test:reading` 检查 WebKit 的词首强调、手机触控与离线导出。

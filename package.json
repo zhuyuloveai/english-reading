@@ -6,7 +6,8 @@
   "scripts": {
     "build": "python3 build.py",
     "test": "node claude-code/2026-01-21-eight-trends/verification/check.cjs",
-    "test:mobile": "node claude-code/2026-01-21-eight-trends/verification/mobile-export.cjs"
+    "test:mobile": "node claude-code/2026-01-21-eight-trends/verification/mobile-export.cjs",
+    "test:reading": "node claude-code/2026-01-21-eight-trends/verification/reading-aid.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
