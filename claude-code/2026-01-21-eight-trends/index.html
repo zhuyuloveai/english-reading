@@ -11,6 +11,10 @@
 @media print{@page{size:A4;margin:17mm}body{background:#fff;font-family:Arial,sans-serif}.top,.intro,.practice-head,.result,.review-controls,.alert,.actions,.source-footer,.article-tools,.status-line,.editor,.source-actions,.read-note,.empty-reader,#source-status,.qmeta,.analysis button,.analysis a{display:none!important}.wrap{max-width:none;margin:0;padding:0}.layout{border:0;box-shadow:none;padding:0}.paper-header h2{font-size:15pt}.directions,.passage-ref{font-size:10pt}.source-title{font-size:15pt}.article-lede{font-size:10pt}.meta{font-size:8pt}.reading p,.reading h3{font-size:10.5pt;line-height:1.4}.source-panel{padding-bottom:15pt}.questions-section{padding-top:14pt}.question-intro{font-size:10pt}#question-container{columns:2;column-gap:24pt}.question{margin-bottom:17pt}.stem,.option{font-size:10pt}.option{min-height:0;padding:2pt 0}.letter{width:21px;min-width:21px}.question{break-inside:avoid}.analysis{font-size:9pt}.reviewing #question-container{columns:1}.reading .evidence-highlight{background:none;outline:none}.option.selected .letter{border-color:transparent;font-weight:normal}.option.is-answer,.option.is-wrong{background:none;border-color:transparent}}
 
 /* Shared controls and independently selectable reading presentation. */
+.reading ul,.reading ol{font-size:16px;line-height:1.5;margin:0 0 16px;padding-left:24px}.reading li{margin:0 0 7px;overflow-wrap:anywhere}.reading h4{font-size:16px;line-height:1.5;margin:18px 0 9px}.reading code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82em;overflow-wrap:anywhere}.reading pre{max-width:100%;overflow-x:auto;white-space:pre;margin:18px 0;padding:16px;background:#f4f4f1;border:1px solid #deded8;border-radius:4px;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:4}.reading pre code{font:inherit;overflow-wrap:normal}
+body[data-layout="reading"] .reading ul,body[data-layout="reading"] .reading ol{font:19px/1.9 Georgia,"Times New Roman",serif;margin-bottom:24px}body[data-layout="reading"] .reading li{margin-bottom:9px}body[data-layout="reading"] .reading h4{font:700 20px/1.5 Georgia,"Times New Roman",serif;margin:28px 0 15px}
+@media(max-width:780px){body[data-layout="reading"] .reading ul,body[data-layout="reading"] .reading ol{font-size:18px;line-height:1.85}body[data-layout="reading"] .reading h4{font-size:20px}.reading pre{padding:12px;font-size:12px}}
+@media print{.reading pre{white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible;font-size:8pt;break-inside:avoid}.reading pre code{overflow-wrap:anywhere}.reading ul,.reading ol,.reading h4{font-size:10.5pt}body[data-layout="reading"] .reading ul,body[data-layout="reading"] .reading ol{font-size:12pt;line-height:1.7}body[data-layout="reading"] .reading h4{font-size:13pt}}
 .switches,.switch-group{display:flex;align-items:center;gap:10px}.switches{gap:16px;flex-wrap:wrap}.control-label{font-size:11px;color:#666}.intro{align-items:flex-start}.intro h1{font-size:15px}.reading-kicker,.questions-title{display:none}.reading-finish{display:none}.option .answer-label{line-height:1.6}.qmeta:empty{display:none}
 body[data-layout="reading"]{background:#f5f4ef;color:#28312b}
 body[data-layout="reading"] .top-inner,body[data-layout="reading"] .wrap{max-width:1000px}
@@ -160,11 +164,12 @@ body[data-layout="exam"] .reading-kicker,body[data-layout="exam"] .questions-tit
   function startTimer() { if (state.mode === 'review' || running) return; running = true; startedAt = Date.now(); renderTime(); }
 
   function appendInline(parent, text) {
-    const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
+    const pattern = /(`[^`\n]+`|\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
     let offset = 0;
     for (const match of text.matchAll(pattern)) {
       parent.append(document.createTextNode(text.slice(offset, match.index)));
-      if (match[0].startsWith('**')) parent.append(el('strong', {}, match[0].slice(2, -2)));
+      if (match[0].startsWith('`')) parent.append(el('code', {}, match[0].slice(1, -1)));
+      else if (match[0].startsWith('**')) parent.append(el('strong', {}, match[0].slice(2, -2)));
       else {
         const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(match[0]);
         parent.append(el('a', {href: safeURL(link[2]), target: '_blank', rel: 'noopener noreferrer'}, link[1]));
@@ -172,6 +177,41 @@ body[data-layout="exam"] .reading-kicker,body[data-layout="exam"] .questions-tit
       offset = match.index + match[0].length;
     }
     parent.append(document.createTextNode(text.slice(offset)));
+  }
+  function appendArticleBlocks(reader, text) {
+    const lines = text.replace(/\r\n?/g, '\n').trim().split('\n');
+    const listItem = line => /^\s*(?:[-*]|\d+\.)\s+/.test(line);
+    for (let i = 0; i < lines.length;) {
+      if (!lines[i].trim()) { i++; continue; }
+      if (/^```/.test(lines[i])) {
+        const code = []; i++;
+        while (i < lines.length && !/^```\s*$/.test(lines[i])) code.push(lines[i++]);
+        if (i < lines.length) i++;
+        const pre = el('pre', {tabindex: '0', 'aria-label': '文章代码示例'});
+        pre.append(el('code', {}, code.join('\n'))); reader.append(pre); continue;
+      }
+      if (/^#{2,3}\s+/.test(lines[i])) {
+        const heading = el('h3'); appendInline(heading, lines[i++].replace(/^#{2,3}\s+/, ''));
+        reader.append(heading); continue;
+      }
+      if (/^####\s+/.test(lines[i])) {
+        const heading = el('h4'); appendInline(heading, lines[i++].replace(/^####\s+/, ''));
+        reader.append(heading); continue;
+      }
+      if (listItem(lines[i])) {
+        const ordered = /^\s*\d+\./.test(lines[i]);
+        const list = el(ordered ? 'ol' : 'ul');
+        if (ordered) list.start = Number(lines[i].trim().match(/^\d+/)[0]);
+        while (i < lines.length && listItem(lines[i]) && /^\s*\d+\./.test(lines[i]) === ordered) {
+          const item = el('li'); appendInline(item, lines[i++].replace(/^\s*(?:[-*]|\d+\.)\s+/, ''));
+          list.append(item);
+        }
+        reader.append(list); continue;
+      }
+      const paragraph = [];
+      while (i < lines.length && lines[i].trim() && !/^```|^#{2,4}\s+/.test(lines[i]) && !listItem(lines[i])) paragraph.push(lines[i++]);
+      const node = el('p'); appendInline(node, paragraph.join('\n')); reader.append(node);
+    }
   }
   function renderArticle() {
     document.title = lesson.article.title + ' · 阅读练习';
@@ -190,17 +230,12 @@ body[data-layout="exam"] .reading-kicker,body[data-layout="exam"] .questions-tit
     $('progress').setAttribute('aria-valuemax', total);
     const reader = $('reader');
     reader.replaceChildren();
-    for (const block of lesson.article.body.trim().split(/\n\s*\n/).filter(Boolean)) {
-      const heading = /^###\s+/.test(block);
-      const node = el(heading ? 'h3' : 'p');
-      appendInline(node, heading ? block.replace(/^###\s+/, '') : block);
-      reader.append(node);
-    }
+    appendArticleBlocks(reader, lesson.article.body);
   }
 
   function scrollToQuestions() { $('questions-section').scrollIntoView({behavior: 'smooth', block: 'start'}); }
   function locateEvidence(question) {
-    const paragraphs = [...$('reader').querySelectorAll('p')];
+    const paragraphs = [...$('reader').querySelectorAll('p, li, pre')];
     paragraphs.forEach(p => p.classList.remove('evidence-highlight'));
     const found = paragraphs.find(p => p.textContent.toLowerCase().includes(question.needle.toLowerCase()));
     if (found) { found.classList.add('evidence-highlight'); found.scrollIntoView({behavior: 'smooth', block: 'center'}); announce('已高亮相关原文段落。'); }

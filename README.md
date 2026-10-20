@@ -15,13 +15,14 @@ english-reading/
 │       ├── exam.css               # 基础界面与 TOEIC 风格考卷排版
 │       └── reading.css            # 可切换的舒适阅读排版
 └── claude-code/
-    └── 2026-01-21-eight-trends/
-        ├── lesson.json            # 文章和题目内容源
-        ├── index.html             # 构建生成的独立成品
-        └── verification/          # 浏览器检查与截图
+    ├── 2026-01-21-eight-trends/
+    │   ├── lesson.json            # 文章和题目内容源
+    │   ├── index.html             # 构建生成的独立成品
+    │   └── verification/          # 浏览器检查与截图
+    └── 2026-01-22-building-agents-with-skills/  # 第二篇，结构相同
 ```
 
-`lesson.json` 保存标题、副标题、来源、正文、题目、答案、解析与证据定位。正文支持段落、`###` 小标题、`**加粗**` 和 HTTPS/HTTP Markdown 链接。运行时通过 DOM 安全渲染，正文中的 HTML 按普通文字显示。
+`lesson.json` 保存标题、副标题、来源、正文、题目、答案、解析与证据定位。正文支持段落、`###` 小标题、`####` 次级标题、项目／有序列表、围栏代码块、行内代码、`**加粗**` 和 HTTPS/HTTP Markdown 链接。运行时通过 DOM 安全渲染，正文中的 HTML 按普通文字显示。
 
 页面结构、两种版式和交互逻辑由公共文件提供。新增文章只需编写内容数据并构建，文章内容不写入公共模板或样式。
 
@@ -32,7 +33,7 @@ english-reading/
 
 「版式」和「阶段」独立：两种版式均可答题和查看解析，共用答案、标记、计时和错题筛选。版式与进度自动保存。答题阶段隐藏答案，解答阶段显示中文解析及原文定位。
 
-第一篇保留 147–156 共 10 道拓展题，12 分钟为自定练习目标。文章原文完整嵌入，并保留作者与来源。
+第一篇保留 147–156 共 10 道拓展题，12 分钟为自定练习目标。第二篇为 147–170 共 24 题，建议 35 分钟，覆盖主旨、细节、词义、指代、分类与推断。两篇原文均由用户提供并完整嵌入，保留作者与来源；网页的 Copy 按钮文字不作为正文，代码示例与列表按原有层级展示。
 
 ## 修改和新增练习
 
@@ -65,8 +66,9 @@ python3 build.py claude-code/2026-01-21-eight-trends/lesson.json
 | 发布日期 | 文章 | 题量 |
 |---|---|---:|
 | 2026-01-21 | [Eight trends defining how software gets built in 2026](claude-code/2026-01-21-eight-trends/index.html) | 10 |
+| 2026-01-22 | [Building agents with Skills: Equipping agents for specialized work](claude-code/2026-01-22-building-agents-with-skills/index.html) | 24 |
 
-原文来源：[Anthropic 官方文章](https://claude.com/resources/articles/eight-trends-defining-how-software-gets-built-in-2026)。阅读题目与中文解析为自编学习材料，题目排版参考 [ETS 官方样题](https://www.ets.org/content/dam/ets-org/pdfs/toeic/toeic-listening-reading-sample-test.pdf)。
+原文来源：[第一篇官方文章](https://claude.com/resources/articles/eight-trends-defining-how-software-gets-built-in-2026)、[第二篇官方文章](https://claude.com/resources/articles/building-agents-with-skills-equipping-agents-for-specialized-work)。阅读题目与中文解析为自编学习材料，题目排版参考 [ETS 官方样题](https://www.ets.org/content/dam/ets-org/pdfs/toeic/toeic-listening-reading-sample-test.pdf)。
 
 ## 浏览器验证
 
@@ -77,6 +79,9 @@ npm ci
 npx playwright install chromium
 npm test
 npm run test:mobile
+npm run test:skills
 ```
 
 已有 Chrome 的环境也可以设置 `PLAYWRIGHT_CHANNEL=chrome` 使用系统浏览器。验证脚本检查版式切换、答题进度、评分、原文定位、导出文件离线运行和手机触屏布局，生成结果保留在本地 `verification/`，不提交 Git。
+
+第二篇检查支持 `BROWSER=webkit npm run test:skills`，验证列表／代码、24 道题的评分与原文定位、跨篇进度隔离、两种版式的离线导出，以及 320–430 像素的手机触控和打印布局。

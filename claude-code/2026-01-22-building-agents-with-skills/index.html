@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语阅读练习</title>
+<style>:root{color-scheme:light;--ink:#111;--muted:#606060;--line:#d8d8d8;--accent:#222;--soft:#ededed;--bad:#9c302b;--badbg:#fff1ef;--gold:#806000}
+*{box-sizing:border-box}body{margin:0;background:#eee;color:var(--ink);font:14px/1.5 Arial,"Helvetica Neue","PingFang SC",sans-serif}button,input,textarea{font:inherit}button,a{touch-action:manipulation}a{color:inherit;text-underline-offset:3px}button{cursor:pointer;min-height:36px;padding:7px 12px;border:1px solid #bdbdbd;border-radius:3px;background:#fff;color:#222}button:disabled{opacity:.4;cursor:default}button:hover:not(:disabled){background:#f1f1f1}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:2px solid #555;outline-offset:3px}.primary{background:#222;color:#fff;border-color:#222}.primary:hover:not(:disabled){background:#444}.muted{color:var(--muted)}.small{font-size:12px}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}.row{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.top-inner,.wrap{max-width:940px;margin:0 auto}.top-inner{padding:24px 26px 16px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:700;font-size:16px}.edition{font-size:12px;color:#666}.wrap{padding:0 26px 35px}.intro{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}.intro h1{font-size:16px;margin:0 0 5px}.intro p{font-size:12px;margin:0;color:#666}.modes{display:flex;gap:0;flex-shrink:0}.modes button{border-radius:0}.modes button+button{border-left:0}.modes button[aria-pressed=true]{background:#222;color:white}.practice-head{padding:15px 0 18px}.stats{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}.clock{font-variant-numeric:tabular-nums}.clock button{font-size:12px;padding:4px 9px;min-height:29px}.bar{height:3px;background:#d9d9d9;margin:11px 0 13px}.bar span{display:block;height:100%;background:#333}.nav-row{display:flex;align-items:center;gap:12px}.question-nav{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;flex:1}.question-nav button{padding:0;min-height:31px;font-size:12px;position:relative}.question-nav .answered{background:#ddd}.question-nav .current{outline:1px solid #222;outline-offset:1px;font-weight:bold}.question-nav .flagged:after{content:"";width:4px;height:4px;background:#806000;position:absolute;top:2px;right:2px;border-radius:50%}.question-nav .correct{background:#e4eee6;color:#225a34}.question-nav .incorrect{background:var(--badbg);color:var(--bad)}.flag{font-size:12px;min-height:31px;padding:4px 8px}.flag[aria-pressed=true]{background:#fff4cd}.legend{font-size:11px;color:#666;margin:8px 0 0}.layout{background:#fff;padding:40px 48px;border:1px solid #d5d5d5;box-shadow:0 2px 9px #00000005}.paper-header{margin-bottom:28px}.paper-header h2{font-size:20px;line-height:1.2;text-align:center;margin:0 0 23px;letter-spacing:.5px}.directions{font-size:14px;line-height:1.5;margin:0}.passage-ref{font-size:14px;font-weight:bold;margin:0 0 15px}.panel-head{display:none}.panel-body{padding:0}.source-title{font-size:23px;line-height:1.3;font-weight:700;margin:0 0 13px}.article-lede{font-size:15px;line-height:1.5;margin:0 0 12px;font-style:normal}.meta{font-size:11px;margin:0 0 20px;color:#555}.meta span+span{display:none}.reading p{font-size:16px;line-height:1.5;margin:0 0 13px;padding:0;overflow-wrap:anywhere}.reading h3{font-size:16px;line-height:1.5;margin:20px 0 9px}.reading a{text-decoration:none;color:inherit}.reading a:hover{text-decoration:underline}.reading .evidence-highlight{background:#fff0b1;outline:4px solid #fff0b1}.source-actions,.read-note,.empty-reader,#source-status{font-size:13px}.source-loaded .source-actions,.source-loaded .read-note,.source-loaded #source-status{display:none}.editor{margin:18px 0}.editor textarea{display:block;width:100%;min-height:250px;border:1px solid #aaa;padding:12px;margin:8px 0;font:15px/1.6 Arial,sans-serif}.source-panel{padding-bottom:25px}.question-intro{font-size:13px;margin:0 0 20px}.questions-section{border-top:1px solid #888;padding-top:25px}#question-container{columns:2;column-gap:38px}.question{break-inside:avoid;page-break-inside:avoid;margin:0 0 27px;padding:0;scroll-margin-top:20px}.stem{font-size:15px;line-height:1.5;font-weight:400;margin:0 0 9px}.stem:focus{outline:none}.question-number{font-weight:700}.options{margin:0;padding:0;border:0;min-width:0}.options legend{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}.option{display:flex;align-items:flex-start;gap:6px;position:relative;font-size:15px;line-height:1.5;min-height:29px;margin:0;padding:2px 3px;cursor:pointer;border:1px solid transparent;border-radius:2px}.option input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}.option:has(input:focus-visible){outline:2px solid #555;outline-offset:1px}.letter{display:inline-block;width:27px;min-width:27px;text-align:center;border:1px solid transparent;line-height:1.4}.letter:before{content:"("}.letter:after{content:")"}.option:hover{background:#f5f5f5}.option.selected .letter{border-color:#222;border-radius:50%;font-weight:bold}.option.is-answer{background:#eaf2eb;border-color:#91b09a}.option.is-wrong{background:var(--badbg);border-color:#d68a82}.option.review{cursor:default}.answer-label{display:block;font:11px/1.7 Arial,"PingFang SC",sans-serif;color:#225a34;margin-top:4px}.is-wrong .answer-label{color:var(--bad)}.qmeta{margin-bottom:8px}.qmeta:empty{display:none}.tag{font-size:12px;color:#666}.reviewing #question-container{columns:1}.reviewing .question{margin-bottom:32px;padding-bottom:30px;border-bottom:1px solid #ccc}.analysis{margin-top:20px;border-top:1px dashed #ccc;padding-top:16px;font-family:Arial,"PingFang SC",sans-serif}.analysis h3{font-size:14px;margin:0 0 8px}.analysis p{font-size:14px;line-height:1.8;margin:0 0 13px}.analysis ul{font-size:13px;line-height:1.8;padding-left:20px;margin:8px 0 15px}.analysis details{padding-top:10px;border-top:1px solid #ddd}.analysis summary{cursor:pointer;font-size:13px}.evidence{padding:14px;background:#f4f4f4;margin-bottom:15px}.evidence strong{font-size:12px;color:#666}.evidence p{margin:6px 0 10px}.result{background:#fff;border:1px solid #ccc;padding:16px;margin:0 0 15px}.result-top{display:flex;align-items:baseline;gap:12px}.score{font-size:27px;font-weight:700}.result p{font-size:13px;margin:7px 0 10px}.review-controls{font-size:13px;margin:0 0 15px}.alert{background:#fff5d8;border:1px solid #dac487;padding:14px;margin:0 0 15px;font-size:13px}.alert p{margin:0 0 10px}.empty-filter{padding:15px 0}.actions{padding:20px 0 0;display:flex;justify-content:flex-end;gap:10px}.source-footer{font-size:11px;color:#666;margin:15px 0}.article-tools{display:flex;align-items:center;gap:16px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}#edit-source-again{display:none}.text-button{font-size:12px;border:0;background:none;padding:0;min-height:28px;text-decoration:underline;text-underline-offset:3px}.paper-link{font-size:12px}.status-line{font-size:11px;color:#666;margin-top:15px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}dialog{border:1px solid #aaa;padding:25px;max-width:400px;width:calc(100% - 40px)}dialog::backdrop{background:#0005}dialog h2{font-size:20px;margin-top:0}dialog .row{justify-content:flex-end}
+@media(max-width:650px){.top-inner{padding:18px 14px 13px}.wrap{padding:0 12px 25px}.intro{align-items:flex-start;gap:10px}.intro p{max-width:170px}.modes button{padding:7px 10px;font-size:12px}.edition{font-size:10px}.layout{padding:25px 23px}.source-title{font-size:22px}.nav-row{align-items:flex-start}.question-nav{grid-template-columns:repeat(5,minmax(0,1fr))}.question-nav button{min-height:33px}.nav-row .flag{min-height:33px}.paper-header h2{font-size:19px}.reading p,.reading h3{font-size:16px}#question-container{columns:1}.question{margin-bottom:27px}.option{min-height:35px;padding-top:5px;padding-bottom:5px}.stem{font-size:15px}.directions{font-size:13px}.article-lede{font-size:14px}.source-footer{line-height:1.6}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{@page{size:A4;margin:17mm}body{background:#fff;font-family:Arial,sans-serif}.top,.intro,.practice-head,.result,.review-controls,.alert,.actions,.source-footer,.article-tools,.status-line,.editor,.source-actions,.read-note,.empty-reader,#source-status,.qmeta,.analysis button,.analysis a{display:none!important}.wrap{max-width:none;margin:0;padding:0}.layout{border:0;box-shadow:none;padding:0}.paper-header h2{font-size:15pt}.directions,.passage-ref{font-size:10pt}.source-title{font-size:15pt}.article-lede{font-size:10pt}.meta{font-size:8pt}.reading p,.reading h3{font-size:10.5pt;line-height:1.4}.source-panel{padding-bottom:15pt}.questions-section{padding-top:14pt}.question-intro{font-size:10pt}#question-container{columns:2;column-gap:24pt}.question{margin-bottom:17pt}.stem,.option{font-size:10pt}.option{min-height:0;padding:2pt 0}.letter{width:21px;min-width:21px}.question{break-inside:avoid}.analysis{font-size:9pt}.reviewing #question-container{columns:1}.reading .evidence-highlight{background:none;outline:none}.option.selected .letter{border-color:transparent;font-weight:normal}.option.is-answer,.option.is-wrong{background:none;border-color:transparent}}
+
+/* Shared controls and independently selectable reading presentation. */
+.reading ul,.reading ol{font-size:16px;line-height:1.5;margin:0 0 16px;padding-left:24px}.reading li{margin:0 0 7px;overflow-wrap:anywhere}.reading h4{font-size:16px;line-height:1.5;margin:18px 0 9px}.reading code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82em;overflow-wrap:anywhere}.reading pre{max-width:100%;overflow-x:auto;white-space:pre;margin:18px 0;padding:16px;background:#f4f4f1;border:1px solid #deded8;border-radius:4px;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:4}.reading pre code{font:inherit;overflow-wrap:normal}
+body[data-layout="reading"] .reading ul,body[data-layout="reading"] .reading ol{font:19px/1.9 Georgia,"Times New Roman",serif;margin-bottom:24px}body[data-layout="reading"] .reading li{margin-bottom:9px}body[data-layout="reading"] .reading h4{font:700 20px/1.5 Georgia,"Times New Roman",serif;margin:28px 0 15px}
+@media(max-width:780px){body[data-layout="reading"] .reading ul,body[data-layout="reading"] .reading ol{font-size:18px;line-height:1.85}body[data-layout="reading"] .reading h4{font-size:20px}.reading pre{padding:12px;font-size:12px}}
+@media print{.reading pre{white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible;font-size:8pt;break-inside:avoid}.reading pre code{overflow-wrap:anywhere}.reading ul,.reading ol,.reading h4{font-size:10.5pt}body[data-layout="reading"] .reading ul,body[data-layout="reading"] .reading ol{font-size:12pt;line-height:1.7}body[data-layout="reading"] .reading h4{font-size:13pt}}
+.switches,.switch-group{display:flex;align-items:center;gap:10px}.switches{gap:16px;flex-wrap:wrap}.control-label{font-size:11px;color:#666}.intro{align-items:flex-start}.intro h1{font-size:15px}.reading-kicker,.questions-title{display:none}.reading-finish{display:none}.option .answer-label{line-height:1.6}.qmeta:empty{display:none}
+body[data-layout="reading"]{background:#f5f4ef;color:#28312b}
+body[data-layout="reading"] .top-inner,body[data-layout="reading"] .wrap{max-width:1000px}
+body[data-layout="reading"] .layout{border:0;box-shadow:none;background:#fffefb;padding:46px 68px;border-radius:8px}
+body[data-layout="reading"] .panel-body{max-width:68ch;margin:0 auto;font-family:Georgia,"Times New Roman",serif;font-size:19px}
+body[data-layout="reading"] .paper-header,body[data-layout="reading"] .passage-ref{display:none}
+body[data-layout="reading"] .source-title{font:600 35px/1.25 Georgia,"Times New Roman",serif;letter-spacing:-.6px;margin-bottom:22px;max-width:720px}
+body[data-layout="reading"] .reading-kicker{display:block;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:#617367;margin:0 0 19px}
+body[data-layout="reading"] .article-lede{font:18px/1.7 Georgia,"Times New Roman",serif;color:#637066;max-width:68ch;margin-bottom:20px}
+body[data-layout="reading"] .meta{font-size:12px;color:#758075;margin-bottom:39px}
+body[data-layout="reading"] .reading{max-width:none;margin:0}
+body[data-layout="reading"] .reading p{font:19px/1.9 Georgia,"Times New Roman",serif;margin-bottom:24px;letter-spacing:.05px}
+body[data-layout="reading"] .reading h3{font:700 23px/1.5 Georgia,"Times New Roman",serif;margin:38px 0 17px;letter-spacing:-.2px}
+body[data-layout="reading"] .reading a{text-decoration:underline;text-decoration-color:#b9c7ba;text-underline-offset:4px}
+body[data-layout="reading"] .source-panel{padding-bottom:15px}
+body[data-layout="reading"] .reading-finish{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid #dde2da;padding-top:27px;margin-top:12px;font-size:13px;color:#637066}
+body[data-layout="reading"] .reading-finish button{background:#eaf0e7;border-color:#c9d5c6;color:#2d503c}
+body[data-layout="reading"] .questions-section{margin-top:34px;padding-top:28px;border-color:#dde2da}
+body[data-layout="reading"] .questions-title{display:block;font-size:17px;margin:0 0 28px}
+body[data-layout="reading"] #question-container{columns:1}
+body[data-layout="reading"] .stem{font:600 18px/1.7 Georgia,"Times New Roman",serif;margin-bottom:13px}
+body[data-layout="reading"] .question{margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid #e7e9e1}
+body[data-layout="reading"] .question:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+body[data-layout="reading"] .option{font:16px/1.7 Georgia,"Times New Roman",serif;padding:9px 12px;min-height:45px;border-radius:6px}
+body[data-layout="reading"] .option.selected{background:#edf2e9}
+body[data-layout="reading"] .option.selected .letter{border-color:#6b866f}
+body[data-layout="reading"] .analysis{color:#28312b}
+body[data-layout="reading"] .evidence{background:#f2f5ef}
+body[data-layout="reading"] .analysis p{font:14px/1.9 Arial,"PingFang SC",sans-serif}
+body[data-layout="reading"] .actions{justify-content:space-between}
+body[data-layout="exam"] #close-questions{display:none}
+body[data-layout="exam"] .reading-kicker,body[data-layout="exam"] .questions-title{display:none}
+@media(max-width:780px){.intro{display:block}.switches{margin-top:15px}.switch-group{gap:7px}.switches{gap:12px}.modes button{font-size:12px;padding:6px 11px}.top-inner{padding-left:18px;padding-right:18px}body[data-layout="reading"] .layout{padding:30px 25px}body[data-layout="reading"] .source-title{font-size:29px}body[data-layout="reading"] .article-lede{font-size:17px}body[data-layout="reading"] .reading p{font-size:18px;line-height:1.85}body[data-layout="reading"] .reading h3{font-size:22px}.actions{flex-wrap:wrap}}
+@media(max-width:380px){body[data-layout="reading"] .layout{padding:26px 19px}body[data-layout="reading"] .source-title{font-size:27px}.switches{gap:8px}.switch-group{gap:5px}.modes button{padding:6px 9px}}
+@media screen and (hover:none) and (pointer:coarse){
+ button,.modes button,.question-nav button,.nav-row .flag,.clock button,.text-button{min-height:44px;min-width:44px}
+ .switches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .switch-group{align-items:flex-start;flex-direction:column;gap:5px}
+ .modes button{font-size:13px;padding:8px 10px;min-width:50px}
+ .nav-row{flex-direction:column;align-items:stretch;gap:8px}
+ .question-nav{width:100%;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+ .nav-row .flag{align-self:flex-end}
+ .option{min-height:44px}
+ .review-controls label{min-height:44px}
+ .analysis summary{min-height:44px;line-height:44px}
+ .article-tools a,.status-line a,.top-inner>a,.evidence .row>a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media print{.reading-finish,.switches,.questions-title{display:none!important}body[data-layout="reading"]{background:white}body[data-layout="reading"] .layout{padding:0;border-radius:0;background:white}body[data-layout="reading"] .source-title{font-size:20pt}body[data-layout="reading"] .reading p{font-size:12pt;line-height:1.7}body[data-layout="reading"] .reading h3{font-size:14pt}body[data-layout="reading"] .article-lede{font-size:12pt}body[data-layout="reading"] .meta{margin-bottom:20pt}body[data-layout="reading"] .reading-kicker{display:none}body[data-layout="reading"] .stem{font-size:12pt}body[data-layout="reading"] .option{font-size:11pt;min-height:0;padding:4pt 0}body[data-layout="reading"] .question{margin-bottom:15pt;padding-bottom:15pt}}
+</style>
+</head>
+<body data-layout="reading">
+<header class="top"><div class="top-inner"><div id="brand" class="brand">英语阅读练习</div><a id="catalog-link" class="paper-link" href="../../index.html">练习目录</a></div></header>
+<main class="wrap">
+<div class="intro">
+ <div><h1 id="lesson-label">阅读与练习</h1><p id="lesson-info"></p></div>
+ <div class="switches">
+  <div class="switch-group"><span class="control-label">版式</span><div class="modes" role="group" aria-label="页面版式"><button id="reading-layout" aria-pressed="true">阅读版</button><button id="exam-layout" aria-pressed="false">考卷版</button></div></div>
+  <div class="switch-group"><span class="control-label">阶段</span><div class="modes" role="group" aria-label="练习模式"><button id="answer-mode" aria-pressed="true">答题</button><button id="review-mode" aria-pressed="false">解答</button></div></div>
+ </div>
+</div>
+<section id="exercise-tools" aria-label="答题工具" hidden>
+ <div class="practice-head"><div class="stats"><span id="progress-label"></span><div class="clock"><span id="timer">00:00</span> <button id="timer-toggle" class="small">开始计时</button></div></div><div id="progress" class="bar" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span id="progress-fill" style="width:0%"></span></div><div class="nav-row"><nav id="question-nav" class="question-nav" aria-label="题号导航"></nav><button id="flag-current" class="flag" aria-pressed="false">标记当前题</button></div><p id="nav-legend" class="legend"></p></div>
+ <div id="result" class="result" hidden aria-live="polite"></div>
+ <div id="review-controls" class="review-controls" hidden><label class="row"><input id="wrong-only" type="checkbox">只看错题与未答题</label><span id="filter-count" class="muted"></span></div>
+ <div id="submit-alert" class="alert" hidden role="alert"><p id="submit-alert-text"></p><div class="row"><button id="go-unanswered">去补答</button><button id="submit-anyway" class="primary">仍然交卷</button></div></div>
+</section>
+<div class="layout">
+ <header class="paper-header" lang="en"><h2>PART 7</h2><p class="directions"><strong>Directions:</strong> Read the passage and answer the questions below. Select one answer per question. Choose (A), (B), (C), or (D).</p></header>
+ <section id="article" class="panel source-panel" aria-labelledby="article-title">
+  <p id="passage-ref" class="passage-ref" lang="en"></p>
+  <div class="panel-body"><p id="reading-kicker" class="reading-kicker"></p><h2 id="article-title" class="source-title" lang="en"></h2><p id="article-subtitle" class="article-lede" lang="en"></p><div id="article-meta" class="meta"></div><div id="reader" class="reading" lang="en" aria-label="完整英文原文"></div></div>
+ </section>
+ <div id="reading-finish" class="reading-finish"><span>先读一遍，再检查自己的理解。</span><button id="open-questions">读完了，开始答题 →</button></div>
+ <section id="questions-section" class="panel questions-section" aria-label="阅读理解题目" hidden><h2 id="questions-title" class="questions-title">阅读练习</h2><div id="question-container"></div><div id="empty-filter" class="empty-filter" hidden><strong>全部答对了。</strong><p>可以关闭筛选，回看每题的解题依据。</p><button id="show-all">查看全部题目</button></div></section>
+</div>
+<div id="actions" class="actions" hidden><button id="close-questions">收起题目，回到阅读</button><button id="submit" class="primary">交卷并查看解析</button><button id="back-answer" hidden>返回答题</button></div>
+<div id="source-note" class="source-footer"></div>
+<div class="article-tools"><a id="official-source" class="paper-link" href="#" target="_blank" rel="noopener noreferrer">官网原文 ↗</a><button id="download-paper" class="text-button">导出单一 HTML</button><button id="print-paper" class="text-button">打印当前版式</button></div>
+<div class="status-line"><span id="save-status">进度自动保存在当前浏览器。</span><div class="row"><a href="https://www.ets.org/content/dam/ets-org/pdfs/toeic/toeic-listening-reading-sample-test.pdf" target="_blank" rel="noopener noreferrer">ETS 官方样题 ↗</a><button id="restart" class="text-button">重新练习</button></div></div><div id="live" class="sr-only" aria-live="polite"></div>
+</main>
+<dialog id="reset-dialog"><h2>开始新一轮练习？</h2><p>答案、标记和计时将被清空，保留文章与当前版式。</p><div class="row"><button id="cancel-reset">取消</button><button id="confirm-reset" class="primary">重新开始</button></div></dialog>
+<script id="lesson-data" type="application/json">{"schemaVersion": 1, "id": "claude-reading-2026-01-22", "storageKey": "claude-reading-2026-01-22-v1", "collection": "Claude Code", "ordinal": 2, "article": {"title": "Building agents with Skills: Equipping agents for specialized work", "subtitle": "Skills package domain expertise in files agents can access and apply—turning general-purpose agents into knowledgeable specialists for real work.", "author": "Anthropic", "date": "2026-01-22", "url": "https://claude.com/resources/articles/building-agents-with-skills-equipping-agents-for-specialized-work", "body": "A lot has changed in the past year. MCP became the standard for agent connectivity with rapid adoption from industry leaders and the developer community. Claude Code launched as a general-purpose coding agent. And we launched the Claude Agent SDK, which now provides a production-ready agent out of the box.\n\nBut as we've built and deployed these agents, we keep running into the same gap: agents have intelligence and capabilities, but not always the expertise to effectively tackle real work. This led us to create Agent Skills. Skills are organized collections of files that package domain expertise - workflows, best practices, scripts - in a format agents can access and apply. They turn a capable generalist into a knowledgeable specialist.\n\nIn this post, we'll explain why we stopped building specialized agents and started building skills instead, and how this shift is changing how we think about extending agent capabilities.\n\n### The new paradigm: code is all you need\n\nWe used to think agents in different domains would look very different. A coding agent, a research agent, one for finance, one for marketing—each seemed to need its own tools and scaffolding. The industry initially embraced this model of domain-specific agents. But as models improved in intelligence and agent capabilities progressed, we converged on a different approach.\n\nWe came to see code less as just a use case and more as an interface for agents to do almost any digital work. Claude Code is a coding agent, but also a general-purpose agent that happens to work through code.\n\nConsider working with Claude Code to generate a financial report. It can call APIs for research, store data in the filesystem, analyze it with Python, and synthesize insights. All of that happens through code. The scaffolding becomes as simple as bash and a filesystem.\n\nBut general capability isn't the same as expertise. When we started using Claude Code for real work, a gap emerged.\n\n### The missing piece: domain expertise\n\nWho would you want filing your taxes: a math genius figuring it out from first principles, or an experienced tax professional who's filed thousands of returns? Most people would choose the tax professional. Not because they're smarter, but because they have the right expertise.\n\nAgents today are like that math genius: brilliant at reasoning through novel situations, but often lacking the accumulated expertise of a seasoned professional. They can do amazing things with proper guidance. However, they're often missing important context, can't easily absorb your organization's expertise, and don't automatically learn from repeated tasks.\n\nSkills bridge this gap by packaging domain expertise in a format that agents can progressively access and apply.\n\n### What are Agent Skills?\n\nSkills package domain expertise and procedural knowledge for agents.\n\n```text\nanthropic_brand/\n├── SKILL.md\n├── docs.md\n├── slide-decks.md\n└── apply_template.py\n```\n\nThe simplicity of skills is deliberate. Files are a universal primitive that works with what you already have. You can version them with Git, store them in Google Drive, and share them with your team. This simplicity also means skill creation isn't limited to engineers. Product managers, analysts, and domain experts are already building skills to codify their workflows.\n\n### Progressive disclosure\n\nSkills can contain extensive information. To protect the context window and make skills composable, they use progressive disclosure: at runtime, only the metadata (name and description from the YAML frontmatter) is shown to the model.\n\n```yaml\n---\nname: Anthropic Brand Style Guidelines\ndescription: Anthropic's official brand colors and typography…\n---\n```\n\nIf Claude determines a skill is needed, it reads the full SKILL.md file. For additional detail, skills can include a references/ directory with supporting documentation loaded only on demand.\n\nThis three-tier approach means you can equip an agent with hundreds of skills without overwhelming its context window—metadata uses ~50 tokens, full SKILL.md files ~500 tokens, and reference files 2,000+ tokens and only when specifically needed.\n\n### Skills can include scripts as tools\n\nTraditional tools have problems: some have poorly written instructions, the model can't always modify or extend them, and they often bloat the context window. Code, on the other hand, is self-documenting, modifiable, and doesn't need to be in context at all times.\n\nHere's a real example: we kept seeing Claude write the same script to apply Anthropic styling to slides. So we asked Claude to save it as a tool for itself:\n\n```python\n# anthropic/brand_styling/apply_template.py\nimport sys\nfrom pptx import Presentation\n\nif len(sys.argv) != 2:\n    print(\"USAGE: apply_template.py \u003cpptx\u003e\")\n    sys.exit(1)\n\nprs = Presentation(sys.argv[1])\nfor slide in prs.slides:\n    ...\n```\n\nThe corresponding documentation in slide-decks.md simply references this script:\n\n```markdown\n## Anthropic Slide Decks\n- Intro/outro slides\n  - background color: `#141413`\n  - foreground color: oat\n- Section slides:\n  - background color: `#da7857`\n  - foreground color: `#141413`\n\nUse the `./apply_template.py` script to update a pptx file in-place.\n```\n\n### The skills ecosystem\n\nThe skills ecosystem has emerged quickly, and so far we've seen three major types of skills being built:\n\n#### Foundational skills\n\nThese provide core capabilities everyone needs: working with documents, spreadsheets, presentations, etc. They encode best practices for document generation and manipulation. You can see what this looks like in practice by exploring the foundational skills in our public repository.\n\n#### Partner skills\n\nAs skills standardize how agents interact with specialized capabilities, companies are building skills to make their services agent-accessible. K-Dense, Browserbase, Notion, and many others are creating skills that integrate their services directly, extending Claude's capabilities in specific domains while maintaining the simplicity of the skills format.\n\n#### Enterprise skills\n\nOrganizations build proprietary skills encoding their internal processes and domain expertise. Skills help capture the specific workflows, compliance requirements, and institutional knowledge that make an agent useful for enterprise work.\n\n### Trends we see\n\nAs skills adoption grows, several patterns are emerging that point to where this paradigm may be heading. These trends shape how we think about skill design and the tooling we're building to support skill developers.\n\n#### Increasing complexity\n\nEarly skills were simple documentation references. Now we're seeing sophisticated multi-step workflows that coordinate data retrieval, complex calculations, and formatted output across multiple tools.\n\n- Simple: \"Status report writer\" (~100 lines) - Templates and formatting\n- Intermediate: \"Financial model builder\" (~800 lines) - Data retrieval, Excel modeling with Python\n- Complex: \"RNA sequencing pipeline\" (2,500+ lines) - Coordinates HISAT2, StringTie, DESeq2 analysis\n\n#### Skills and MCP\n\nSkills and MCP servers work together naturally. A competitive analysis skill might coordinate web search, internal databases via MCP, Slack message history, and Notion pages to synthesize a comprehensive report.\n\n#### Non-developer adoption\n\nSkill creation is expanding beyond engineers to product managers, analysts, and domain experts across disciplines. They can create and test their first skill in under 30 minutes using the skill-creator tool, which guides them through the process interactively. We're working to make skill creation even more accessible, with improved tooling and templates that let anyone capture and share expertise.\n\n### The complete architecture\n\nPutting it all together, the emerging agent architecture looks like a combination of:\n\n1. Agent loop: The core reasoning system that decides what to do next\n2. Agent runtime: Execution environment (code, filesystem)\n3. MCP servers: Connections to external tools and data sources\n4. Skills library: Domain expertise and procedural knowledge\n\nEach layer has a clear purpose: the loop reasons, the runtime executes, MCP connects, and skills guide. This separation makes the system comprehensible and allows each piece to evolve independently.\n\nConsider what happens when you add a single skill to this architecture. The frontend design skill transforms Claude's frontend capabilities instantly. It provides specialized guidance on typography, color theory, and animation, activating only when building web interfaces. Progressive disclosure means it loads only when relevant. Adding new capabilities is straightforward.\n\n### Deploying skills to new verticals\n\nThis emerging pattern of general agents equipped with MCP servers and skills is already helping us deploy Claude to new verticals.\n\n#### Financial Services\n\nJust after launching skills, we enhanced Claude for the financial services sector with skills that make Claude more useful for finance professionals:\n\n- DCF model builder: Constructs discounted cash flow models with proper WACC calculations and sensitivity analysis\n- Comparable company analysis: Generates comps tables with relevant multiples and benchmarking\n- Earnings analysis: Processes quarterly results and creates investment update reports\n- Initiation coverage: Builds comprehensive research reports with financial models\n- Due diligence: Structures M\u0026A analysis with standardized frameworks\n- Pitch materials: Creates client presentations following industry standards\n\n#### Healthcare \u0026 Life Sciences\n\nWe've also enhanced our healthcare and life sciences offerings with skills that make Claude more useful for researchers, clinicians, and healthcare developers:\n\n- Bioinformatics bundles: Skills for scVI-tools and Nextflow deployments, essential for managing genomic pipelines and single-cell RNA sequencing\n- Clinical trial protocol generation: Accelerates protocol development for clinical research\n- Scientific problem selection: Helps researchers identify and frame impactful research questions\n- FHIR development: Helps developers write more accurate code for health data interoperability, connecting healthcare systems faster with fewer errors\n- Prior authorization review: Cuts administrative burden and accelerates patient access to needed care by cross-referencing coverage requirements, clinical guidelines, and patient records\n\n### Standardizing Agent Skills\n\nTo enable this vision, we're publishing Agent Skills as an open standard. Like MCP, we believe skills should be portable across tools and platforms. The same skill should work whether you're using Claude or other AI platforms. We've been collaborating with members of the ecosystem on the standard, and we're excited to see early adoption.\n\nWhen someone starts using an AI agent for the first time, it should already know what you and your team care about because skills capture and transfer that expertise. As this ecosystem grows, a skill built by someone else in the community can make your agent more useful, reliable, and capable - regardless of which AI platform they're using.\n\n### Getting started\n\nWe're converging on an architecture for general agents, and skills provide a paradigm for shipping and sharing new capabilities. The real value emerges from the collective knowledge base we build together: capturing expertise, transferring it across teams, and making every agent more capable than the last.\n\nResources:\n\n- Don’t Build Agents, Build Skills Instead (YouTube Video)\n- Skills documentation\n- GitHub repository\n- Skills cookbook\n- Using skills in Claude\n- Skills API quickstart\n- Skills best practices documentation\n\nAcknowledgments:\n\nBarry Zhang, Mahesh Murag, Keith Lazuka, Ryan Whitehead", "sourceLabel": "Official blog"}, "exercise": {"startNumber": 147, "suggestedMinutes": 35, "note": "自编 TOEIC Part 7 风格长文拓展练习；24 题与 35 分钟为学习设置。"}, "questions": [{"type": "主旨 / Purpose", "stem": "What is the main purpose of the article?", "options": ["To compare the subscription costs of several specialized agents", "To announce that general-purpose agents no longer need external tools", "To explain how reusable skills give general-purpose agents specialized expertise", "To provide a complete programming course for first-time developers"], "answer": 2, "where": "开头第三段，以及 Getting started 小节", "needle": "In this post, we'll explain", "explain": "C 概括了全文的核心：通过可复用的 Skills，为通用 agent 补充领域经验。文章依次说明原因、文件结构、按需加载、生态和行业应用。", "traps": ["A：没有订阅价格比较。", "B：文章仍把 MCP 和运行环境列为架构组成部分。", "D：代码示例用于解释 Skills，全文并非编程课程。"], "tip": "主旨题用开头的写作目的核对结尾，选择能覆盖全文的概括。"}, {"type": "细节 / Detail", "stem": "According to the opening section, what problem led to the creation of Agent Skills?", "options": ["Agents could reason and act but often lacked relevant professional expertise.", "Agents had professional expertise but could no longer execute code.", "Organizations were unable to store documents in ordinary files.", "Developers needed a separate subscription for every workflow."], "answer": 0, "where": "开头第二段，描述 agents 的能力与经验缺口", "needle": "agents have intelligence and capabilities", "explain": "A 对应 intelligence and capabilities 与 not always the expertise 之间的差距。Skills 要补充的是处理实际工作所需的领域经验。", "traps": ["B：调换了已有能力与缺失能力。", "C：后文把普通文件当作现有优势。", "D：订阅方式没有出现在这段论证中。"], "tip": "留意转折词 but：它后面的内容常指出问题所在。"}, {"type": "合理推断 / Inference", "stem": "What does the author suggest by describing code as an interface for digital work?", "options": ["Every business user must first become a professional programmer.", "Code is useful mainly for tasks within software engineering.", "Each industry should maintain a completely different agent framework.", "A shared coding environment can support tasks across different domains."], "answer": 3, "where": "The new paradigm 小节，关于 code 作为 interface 的段落", "needle": "an interface for agents to do almost any digital work", "explain": "D 是对 almost any digital work 的合理概括：同一类代码执行环境可以支持多个领域的任务。接下来的财务报告案例把这一点具体化。", "traps": ["A：文章后文还讨论非开发者创建 Skills，不能推出人人必须先成为程序员。", "B：把应用范围缩小到软件工程。", "C：回到了作者前面提到的独立领域框架思路。"], "tip": "推断要有原句支撑，避免把能力范围扩大成对所有用户的要求。"}, {"type": "写作作用 / Function", "stem": "Why does the author describe the process of generating a financial report?", "options": ["To recommend a particular financial research provider", "To illustrate how several types of work can be performed through code", "To compare the accuracy of Python with that of other languages", "To establish a required format for all financial statements"], "answer": 1, "where": "The new paradigm 小节，Consider working with Claude Code 开头的段落", "needle": "Consider working with Claude Code to generate a financial report", "explain": "B 对应段落列出的 API 调研、文件存储、Python 分析和综合洞察。这组动作说明代码可以连接多个步骤，服务于编码以外的工作。", "traps": ["A：没有推荐特定调研机构。", "C：没有语言准确率比较。", "D：没有规定财务报表的统一格式。"], "tip": "作用题先看例子前面的观点，再判断例子如何支持它。"}, {"type": "类比理解 / Analogy", "stem": "What point is illustrated by the comparison between a math genius and a tax professional?", "options": ["Relevant experience can be essential even when strong reasoning ability is available.", "Tax preparation requires less expertise than other professional services.", "People generally prefer mathematical talent to practical experience.", "Agents should be restricted to tasks they have completed thousands of times."], "answer": 0, "where": "The missing piece: domain expertise 小节，报税类比", "needle": "Who would you want filing your taxes", "explain": "A 保留了类比的两个核心：聪明的推理能力与积累的专业经验。作者用税务专家说明领域经验对完成真实工作的重要性。", "traps": ["B：没有比较各类职业所需经验的多少。", "C：与文中多数人会选择税务专家的说法相反。", "D：类比强调经验的价值，没有设置重复次数门槛。"], "tip": "类比题要找两组对象之间共同的关系，避免按字面扩展结论。"}, {"type": "语境词义 / Vocabulary", "stem": "In the discussion of people building skills, the word “codify” is closest in meaning to", "options": ["keep confidential", "replace entirely", "organize into a systematic form", "delegate without instructions"], "answer": 2, "where": "What are Agent Skills? 小节，普通文件与非工程人员的段落", "needle": "codify their workflows", "explain": "C 符合语境：把已有工作流程整理成结构明确、可记录和分享的内容。这里不是单纯指编写程序。", "traps": ["A：confidential 强调保密，与 codify 的含义不同。", "B：整理现有流程不能替换为彻底替代流程。", "D：后文强调传递经验和指导，不能理解为无说明地委派。"], "tip": "词义题把候选释义放回原句，看它能否解释文件记录和共享的上下文。"}, {"type": "细节 / Detail", "stem": "What advantage does the article attribute to representing skills as ordinary files?", "options": ["It prevents anyone outside engineering from changing a skill.", "It makes version control and shared storage unnecessary.", "It requires teams to adopt a new proprietary storage service.", "It allows teams to use familiar tools to store, version, and share expertise."], "answer": 3, "where": "What are Agent Skills? 小节，文件目录示例之后的段落", "needle": "You can version them with Git", "explain": "D 综合了 Git 版本管理、Google Drive 存储和团队共享三个例子。文件的简单通用性降低了记录与分享工作经验的门槛。", "traps": ["A：原文明确说创建 Skills 不限于工程师。", "B：原文列举这些工具可直接使用，没有说它们多余。", "C：作者强调与已有工具配合，没有要求迁移到新存储服务。"], "tip": "并列举例经常可以归纳成一个共同优势。"}, {"type": "步骤细节 / Sequence", "stem": "Under progressive disclosure, what information is initially shown to the model?", "options": ["The full contents of every reference file", "The name and description of each available skill", "The complete source code of every supporting script", "The output from executing all skills in advance"], "answer": 1, "where": "Progressive disclosure 小节，第一段", "needle": "only the metadata", "explain": "B 对应 metadata 后括号里的 name and description。完整 SKILL.md 和参考文件按需要进一步读取。", "traps": ["A：参考文档属于后续按需加载的信息。", "C：初始展示的并非所有脚本源代码。", "D：文中没有提前执行全部 Skills 的步骤。"], "tip": "步骤题分清 initially、if needed 和 additional detail 所表示的先后条件。"}, {"type": "细节 / Detail", "stem": "When does Claude read supporting documentation in a references/ directory?", "options": ["Whenever the agent starts, regardless of the task", "Only after the skill has been removed from the library", "When additional information is needed for the relevant skill", "Only when all other available skills have already been executed"], "answer": 2, "where": "Progressive disclosure 小节，If Claude determines 开头的段落", "needle": "supporting documentation loaded only on demand", "explain": "C 对应 additional detail 和 loaded only on demand。加载条件是当前任务需要更详细的信息。", "traps": ["A：忽略了 only on demand。", "B：没有移除 Skill 后才加载的规则。", "D：没有先执行其他所有 Skills 的要求。"], "tip": "only 限定的是加载条件，注意它的作用范围。"}, {"type": "数据理解 / Detail", "stem": "What do the token estimates in the progressive disclosure section illustrate?", "options": ["Detailed content can be deferred to help conserve the context window.", "Every skill must have exactly the same number of tokens.", "Reference files are always smaller than skill metadata.", "An agent can use no more than three skills during one task."], "answer": 0, "where": "Progressive disclosure 小节，This three-tier approach 开头的段落", "needle": "This three-tier approach", "explain": "A 抓住数字的作用：少量 metadata 先进入上下文，较长的文件按需加载。~50、~500 和 2,000+ 是说明不同层级体量的估计，不是统一的精确限制。", "traps": ["B：把估计数误读成每个 Skill 的固定要求。", "C：文中列出的参考文件体量更大。", "D：three-tier 指信息层级，不能解释为最多三个 Skills。"], "tip": "数字题除了读数值，也要判断数字在论证什么；~ 表示约数。"}, {"type": "原因 / Reason", "stem": "Why did the team ask Claude to save its slide-styling script as a tool?", "options": ["The script was required to connect to a new billing service.", "Claude had repeatedly written the same script for similar work.", "The team wanted to eliminate all written documentation.", "The script had to be displayed in full at the start of every task."], "answer": 1, "where": "Skills can include scripts as tools 小节，代码示例之前", "needle": "we kept seeing Claude write the same script", "explain": "B 直接对应 kept seeing Claude write the same script。保存脚本使相同操作能够复用。", "traps": ["A：案例与计费服务无关。", "C：后面保留了引用脚本的说明文档。", "D：与代码无需始终放进上下文的论述不符。"], "tip": "原因题关注引出行动的事实，kept doing 往往表示重复发生。"}, {"type": "指代 / Reference", "stem": "In the sentence “The corresponding documentation in slide-decks.md simply references this script,” what does “this script” refer to?", "options": ["A program that collects Slack message history", "A program that creates a new skill from a YAML description", "A program that builds an RNA sequencing pipeline", "A program that applies Anthropic styling to slides"], "answer": 3, "where": "Skills can include scripts as tools 小节，Python 示例与文档示例之间", "needle": "The corresponding documentation in slide-decks.md", "explain": "D 是紧邻上文的样式脚本 apply_template.py。this script 将当前说明与前面的幻灯片样式案例连接起来。", "traps": ["A：Slack 出现在后面的 competitive analysis 案例中。", "B：YAML 示例描述 Skill 的 metadata。", "C：RNA 流程属于后面的复杂度示例。"], "tip": "指代题优先检查近处的名词，再核对它是否符合句子的动作关系。"}, {"type": "分类匹配 / Classification", "stem": "Which task best fits the article’s description of a foundational skill?", "options": ["Creating and formatting a standard spreadsheet", "Applying one company’s confidential approval policy", "Exposing a partner company’s specialized service", "Recording an organization’s private compliance procedures"], "answer": 0, "where": "The skills ecosystem → Foundational skills", "needle": "core capabilities everyone needs", "explain": "A 属于通用的文档、表格和演示文稿处理能力。B、D 偏向组织内部专有流程；C 对应合作伙伴服务。", "traps": ["B：confidential approval policy 是特定企业的内部规则。", "C：合作伙伴的服务集成归入 Partner skills。", "D：专有合规流程符合 Enterprise skills 的描述。"], "tip": "分类题用定义判断新例子，不能只凭某个熟悉的技术词。"}, {"type": "细节 / Detail", "stem": "What is a distinguishing feature of partner skills in the article?", "options": ["They contain only an organization’s private employment policies.", "They replace the agent’s entire execution environment.", "They make a company’s specialized services accessible to agents.", "They are limited to general document-formatting tasks."], "answer": 2, "where": "The skills ecosystem → Partner skills", "needle": "companies are building skills to make their services agent-accessible", "explain": "C 对应 make their services agent-accessible。K-Dense、Browserbase 和 Notion 被用作这种服务集成的例子。", "traps": ["A：把合作伙伴集成与内部专有制度混淆。", "B：文章没有让 Skill 替换运行环境。", "D：通用文档处理更符合 Foundational skills。"], "tip": "抓住定义中的动作：这里是谁让什么服务对谁可用。"}, {"type": "应用推断 / Inference", "stem": "An organization wants an agent to follow its internal compliance procedures. Which type of skill is most relevant?", "options": ["A foundational skill for general document generation", "An enterprise skill containing the organization’s own requirements", "A partner skill exposing an unrelated company’s service", "A generic script with no organization-specific instructions"], "answer": 1, "where": "The skills ecosystem → Enterprise skills", "needle": "specific workflows, compliance requirements, and institutional knowledge", "explain": "B 把题干的内部合规要求与 Enterprise skills 的定义匹配起来。该类 Skill 用于记录企业专有流程和机构经验。", "traps": ["A：通用文档能力不能自动代表该公司的合规制度。", "C：无关合作伙伴服务没有提供内部制度。", "D：缺少组织专用说明，无法满足题干需求。"], "tip": "场景推断题先提取需求关键词，再找原文中相应的类别定义。"}, {"type": "发展趋势 / Detail", "stem": "What development is illustrated by the status-report, financial-model, and RNA-pipeline examples?", "options": ["Skills are becoming shorter and more limited in scope.", "All skills now require the same specialist software.", "Document formatting has been removed from the skills ecosystem.", "Skills are expanding from simple references to coordinated multi-step workflows."], "answer": 3, "where": "Trends we see → Increasing complexity，介绍句及三个例子", "needle": "sophisticated multi-step workflows", "explain": "D 概括了从简单文档参考到多步复杂流程的变化。三个例子呈现不同复杂程度，不构成所有 Skills 的统一要求。", "traps": ["A：趋势方向与原文相反。", "B：不同案例使用不同工具，不能推出统一软件要求。", "C：状态报告示例仍保留模板与格式能力。"], "tip": "并列示例题要概括整组例子共同说明的趋势。"}, {"type": "关系理解 / Relationship", "stem": "What does the competitive-analysis example suggest about the relationship between skills and MCP?", "options": ["A skill can be used only after every MCP server has been disconnected.", "MCP servers replace the procedural guidance supplied by skills.", "A skill can coordinate a workflow that uses data accessed through MCP.", "MCP limits an agent to information stored in a single local file."], "answer": 2, "where": "Trends we see → Skills and MCP", "needle": "A competitive analysis skill might coordinate", "explain": "C 保留了二者的配合关系：Skill 协调分析流程，MCP 帮助访问内部数据库等信息来源。", "traps": ["A：原文说二者可以自然配合。", "B：数据连接与流程知识的角色不同，文中没有替代关系。", "D：案例包含网络搜索、数据库及多个协作平台。"], "tip": "关系题区分“连接数据”和“指导流程”这两种角色。"}, {"type": "限定理解 / Detail", "stem": "Which statement about non-developer adoption is supported by the article?", "options": ["Every advanced skill can be completed in less than 30 minutes.", "People outside engineering can create and test an initial skill with interactive guidance.", "Domain experts must first build a separate agent runtime.", "Skill creation is being restricted to product managers."], "answer": 1, "where": "Trends we see → Non-developer adoption", "needle": "They can create and test their first skill in under 30 minutes", "explain": "B 对应产品经理、分析师、领域专家等人群在 skill-creator 的交互引导下创建并测试 first skill。原文的时间描述针对初次 Skill 示例，不能扩展到所有高级流程。", "traps": ["A：把 first skill 扩大为 every advanced skill。", "C：没有要求先搭建独立运行环境。", "D：原文强调参与人群扩大，没有限定为某一职业。"], "tip": "检查 first、every、only 等限定词，防止选项偷换范围。"}, {"type": "信息匹配 / Matching details", "stem": "Which part of the architecture is responsible for deciding what the agent should do next?", "options": ["The agent runtime", "The MCP servers", "The skills library", "The agent loop"], "answer": 3, "where": "The complete architecture 小节，四层架构列表第一项", "needle": "Agent loop: The core reasoning system", "explain": "D 对应 the core reasoning system that decides what to do next。决策职责属于 agent loop。", "traps": ["A：runtime 是执行环境。", "B：MCP servers 连接外部工具与数据。", "C：skills library 提供领域经验与流程知识。"], "tip": "列表匹配题把组件名与动词绑定：decides、executes、connects、guides。"}, {"type": "信息匹配 / Matching details", "stem": "In the proposed architecture, where is domain expertise and procedural knowledge provided?", "options": ["In the skills library", "In the agent runtime", "In the external connection layer alone", "In the core reasoning loop alone"], "answer": 0, "where": "The complete architecture 小节，四层架构列表第四项", "needle": "Skills library: Domain expertise and procedural knowledge", "explain": "A 对应列表中的 skills library。后面的概括 skills guide 进一步说明它承担指导任务流程的角色。", "traps": ["B：运行环境负责执行代码和文件操作。", "C：外部连接层的职责是连接工具与数据，不能替代领域知识层。", "D：核心推理循环负责决定下一步动作，原文单独列出了知识库层。"], "tip": "同一列表可能有多个易混项，按原文分工逐项排除。"}, {"type": "细节 / Detail", "stem": "Which financial-services capability is specifically described in the article?", "options": ["Approving all acquisitions without further analysis", "Guaranteeing the future returns of investment portfolios", "Turning quarterly results into investment update reports", "Replacing financial models with clinical research protocols"], "answer": 2, "where": "Deploying skills to new verticals → Financial Services，Earnings analysis 项", "needle": "Earnings analysis: Processes quarterly results", "explain": "C 是 Processes quarterly results and creates investment update reports 的同义转述。", "traps": ["A：尽职调查是用标准框架分析，并非自动批准所有收购。", "B：文章没有承诺投资回报。", "D：临床研究方案属于另一个行业的小节。"], "tip": "跨行业细节题先定位小节，再匹配输入材料和输出成果。"}, {"type": "细节 / Detail", "stem": "How is prior authorization review described as reducing administrative work?", "options": ["By creating presentation slides for investment clients", "By cross-checking coverage requirements, guidelines, and patient records", "By eliminating the need to consult coverage requirements", "By replacing health-data interoperability code with financial models"], "answer": 1, "where": "Deploying skills to new verticals → Healthcare \u0026 Life Sciences，最后一项", "needle": "Prior authorization review: Cuts administrative burden", "explain": "B 对应 by cross-referencing 后面的三个信息来源：coverage requirements、clinical guidelines、patient records。题目考的是文章如何描述这项能力。", "traps": ["A：客户演示材料属于 Financial Services。", "C：原文要求交叉核对保障要求，不能解释成无需查看。", "D：混合了医疗互操作开发和财务模型两种不同应用。"], "tip": "how 题常可定位 by 后面的方式说明。"}, {"type": "语境词义 / Vocabulary", "stem": "In the standardization section, the word “portable” is closest in meaning to", "options": ["usable across different systems", "small enough to fit on a phone", "kept private within one organization", "available only through a paid subscription"], "answer": 0, "where": "Standardizing Agent Skills 小节，第一段", "needle": "skills should be portable across tools and platforms", "explain": "A 符合 across tools and platforms 的语境。下一句说明同一个 Skill 应能用于 Claude 或其他 AI 平台，进一步限定了 portable 的含义。", "traps": ["B：把软件兼容性理解成物理尺寸。", "C：与跨平台共享的方向不符。", "D：原文没有把该词用于描述收费方式。"], "tip": "抽象技术词也可用上下句释义；优先寻找作者自己的解释。"}, {"type": "综合推断 / Inference", "stem": "Which action would best support the article’s concluding vision?", "options": ["Keeping useful workflows undocumented so each team must rediscover them", "Designing every skill so it works with only one isolated platform", "Removing domain experts from the process of improving agent workflows", "Recording tested workflows in reusable skills that other teams can adapt"], "answer": 3, "where": "Getting started 结尾，以及前一节关于经验传递的段落", "needle": "capturing expertise, transferring it across teams", "explain": "D 把结尾的 capturing expertise 与 transferring it across teams 转换成具体行动：记录、复用并分享经验。", "traps": ["A：不记录流程会阻碍共同知识积累。", "B：单一隔离平台的设计不符合可移植方向。", "C：领域专家是捕获经验的重要参与者。"], "tip": "综合推断把结尾抽象目标改写成可执行的行动，再逐项核对范围。"}]}</script>
+<script id="export-defaults" type="application/json">{"layout":"reading"}</script>
+<script>'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+  const lesson = JSON.parse($('lesson-data').textContent);
+  const defaults = JSON.parse($('export-defaults').textContent);
+  const questions = lesson.questions;
+  const total = questions.length;
+  const start = lesson.exercise.startNumber;
+  const key = lesson.storageKey;
+  const letters = 'ABCD';
+  const fresh = () => ({answers: Array(total).fill(null), flags: Array(total).fill(false), current: 0,
+    mode: 'answer', layout: defaults.layout === 'exam' ? 'exam' : 'reading', questionsOpen: false,
+    elapsed: 0, wrongOnly: false, submitted: false});
+  let state = fresh(), storageOK = true, running = false, startedAt = 0;
+  try {
+    const saved = JSON.parse(localStorage.getItem(key));
+    if (saved && typeof saved === 'object') {
+      const upgraded = saved.layout === 'exam' || saved.layout === 'reading';
+      state = {...fresh(),
+        answers: Array.from({length: total}, (_, i) => Number.isInteger(saved.answers?.[i]) && saved.answers[i] >= 0 && saved.answers[i] < 4 ? saved.answers[i] : null),
+        flags: Array.from({length: total}, (_, i) => saved.flags?.[i] === true),
+        current: Number.isInteger(saved.current) && saved.current >= 0 && saved.current < total ? saved.current : 0,
+        mode: upgraded && saved.mode === 'review' ? 'review' : 'answer',
+        layout: upgraded ? saved.layout : fresh().layout,
+        questionsOpen: upgraded && saved.questionsOpen === true,
+        elapsed: Number.isFinite(saved.elapsed) && saved.elapsed >= 0 ? saved.elapsed : 0,
+        wrongOnly: upgraded && saved.wrongOnly === true, submitted: saved.submitted === true};
+    }
+  } catch { storageOK = false; }
+
+  function el(tag, attributes = {}, text = '') {
+    const node = document.createElement(tag);
+    for (const [name, value] of Object.entries(attributes)) {
+      if (name === 'class') node.className = value;
+      else node.setAttribute(name, value);
+    }
+    node.textContent = text;
+    return node;
+  }
+  function safeURL(value) {
+    try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; }
+    catch { return '#'; }
+  }
+  function save() {
+    try { localStorage.setItem(key, JSON.stringify(state)); } catch { storageOK = false; }
+    $('save-status').textContent = storageOK ? '版式与答题进度自动保存在当前浏览器。' : '浏览器未允许本地保存；可正常使用，关闭页面后进度可能丢失。';
+  }
+  function announce(text) { $('live').textContent = text; }
+  const answerCount = () => state.answers.filter(x => x !== null).length;
+  const correctCount = () => questions.filter((q, i) => state.answers[i] === q.answer).length;
+  const visibleIds = () => questions.map((_, i) => i).filter(i => state.mode !== 'review' || !state.wrongOnly || state.answers[i] !== questions[i].answer);
+  const questionsVisible = () => state.layout === 'exam' || state.questionsOpen || state.mode === 'review';
+
+  function syncTime() {
+    if (running) { const now = Date.now(); state.elapsed += Math.max(0, now - startedAt); startedAt = now; }
+  }
+  function renderTime() {
+    const seconds = Math.floor((state.elapsed + (running ? Math.max(0, Date.now() - startedAt) : 0)) / 1000);
+    $('timer').textContent = String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+    $('timer-toggle').textContent = running ? '暂停' : state.elapsed ? '继续计时' : '开始计时';
+    $('timer-toggle').disabled = state.mode === 'review';
+  }
+  function stopTimer() { syncTime(); running = false; renderTime(); save(); }
+  function startTimer() { if (state.mode === 'review' || running) return; running = true; startedAt = Date.now(); renderTime(); }
+
+  function appendInline(parent, text) {
+    const pattern = /(`[^`\n]+`|\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
+    let offset = 0;
+    for (const match of text.matchAll(pattern)) {
+      parent.append(document.createTextNode(text.slice(offset, match.index)));
+      if (match[0].startsWith('`')) parent.append(el('code', {}, match[0].slice(1, -1)));
+      else if (match[0].startsWith('**')) parent.append(el('strong', {}, match[0].slice(2, -2)));
+      else {
+        const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(match[0]);
+        parent.append(el('a', {href: safeURL(link[2]), target: '_blank', rel: 'noopener noreferrer'}, link[1]));
+      }
+      offset = match.index + match[0].length;
+    }
+    parent.append(document.createTextNode(text.slice(offset)));
+  }
+  function appendArticleBlocks(reader, text) {
+    const lines = text.replace(/\r\n?/g, '\n').trim().split('\n');
+    const listItem = line => /^\s*(?:[-*]|\d+\.)\s+/.test(line);
+    for (let i = 0; i < lines.length;) {
+      if (!lines[i].trim()) { i++; continue; }
+      if (/^```/.test(lines[i])) {
+        const code = []; i++;
+        while (i < lines.length && !/^```\s*$/.test(lines[i])) code.push(lines[i++]);
+        if (i < lines.length) i++;
+        const pre = el('pre', {tabindex: '0', 'aria-label': '文章代码示例'});
+        pre.append(el('code', {}, code.join('\n'))); reader.append(pre); continue;
+      }
+      if (/^#{2,3}\s+/.test(lines[i])) {
+        const heading = el('h3'); appendInline(heading, lines[i++].replace(/^#{2,3}\s+/, ''));
+        reader.append(heading); continue;
+      }
+      if (/^####\s+/.test(lines[i])) {
+        const heading = el('h4'); appendInline(heading, lines[i++].replace(/^####\s+/, ''));
+        reader.append(heading); continue;
+      }
+      if (listItem(lines[i])) {
+        const ordered = /^\s*\d+\./.test(lines[i]);
+        const list = el(ordered ? 'ol' : 'ul');
+        if (ordered) list.start = Number(lines[i].trim().match(/^\d+/)[0]);
+        while (i < lines.length && listItem(lines[i]) && /^\s*\d+\./.test(lines[i]) === ordered) {
+          const item = el('li'); appendInline(item, lines[i++].replace(/^\s*(?:[-*]|\d+\.)\s+/, ''));
+          list.append(item);
+        }
+        reader.append(list); continue;
+      }
+      const paragraph = [];
+      while (i < lines.length && lines[i].trim() && !/^```|^#{2,4}\s+/.test(lines[i]) && !listItem(lines[i])) paragraph.push(lines[i++]);
+      const node = el('p'); appendInline(node, paragraph.join('\n')); reader.append(node);
+    }
+  }
+  function renderArticle() {
+    document.title = lesson.article.title + ' · 阅读练习';
+    $('brand').textContent = '英语阅读练习 · ' + lesson.collection;
+    $('lesson-label').textContent = '第 ' + String(lesson.ordinal || 1).padStart(2, '0') + ' 篇 · 阅读与练习';
+    $('lesson-info').textContent = `${total} 道拓展题 · 练习目标 ${lesson.exercise.suggestedMinutes} 分钟`;
+    $('article-title').textContent = lesson.article.title;
+    $('article-subtitle').textContent = lesson.article.subtitle;
+    $('article-meta').textContent = lesson.article.author + ' · ' + lesson.article.date;
+    $('reading-kicker').textContent = lesson.collection + (lesson.article.sourceLabel ? ' / ' + lesson.article.sourceLabel : '');
+    $('catalog-link').hidden = defaults.standalone === true;
+    $('official-source').href = safeURL(lesson.article.url);
+    $('passage-ref').textContent = `Questions ${start}–${start + total - 1} refer to the following article.`;
+    $('source-note').textContent = lesson.exercise.note || '';
+    $('questions-title').textContent = `阅读练习 · ${total} 题`;
+    $('progress').setAttribute('aria-valuemax', total);
+    const reader = $('reader');
+    reader.replaceChildren();
+    appendArticleBlocks(reader, lesson.article.body);
+  }
+
+  function scrollToQuestions() { $('questions-section').scrollIntoView({behavior: 'smooth', block: 'start'}); }
+  function locateEvidence(question) {
+    const paragraphs = [...$('reader').querySelectorAll('p, li, pre')];
+    paragraphs.forEach(p => p.classList.remove('evidence-highlight'));
+    const found = paragraphs.find(p => p.textContent.toLowerCase().includes(question.needle.toLowerCase()));
+    if (found) { found.classList.add('evidence-highlight'); found.scrollIntoView({behavior: 'smooth', block: 'center'}); announce('已高亮相关原文段落。'); }
+    else announce('未匹配到相关段落，请参考解析中的位置说明。');
+  }
+  function jumpQuestion(i) {
+    state.current = i; state.questionsOpen = true; render(); save();
+    const target = $('question-' + i);
+    if (target) { target.scrollIntoView({behavior: 'smooth', block: 'start'}); target.querySelector('h2').focus({preventScroll: true}); }
+  }
+  function render() {
+    const review = state.mode === 'review';
+    const ids = visibleIds();
+    if (ids.length && !ids.includes(state.current)) state.current = ids[0];
+    document.body.dataset.layout = state.layout;
+    document.body.classList.toggle('reviewing', review);
+    $('reading-layout').setAttribute('aria-pressed', String(state.layout === 'reading'));
+    $('exam-layout').setAttribute('aria-pressed', String(state.layout === 'exam'));
+    $('answer-mode').setAttribute('aria-pressed', String(!review));
+    $('review-mode').setAttribute('aria-pressed', String(review));
+    $('exercise-tools').hidden = !questionsVisible();
+    $('questions-section').hidden = !questionsVisible();
+    $('actions').hidden = !questionsVisible();
+    $('reading-finish').hidden = questionsVisible();
+    $('close-questions').hidden = state.layout !== 'reading';
+    $('flag-current').disabled = ids.length === 0;
+    $('flag-current').setAttribute('aria-pressed', String(state.flags[state.current]));
+    $('flag-current').textContent = (state.flags[state.current] ? '取消标记 ' : '标记 ') + (start + state.current);
+    $('progress-label').textContent = `已答 ${answerCount()} / ${total}`;
+    $('progress-fill').style.width = (answerCount() / total * 100) + '%';
+    $('progress').setAttribute('aria-valuenow', answerCount());
+    $('result').hidden = !review;
+    $('review-controls').hidden = !review;
+    $('wrong-only').checked = state.wrongOnly;
+    $('filter-count').textContent = state.wrongOnly ? `${ids.length} 题` : '';
+    $('submit').hidden = review;
+    $('back-answer').hidden = !review;
+    $('nav-legend').textContent = review ? '绿色表示正确 · 红色表示错误或未答 · 小圆点表示已标记' : '灰色表示已答 · 小圆点表示已标记 · 边框表示当前题';
+    const nav = $('question-nav'); nav.replaceChildren();
+    questions.forEach((question, i) => {
+      const button = el('button', {type: 'button', 'aria-label': `第 ${start + i} 题，${state.answers[i] === null ? '未答' : '已答'}${state.flags[i] ? '，已标记' : ''}`}, String(start + i));
+      button.classList.toggle('answered', state.answers[i] !== null);
+      button.classList.toggle('current', state.current === i && ids.includes(i));
+      button.classList.toggle('flagged', state.flags[i]);
+      if (review) button.classList.add(state.answers[i] === question.answer ? 'correct' : 'incorrect');
+      if (state.current === i) button.setAttribute('aria-current', 'step');
+      button.disabled = !ids.includes(i);
+      button.addEventListener('click', () => jumpQuestion(i)); nav.append(button);
+    });
+    renderTime();
+    if (review) {
+      const result = $('result'); result.replaceChildren();
+      const top = el('div', {class: 'result-top'});
+      top.append(el('span', {class: 'score'}, `${correctCount()} / ${total}`), el('span', {class: 'small'}, `正确率 ${Math.round(correctCount() / total * 100)}%`));
+      result.append(top, el('p', {}, `${state.submitted ? '已交卷' : '解答预览'} · 答错 ${answerCount() - correctCount()} 题 · 未答 ${total - answerCount()} 题 · 用时 ${$('timer').textContent}`), el('span', {class: 'small muted'}, '逐题核对依据，理解干扰项。'));
+    }
+    $('question-container').replaceChildren();
+    $('empty-filter').hidden = ids.length > 0;
+    if (questionsVisible()) ids.forEach(renderQuestion);
+  }
+
+  function renderQuestion(i) {
+    const question = questions[i], review = state.mode === 'review';
+    const article = el('article', {class: 'question', id: 'question-' + i});
+    if (review) article.append(el('div', {class: 'qmeta'}, question.type));
+    const stem = el('h2', {class: 'stem', id: 'question-stem-' + i, lang: 'en', tabindex: '-1'});
+    stem.append(el('span', {class: 'question-number'}, (start + i) + '. '), document.createTextNode(question.stem));
+    article.append(stem);
+    const field = el('fieldset', {class: 'options', lang: 'en'});
+    field.append(el('legend', {}, 'Choose the best answer.'));
+    question.options.forEach((text, j) => {
+      const label = el('label', {class: 'option' + (review ? ' review' : '')});
+      const radio = el('input', {type: 'radio', name: 'q' + i, value: j, 'aria-label': letters[j] + '. ' + text});
+      radio.checked = state.answers[i] === j; radio.disabled = review;
+      const body = el('span', {}, text);
+      label.append(radio, el('span', {class: 'letter'}, letters[j]), body);
+      if (!review && radio.checked) label.classList.add('selected');
+      if (review && j === question.answer) { label.classList.add('is-answer'); body.append(el('span', {class: 'answer-label'}, radio.checked ? '正确答案 · 你的选择' : '正确答案')); }
+      if (review && radio.checked && j !== question.answer) { label.classList.add('is-wrong'); body.append(el('span', {class: 'answer-label'}, '你的选择 · 错误')); }
+      radio.addEventListener('change', () => {
+        state.answers[i] = j; state.current = i; state.submitted = false; startTimer(); render(); save();
+        document.querySelector(`input[name="q${i}"][value="${j}"]`).focus({preventScroll: true});
+        announce(`第 ${start + i} 题已作答，已完成 ${answerCount()} 题。`);
+      });
+      field.append(label);
+    });
+    article.append(field);
+    if (review) {
+      const analysis = el('section', {class: 'analysis', 'aria-label': '答案解析'});
+      analysis.append(el('h3', {}, `答案 ${letters[question.answer]} · ${state.answers[i] === null ? '本题未作答' : state.answers[i] === question.answer ? '回答正确' : '需要复习'}`), el('p', {}, question.explain));
+      const evidence = el('div', {class: 'evidence'}), row = el('div', {class: 'row'});
+      evidence.append(el('strong', {}, '原文依据位置'), el('p', {}, question.where));
+      const locate = el('button', {type: 'button', class: 'small'}, '返回原文依据');
+      locate.addEventListener('click', () => locateEvidence(question));
+      row.append(locate, el('a', {href: safeURL(lesson.article.url), target: '_blank', rel: 'noopener noreferrer', class: 'small'}, '对照官网 ↗'));
+      evidence.append(row); analysis.append(evidence, el('h3', {}, '干扰项分析'));
+      const list = el('ul'); question.traps.forEach(text => list.append(el('li', {}, text))); analysis.append(list);
+      const detail = el('details'); detail.append(el('summary', {}, '解题提示'), el('p', {}, question.tip)); analysis.append(detail);
+      if (question.source) analysis.append(el('a', {href: safeURL(question.source), target: '_blank', rel: 'noopener noreferrer', class: 'small'}, '延伸资料 ↗'));
+      article.append(analysis);
+    }
+    $('question-container').append(article);
+  }
+
+  function hideAlert() { $('submit-alert').hidden = true; }
+  function setLayout(layout) {
+    state.layout = layout;
+    if (!questionsVisible()) stopTimer();
+    hideAlert(); render(); save(); announce('已切换到' + (layout === 'reading' ? '阅读版' : '考卷版') + '，答题进度已保留。');
+  }
+  function setMode(mode, submitted = false) {
+    if (mode === 'review') stopTimer();
+    state.mode = mode; state.questionsOpen = true;
+    if (submitted) state.submitted = true;
+    if (mode === 'answer') state.wrongOnly = false;
+    hideAlert(); render(); save();
+    announce(mode === 'review' ? '已显示答案与解析。' : '已进入答题阶段，答案与解析已隐藏。');
+  }
+  $('reading-layout').addEventListener('click', () => setLayout('reading'));
+  $('exam-layout').addEventListener('click', () => setLayout('exam'));
+  $('answer-mode').addEventListener('click', () => { setMode('answer'); scrollToQuestions(); });
+  $('review-mode').addEventListener('click', () => setMode('review'));
+  $('back-answer').addEventListener('click', () => setMode('answer'));
+  $('open-questions').addEventListener('click', () => { state.questionsOpen = true; render(); save(); scrollToQuestions(); });
+  $('close-questions').addEventListener('click', () => {
+    stopTimer(); state.questionsOpen = false; state.mode = 'answer'; state.wrongOnly = false; hideAlert(); render(); save();
+    $('article').scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  $('flag-current').addEventListener('click', () => { state.flags[state.current] = !state.flags[state.current]; render(); save(); });
+  $('submit').addEventListener('click', () => {
+    const missing = questions.map((_, i) => i).filter(i => state.answers[i] === null);
+    if (missing.length) { $('submit-alert-text').textContent = `还有 ${missing.length} 题未答（${missing.map(i => start + i).join('、')}）。未答题按未得分处理。`; $('submit-alert').hidden = false; $('submit-alert').scrollIntoView({behavior: 'smooth', block: 'center'}); }
+    else { setMode('review', true); $('result').scrollIntoView({behavior: 'smooth', block: 'center'}); }
+  });
+  $('go-unanswered').addEventListener('click', () => { const first = state.answers.findIndex(x => x === null); hideAlert(); if (first >= 0) jumpQuestion(first); });
+  $('submit-anyway').addEventListener('click', () => { setMode('review', true); $('result').scrollIntoView({behavior: 'smooth', block: 'center'}); });
+  $('wrong-only').addEventListener('change', event => { state.wrongOnly = event.target.checked; render(); save(); });
+  $('show-all').addEventListener('click', () => { state.wrongOnly = false; render(); save(); });
+  $('timer-toggle').addEventListener('click', () => { running ? stopTimer() : startTimer(); renderTime(); });
+  $('restart').addEventListener('click', () => $('reset-dialog').showModal());
+  $('cancel-reset').addEventListener('click', () => $('reset-dialog').close());
+  $('confirm-reset').addEventListener('click', () => {
+    running = false; const layout = state.layout; state = fresh(); state.layout = layout; $('reset-dialog').close();
+    hideAlert(); render(); save(); announce('新一轮练习已开始，当前版式已保留。');
+  });
+  $('print-paper').addEventListener('click', () => window.print());
+  $('download-paper').addEventListener('click', () => {
+    const doc = new DOMParser().parseFromString(document.documentElement.outerHTML, 'text/html');
+    doc.getElementById('export-defaults').textContent = JSON.stringify({layout: state.layout, standalone: true});
+    for (const id of ['question-container', 'result', 'question-nav', 'live']) doc.getElementById(id).replaceChildren();
+    for (const node of doc.querySelectorAll('.evidence-highlight')) node.classList.remove('evidence-highlight');
+    doc.getElementById('reset-dialog').removeAttribute('open');
+    const blob = new Blob(['<!doctype html>\n' + doc.documentElement.outerHTML], {type: 'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob), anchor = document.createElement('a');
+    anchor.href = url; anchor.download = lesson.id + '-' + state.layout + '.html'; anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    announce('已导出单一 HTML，包含完整原文、题目、两种版式和解析。');
+  });
+  document.addEventListener('visibilitychange', () => { syncTime(); save(); });
+  window.addEventListener('pagehide', () => { syncTime(); save(); });
+  setInterval(() => { renderTime(); if (running) { syncTime(); save(); } }, 1000);
+  renderArticle(); render(); save();
+})();
+</script>
+</body>
+</html>

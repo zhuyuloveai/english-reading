@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "id": "claude-reading-2026-01-22",
+  "storageKey": "claude-reading-2026-01-22-v1",
+  "collection": "Claude Code",
+  "ordinal": 2,
+  "article": {
+    "title": "Building agents with Skills: Equipping agents for specialized work",
+    "subtitle": "Skills package domain expertise in files agents can access and apply—turning general-purpose agents into knowledgeable specialists for real work.",
+    "author": "Anthropic",
+    "date": "2026-01-22",
+    "url": "https://claude.com/resources/articles/building-agents-with-skills-equipping-agents-for-specialized-work",
+    "body": "A lot has changed in the past year. MCP became the standard for agent connectivity with rapid adoption from industry leaders and the developer community. Claude Code launched as a general-purpose coding agent. And we launched the Claude Agent SDK, which now provides a production-ready agent out of the box.\n\nBut as we've built and deployed these agents, we keep running into the same gap: agents have intelligence and capabilities, but not always the expertise to effectively tackle real work. This led us to create Agent Skills. Skills are organized collections of files that package domain expertise - workflows, best practices, scripts - in a format agents can access and apply. They turn a capable generalist into a knowledgeable specialist.\n\nIn this post, we'll explain why we stopped building specialized agents and started building skills instead, and how this shift is changing how we think about extending agent capabilities.\n\n### The new paradigm: code is all you need\n\nWe used to think agents in different domains would look very different. A coding agent, a research agent, one for finance, one for marketing—each seemed to need its own tools and scaffolding. The industry initially embraced this model of domain-specific agents. But as models improved in intelligence and agent capabilities progressed, we converged on a different approach.\n\nWe came to see code less as just a use case and more as an interface for agents to do almost any digital work. Claude Code is a coding agent, but also a general-purpose agent that happens to work through code.\n\nConsider working with Claude Code to generate a financial report. It can call APIs for research, store data in the filesystem, analyze it with Python, and synthesize insights. All of that happens through code. The scaffolding becomes as simple as bash and a filesystem.\n\nBut general capability isn't the same as expertise. When we started using Claude Code for real work, a gap emerged.\n\n### The missing piece: domain expertise\n\nWho would you want filing your taxes: a math genius figuring it out from first principles, or an experienced tax professional who's filed thousands of returns? Most people would choose the tax professional. Not because they're smarter, but because they have the right expertise.\n\nAgents today are like that math genius: brilliant at reasoning through novel situations, but often lacking the accumulated expertise of a seasoned professional. They can do amazing things with proper guidance. However, they're often missing important context, can't easily absorb your organization's expertise, and don't automatically learn from repeated tasks.\n\nSkills bridge this gap by packaging domain expertise in a format that agents can progressively access and apply.\n\n### What are Agent Skills?\n\nSkills package domain expertise and procedural knowledge for agents.\n\n```text\nanthropic_brand/\n├── SKILL.md\n├── docs.md\n├── slide-decks.md\n└── apply_template.py\n```\n\nThe simplicity of skills is deliberate. Files are a universal primitive that works with what you already have. You can version them with Git, store them in Google Drive, and share them with your team. This simplicity also means skill creation isn't limited to engineers. Product managers, analysts, and domain experts are already building skills to codify their workflows.\n\n### Progressive disclosure\n\nSkills can contain extensive information. To protect the context window and make skills composable, they use progressive disclosure: at runtime, only the metadata (name and description from the YAML frontmatter) is shown to the model.\n\n```yaml\n---\nname: Anthropic Brand Style Guidelines\ndescription: Anthropic's official brand colors and typography…\n---\n```\n\nIf Claude determines a skill is needed, it reads the full SKILL.md file. For additional detail, skills can include a references/ directory with supporting documentation loaded only on demand.\n\nThis three-tier approach means you can equip an agent with hundreds of skills without overwhelming its context window—metadata uses ~50 tokens, full SKILL.md files ~500 tokens, and reference files 2,000+ tokens and only when specifically needed.\n\n### Skills can include scripts as tools\n\nTraditional tools have problems: some have poorly written instructions, the model can't always modify or extend them, and they often bloat the context window. Code, on the other hand, is self-documenting, modifiable, and doesn't need to be in context at all times.\n\nHere's a real example: we kept seeing Claude write the same script to apply Anthropic styling to slides. So we asked Claude to save it as a tool for itself:\n\n```python\n# anthropic/brand_styling/apply_template.py\nimport sys\nfrom pptx import Presentation\n\nif len(sys.argv) != 2:\n    print(\"USAGE: apply_template.py <pptx>\")\n    sys.exit(1)\n\nprs = Presentation(sys.argv[1])\nfor slide in prs.slides:\n    ...\n```\n\nThe corresponding documentation in slide-decks.md simply references this script:\n\n```markdown\n## Anthropic Slide Decks\n- Intro/outro slides\n  - background color: `#141413`\n  - foreground color: oat\n- Section slides:\n  - background color: `#da7857`\n  - foreground color: `#141413`\n\nUse the `./apply_template.py` script to update a pptx file in-place.\n```\n\n### The skills ecosystem\n\nThe skills ecosystem has emerged quickly, and so far we've seen three major types of skills being built:\n\n#### Foundational skills\n\nThese provide core capabilities everyone needs: working with documents, spreadsheets, presentations, etc. They encode best practices for document generation and manipulation. You can see what this looks like in practice by exploring the foundational skills in our public repository.\n\n#### Partner skills\n\nAs skills standardize how agents interact with specialized capabilities, companies are building skills to make their services agent-accessible. K-Dense, Browserbase, Notion, and many others are creating skills that integrate their services directly, extending Claude's capabilities in specific domains while maintaining the simplicity of the skills format.\n\n#### Enterprise skills\n\nOrganizations build proprietary skills encoding their internal processes and domain expertise. Skills help capture the specific workflows, compliance requirements, and institutional knowledge that make an agent useful for enterprise work.\n\n### Trends we see\n\nAs skills adoption grows, several patterns are emerging that point to where this paradigm may be heading. These trends shape how we think about skill design and the tooling we're building to support skill developers.\n\n#### Increasing complexity\n\nEarly skills were simple documentation references. Now we're seeing sophisticated multi-step workflows that coordinate data retrieval, complex calculations, and formatted output across multiple tools.\n\n- Simple: \"Status report writer\" (~100 lines) - Templates and formatting\n- Intermediate: \"Financial model builder\" (~800 lines) - Data retrieval, Excel modeling with Python\n- Complex: \"RNA sequencing pipeline\" (2,500+ lines) - Coordinates HISAT2, StringTie, DESeq2 analysis\n\n#### Skills and MCP\n\nSkills and MCP servers work together naturally. A competitive analysis skill might coordinate web search, internal databases via MCP, Slack message history, and Notion pages to synthesize a comprehensive report.\n\n#### Non-developer adoption\n\nSkill creation is expanding beyond engineers to product managers, analysts, and domain experts across disciplines. They can create and test their first skill in under 30 minutes using the skill-creator tool, which guides them through the process interactively. We're working to make skill creation even more accessible, with improved tooling and templates that let anyone capture and share expertise.\n\n### The complete architecture\n\nPutting it all together, the emerging agent architecture looks like a combination of:\n\n1. Agent loop: The core reasoning system that decides what to do next\n2. Agent runtime: Execution environment (code, filesystem)\n3. MCP servers: Connections to external tools and data sources\n4. Skills library: Domain expertise and procedural knowledge\n\nEach layer has a clear purpose: the loop reasons, the runtime executes, MCP connects, and skills guide. This separation makes the system comprehensible and allows each piece to evolve independently.\n\nConsider what happens when you add a single skill to this architecture. The frontend design skill transforms Claude's frontend capabilities instantly. It provides specialized guidance on typography, color theory, and animation, activating only when building web interfaces. Progressive disclosure means it loads only when relevant. Adding new capabilities is straightforward.\n\n### Deploying skills to new verticals\n\nThis emerging pattern of general agents equipped with MCP servers and skills is already helping us deploy Claude to new verticals.\n\n#### Financial Services\n\nJust after launching skills, we enhanced Claude for the financial services sector with skills that make Claude more useful for finance professionals:\n\n- DCF model builder: Constructs discounted cash flow models with proper WACC calculations and sensitivity analysis\n- Comparable company analysis: Generates comps tables with relevant multiples and benchmarking\n- Earnings analysis: Processes quarterly results and creates investment update reports\n- Initiation coverage: Builds comprehensive research reports with financial models\n- Due diligence: Structures M&A analysis with standardized frameworks\n- Pitch materials: Creates client presentations following industry standards\n\n#### Healthcare & Life Sciences\n\nWe've also enhanced our healthcare and life sciences offerings with skills that make Claude more useful for researchers, clinicians, and healthcare developers:\n\n- Bioinformatics bundles: Skills for scVI-tools and Nextflow deployments, essential for managing genomic pipelines and single-cell RNA sequencing\n- Clinical trial protocol generation: Accelerates protocol development for clinical research\n- Scientific problem selection: Helps researchers identify and frame impactful research questions\n- FHIR development: Helps developers write more accurate code for health data interoperability, connecting healthcare systems faster with fewer errors\n- Prior authorization review: Cuts administrative burden and accelerates patient access to needed care by cross-referencing coverage requirements, clinical guidelines, and patient records\n\n### Standardizing Agent Skills\n\nTo enable this vision, we're publishing Agent Skills as an open standard. Like MCP, we believe skills should be portable across tools and platforms. The same skill should work whether you're using Claude or other AI platforms. We've been collaborating with members of the ecosystem on the standard, and we're excited to see early adoption.\n\nWhen someone starts using an AI agent for the first time, it should already know what you and your team care about because skills capture and transfer that expertise. As this ecosystem grows, a skill built by someone else in the community can make your agent more useful, reliable, and capable - regardless of which AI platform they're using.\n\n### Getting started\n\nWe're converging on an architecture for general agents, and skills provide a paradigm for shipping and sharing new capabilities. The real value emerges from the collective knowledge base we build together: capturing expertise, transferring it across teams, and making every agent more capable than the last.\n\nResources:\n\n- Don’t Build Agents, Build Skills Instead (YouTube Video)\n- Skills documentation\n- GitHub repository\n- Skills cookbook\n- Using skills in Claude\n- Skills API quickstart\n- Skills best practices documentation\n\nAcknowledgments:\n\nBarry Zhang, Mahesh Murag, Keith Lazuka, Ryan Whitehead",
+    "sourceLabel": "Official blog"
+  },
+  "exercise": {
+    "startNumber": 147,
+    "suggestedMinutes": 35,
+    "note": "自编 TOEIC Part 7 风格长文拓展练习；24 题与 35 分钟为学习设置。"
+  },
+  "questions": [
+    {
+      "type": "主旨 / Purpose",
+      "stem": "What is the main purpose of the article?",
+      "options": [
+        "To compare the subscription costs of several specialized agents",
+        "To announce that general-purpose agents no longer need external tools",
+        "To explain how reusable skills give general-purpose agents specialized expertise",
+        "To provide a complete programming course for first-time developers"
+      ],
+      "answer": 2,
+      "where": "开头第三段，以及 Getting started 小节",
+      "needle": "In this post, we'll explain",
+      "explain": "C 概括了全文的核心：通过可复用的 Skills，为通用 agent 补充领域经验。文章依次说明原因、文件结构、按需加载、生态和行业应用。",
+      "traps": [
+        "A：没有订阅价格比较。",
+        "B：文章仍把 MCP 和运行环境列为架构组成部分。",
+        "D：代码示例用于解释 Skills，全文并非编程课程。"
+      ],
+      "tip": "主旨题用开头的写作目的核对结尾，选择能覆盖全文的概括。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "According to the opening section, what problem led to the creation of Agent Skills?",
+      "options": [
+        "Agents could reason and act but often lacked relevant professional expertise.",
+        "Agents had professional expertise but could no longer execute code.",
+        "Organizations were unable to store documents in ordinary files.",
+        "Developers needed a separate subscription for every workflow."
+      ],
+      "answer": 0,
+      "where": "开头第二段，描述 agents 的能力与经验缺口",
+      "needle": "agents have intelligence and capabilities",
+      "explain": "A 对应 intelligence and capabilities 与 not always the expertise 之间的差距。Skills 要补充的是处理实际工作所需的领域经验。",
+      "traps": [
+        "B：调换了已有能力与缺失能力。",
+        "C：后文把普通文件当作现有优势。",
+        "D：订阅方式没有出现在这段论证中。"
+      ],
+      "tip": "留意转折词 but：它后面的内容常指出问题所在。"
+    },
+    {
+      "type": "合理推断 / Inference",
+      "stem": "What does the author suggest by describing code as an interface for digital work?",
+      "options": [
+        "Every business user must first become a professional programmer.",
+        "Code is useful mainly for tasks within software engineering.",
+        "Each industry should maintain a completely different agent framework.",
+        "A shared coding environment can support tasks across different domains."
+      ],
+      "answer": 3,
+      "where": "The new paradigm 小节，关于 code 作为 interface 的段落",
+      "needle": "an interface for agents to do almost any digital work",
+      "explain": "D 是对 almost any digital work 的合理概括：同一类代码执行环境可以支持多个领域的任务。接下来的财务报告案例把这一点具体化。",
+      "traps": [
+        "A：文章后文还讨论非开发者创建 Skills，不能推出人人必须先成为程序员。",
+        "B：把应用范围缩小到软件工程。",
+        "C：回到了作者前面提到的独立领域框架思路。"
+      ],
+      "tip": "推断要有原句支撑，避免把能力范围扩大成对所有用户的要求。"
+    },
+    {
+      "type": "写作作用 / Function",
+      "stem": "Why does the author describe the process of generating a financial report?",
+      "options": [
+        "To recommend a particular financial research provider",
+        "To illustrate how several types of work can be performed through code",
+        "To compare the accuracy of Python with that of other languages",
+        "To establish a required format for all financial statements"
+      ],
+      "answer": 1,
+      "where": "The new paradigm 小节，Consider working with Claude Code 开头的段落",
+      "needle": "Consider working with Claude Code to generate a financial report",
+      "explain": "B 对应段落列出的 API 调研、文件存储、Python 分析和综合洞察。这组动作说明代码可以连接多个步骤，服务于编码以外的工作。",
+      "traps": [
+        "A：没有推荐特定调研机构。",
+        "C：没有语言准确率比较。",
+        "D：没有规定财务报表的统一格式。"
+      ],
+      "tip": "作用题先看例子前面的观点，再判断例子如何支持它。"
+    },
+    {
+      "type": "类比理解 / Analogy",
+      "stem": "What point is illustrated by the comparison between a math genius and a tax professional?",
+      "options": [
+        "Relevant experience can be essential even when strong reasoning ability is available.",
+        "Tax preparation requires less expertise than other professional services.",
+        "People generally prefer mathematical talent to practical experience.",
+        "Agents should be restricted to tasks they have completed thousands of times."
+      ],
+      "answer": 0,
+      "where": "The missing piece: domain expertise 小节，报税类比",
+      "needle": "Who would you want filing your taxes",
+      "explain": "A 保留了类比的两个核心：聪明的推理能力与积累的专业经验。作者用税务专家说明领域经验对完成真实工作的重要性。",
+      "traps": [
+        "B：没有比较各类职业所需经验的多少。",
+        "C：与文中多数人会选择税务专家的说法相反。",
+        "D：类比强调经验的价值，没有设置重复次数门槛。"
+      ],
+      "tip": "类比题要找两组对象之间共同的关系，避免按字面扩展结论。"
+    },
+    {
+      "type": "语境词义 / Vocabulary",
+      "stem": "In the discussion of people building skills, the word “codify” is closest in meaning to",
+      "options": [
+        "keep confidential",
+        "replace entirely",
+        "organize into a systematic form",
+        "delegate without instructions"
+      ],
+      "answer": 2,
+      "where": "What are Agent Skills? 小节，普通文件与非工程人员的段落",
+      "needle": "codify their workflows",
+      "explain": "C 符合语境：把已有工作流程整理成结构明确、可记录和分享的内容。这里不是单纯指编写程序。",
+      "traps": [
+        "A：confidential 强调保密，与 codify 的含义不同。",
+        "B：整理现有流程不能替换为彻底替代流程。",
+        "D：后文强调传递经验和指导，不能理解为无说明地委派。"
+      ],
+      "tip": "词义题把候选释义放回原句，看它能否解释文件记录和共享的上下文。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "What advantage does the article attribute to representing skills as ordinary files?",
+      "options": [
+        "It prevents anyone outside engineering from changing a skill.",
+        "It makes version control and shared storage unnecessary.",
+        "It requires teams to adopt a new proprietary storage service.",
+        "It allows teams to use familiar tools to store, version, and share expertise."
+      ],
+      "answer": 3,
+      "where": "What are Agent Skills? 小节，文件目录示例之后的段落",
+      "needle": "You can version them with Git",
+      "explain": "D 综合了 Git 版本管理、Google Drive 存储和团队共享三个例子。文件的简单通用性降低了记录与分享工作经验的门槛。",
+      "traps": [
+        "A：原文明确说创建 Skills 不限于工程师。",
+        "B：原文列举这些工具可直接使用，没有说它们多余。",
+        "C：作者强调与已有工具配合，没有要求迁移到新存储服务。"
+      ],
+      "tip": "并列举例经常可以归纳成一个共同优势。"
+    },
+    {
+      "type": "步骤细节 / Sequence",
+      "stem": "Under progressive disclosure, what information is initially shown to the model?",
+      "options": [
+        "The full contents of every reference file",
+        "The name and description of each available skill",
+        "The complete source code of every supporting script",
+        "The output from executing all skills in advance"
+      ],
+      "answer": 1,
+      "where": "Progressive disclosure 小节，第一段",
+      "needle": "only the metadata",
+      "explain": "B 对应 metadata 后括号里的 name and description。完整 SKILL.md 和参考文件按需要进一步读取。",
+      "traps": [
+        "A：参考文档属于后续按需加载的信息。",
+        "C：初始展示的并非所有脚本源代码。",
+        "D：文中没有提前执行全部 Skills 的步骤。"
+      ],
+      "tip": "步骤题分清 initially、if needed 和 additional detail 所表示的先后条件。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "When does Claude read supporting documentation in a references/ directory?",
+      "options": [
+        "Whenever the agent starts, regardless of the task",
+        "Only after the skill has been removed from the library",
+        "When additional information is needed for the relevant skill",
+        "Only when all other available skills have already been executed"
+      ],
+      "answer": 2,
+      "where": "Progressive disclosure 小节，If Claude determines 开头的段落",
+      "needle": "supporting documentation loaded only on demand",
+      "explain": "C 对应 additional detail 和 loaded only on demand。加载条件是当前任务需要更详细的信息。",
+      "traps": [
+        "A：忽略了 only on demand。",
+        "B：没有移除 Skill 后才加载的规则。",
+        "D：没有先执行其他所有 Skills 的要求。"
+      ],
+      "tip": "only 限定的是加载条件，注意它的作用范围。"
+    },
+    {
+      "type": "数据理解 / Detail",
+      "stem": "What do the token estimates in the progressive disclosure section illustrate?",
+      "options": [
+        "Detailed content can be deferred to help conserve the context window.",
+        "Every skill must have exactly the same number of tokens.",
+        "Reference files are always smaller than skill metadata.",
+        "An agent can use no more than three skills during one task."
+      ],
+      "answer": 0,
+      "where": "Progressive disclosure 小节，This three-tier approach 开头的段落",
+      "needle": "This three-tier approach",
+      "explain": "A 抓住数字的作用：少量 metadata 先进入上下文，较长的文件按需加载。~50、~500 和 2,000+ 是说明不同层级体量的估计，不是统一的精确限制。",
+      "traps": [
+        "B：把估计数误读成每个 Skill 的固定要求。",
+        "C：文中列出的参考文件体量更大。",
+        "D：three-tier 指信息层级，不能解释为最多三个 Skills。"
+      ],
+      "tip": "数字题除了读数值，也要判断数字在论证什么；~ 表示约数。"
+    },
+    {
+      "type": "原因 / Reason",
+      "stem": "Why did the team ask Claude to save its slide-styling script as a tool?",
+      "options": [
+        "The script was required to connect to a new billing service.",
+        "Claude had repeatedly written the same script for similar work.",
+        "The team wanted to eliminate all written documentation.",
+        "The script had to be displayed in full at the start of every task."
+      ],
+      "answer": 1,
+      "where": "Skills can include scripts as tools 小节，代码示例之前",
+      "needle": "we kept seeing Claude write the same script",
+      "explain": "B 直接对应 kept seeing Claude write the same script。保存脚本使相同操作能够复用。",
+      "traps": [
+        "A：案例与计费服务无关。",
+        "C：后面保留了引用脚本的说明文档。",
+        "D：与代码无需始终放进上下文的论述不符。"
+      ],
+      "tip": "原因题关注引出行动的事实，kept doing 往往表示重复发生。"
+    },
+    {
+      "type": "指代 / Reference",
+      "stem": "In the sentence “The corresponding documentation in slide-decks.md simply references this script,” what does “this script” refer to?",
+      "options": [
+        "A program that collects Slack message history",
+        "A program that creates a new skill from a YAML description",
+        "A program that builds an RNA sequencing pipeline",
+        "A program that applies Anthropic styling to slides"
+      ],
+      "answer": 3,
+      "where": "Skills can include scripts as tools 小节，Python 示例与文档示例之间",
+      "needle": "The corresponding documentation in slide-decks.md",
+      "explain": "D 是紧邻上文的样式脚本 apply_template.py。this script 将当前说明与前面的幻灯片样式案例连接起来。",
+      "traps": [
+        "A：Slack 出现在后面的 competitive analysis 案例中。",
+        "B：YAML 示例描述 Skill 的 metadata。",
+        "C：RNA 流程属于后面的复杂度示例。"
+      ],
+      "tip": "指代题优先检查近处的名词，再核对它是否符合句子的动作关系。"
+    },
+    {
+      "type": "分类匹配 / Classification",
+      "stem": "Which task best fits the article’s description of a foundational skill?",
+      "options": [
+        "Creating and formatting a standard spreadsheet",
+        "Applying one company’s confidential approval policy",
+        "Exposing a partner company’s specialized service",
+        "Recording an organization’s private compliance procedures"
+      ],
+      "answer": 0,
+      "where": "The skills ecosystem → Foundational skills",
+      "needle": "core capabilities everyone needs",
+      "explain": "A 属于通用的文档、表格和演示文稿处理能力。B、D 偏向组织内部专有流程；C 对应合作伙伴服务。",
+      "traps": [
+        "B：confidential approval policy 是特定企业的内部规则。",
+        "C：合作伙伴的服务集成归入 Partner skills。",
+        "D：专有合规流程符合 Enterprise skills 的描述。"
+      ],
+      "tip": "分类题用定义判断新例子，不能只凭某个熟悉的技术词。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "What is a distinguishing feature of partner skills in the article?",
+      "options": [
+        "They contain only an organization’s private employment policies.",
+        "They replace the agent’s entire execution environment.",
+        "They make a company’s specialized services accessible to agents.",
+        "They are limited to general document-formatting tasks."
+      ],
+      "answer": 2,
+      "where": "The skills ecosystem → Partner skills",
+      "needle": "companies are building skills to make their services agent-accessible",
+      "explain": "C 对应 make their services agent-accessible。K-Dense、Browserbase 和 Notion 被用作这种服务集成的例子。",
+      "traps": [
+        "A：把合作伙伴集成与内部专有制度混淆。",
+        "B：文章没有让 Skill 替换运行环境。",
+        "D：通用文档处理更符合 Foundational skills。"
+      ],
+      "tip": "抓住定义中的动作：这里是谁让什么服务对谁可用。"
+    },
+    {
+      "type": "应用推断 / Inference",
+      "stem": "An organization wants an agent to follow its internal compliance procedures. Which type of skill is most relevant?",
+      "options": [
+        "A foundational skill for general document generation",
+        "An enterprise skill containing the organization’s own requirements",
+        "A partner skill exposing an unrelated company’s service",
+        "A generic script with no organization-specific instructions"
+      ],
+      "answer": 1,
+      "where": "The skills ecosystem → Enterprise skills",
+      "needle": "specific workflows, compliance requirements, and institutional knowledge",
+      "explain": "B 把题干的内部合规要求与 Enterprise skills 的定义匹配起来。该类 Skill 用于记录企业专有流程和机构经验。",
+      "traps": [
+        "A：通用文档能力不能自动代表该公司的合规制度。",
+        "C：无关合作伙伴服务没有提供内部制度。",
+        "D：缺少组织专用说明，无法满足题干需求。"
+      ],
+      "tip": "场景推断题先提取需求关键词，再找原文中相应的类别定义。"
+    },
+    {
+      "type": "发展趋势 / Detail",
+      "stem": "What development is illustrated by the status-report, financial-model, and RNA-pipeline examples?",
+      "options": [
+        "Skills are becoming shorter and more limited in scope.",
+        "All skills now require the same specialist software.",
+        "Document formatting has been removed from the skills ecosystem.",
+        "Skills are expanding from simple references to coordinated multi-step workflows."
+      ],
+      "answer": 3,
+      "where": "Trends we see → Increasing complexity，介绍句及三个例子",
+      "needle": "sophisticated multi-step workflows",
+      "explain": "D 概括了从简单文档参考到多步复杂流程的变化。三个例子呈现不同复杂程度，不构成所有 Skills 的统一要求。",
+      "traps": [
+        "A：趋势方向与原文相反。",
+        "B：不同案例使用不同工具，不能推出统一软件要求。",
+        "C：状态报告示例仍保留模板与格式能力。"
+      ],
+      "tip": "并列示例题要概括整组例子共同说明的趋势。"
+    },
+    {
+      "type": "关系理解 / Relationship",
+      "stem": "What does the competitive-analysis example suggest about the relationship between skills and MCP?",
+      "options": [
+        "A skill can be used only after every MCP server has been disconnected.",
+        "MCP servers replace the procedural guidance supplied by skills.",
+        "A skill can coordinate a workflow that uses data accessed through MCP.",
+        "MCP limits an agent to information stored in a single local file."
+      ],
+      "answer": 2,
+      "where": "Trends we see → Skills and MCP",
+      "needle": "A competitive analysis skill might coordinate",
+      "explain": "C 保留了二者的配合关系：Skill 协调分析流程，MCP 帮助访问内部数据库等信息来源。",
+      "traps": [
+        "A：原文说二者可以自然配合。",
+        "B：数据连接与流程知识的角色不同，文中没有替代关系。",
+        "D：案例包含网络搜索、数据库及多个协作平台。"
+      ],
+      "tip": "关系题区分“连接数据”和“指导流程”这两种角色。"
+    },
+    {
+      "type": "限定理解 / Detail",
+      "stem": "Which statement about non-developer adoption is supported by the article?",
+      "options": [
+        "Every advanced skill can be completed in less than 30 minutes.",
+        "People outside engineering can create and test an initial skill with interactive guidance.",
+        "Domain experts must first build a separate agent runtime.",
+        "Skill creation is being restricted to product managers."
+      ],
+      "answer": 1,
+      "where": "Trends we see → Non-developer adoption",
+      "needle": "They can create and test their first skill in under 30 minutes",
+      "explain": "B 对应产品经理、分析师、领域专家等人群在 skill-creator 的交互引导下创建并测试 first skill。原文的时间描述针对初次 Skill 示例，不能扩展到所有高级流程。",
+      "traps": [
+        "A：把 first skill 扩大为 every advanced skill。",
+        "C：没有要求先搭建独立运行环境。",
+        "D：原文强调参与人群扩大，没有限定为某一职业。"
+      ],
+      "tip": "检查 first、every、only 等限定词，防止选项偷换范围。"
+    },
+    {
+      "type": "信息匹配 / Matching details",
+      "stem": "Which part of the architecture is responsible for deciding what the agent should do next?",
+      "options": [
+        "The agent runtime",
+        "The MCP servers",
+        "The skills library",
+        "The agent loop"
+      ],
+      "answer": 3,
+      "where": "The complete architecture 小节，四层架构列表第一项",
+      "needle": "Agent loop: The core reasoning system",
+      "explain": "D 对应 the core reasoning system that decides what to do next。决策职责属于 agent loop。",
+      "traps": [
+        "A：runtime 是执行环境。",
+        "B：MCP servers 连接外部工具与数据。",
+        "C：skills library 提供领域经验与流程知识。"
+      ],
+      "tip": "列表匹配题把组件名与动词绑定：decides、executes、connects、guides。"
+    },
+    {
+      "type": "信息匹配 / Matching details",
+      "stem": "In the proposed architecture, where is domain expertise and procedural knowledge provided?",
+      "options": [
+        "In the skills library",
+        "In the agent runtime",
+        "In the external connection layer alone",
+        "In the core reasoning loop alone"
+      ],
+      "answer": 0,
+      "where": "The complete architecture 小节，四层架构列表第四项",
+      "needle": "Skills library: Domain expertise and procedural knowledge",
+      "explain": "A 对应列表中的 skills library。后面的概括 skills guide 进一步说明它承担指导任务流程的角色。",
+      "traps": [
+        "B：运行环境负责执行代码和文件操作。",
+        "C：外部连接层的职责是连接工具与数据，不能替代领域知识层。",
+        "D：核心推理循环负责决定下一步动作，原文单独列出了知识库层。"
+      ],
+      "tip": "同一列表可能有多个易混项，按原文分工逐项排除。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "Which financial-services capability is specifically described in the article?",
+      "options": [
+        "Approving all acquisitions without further analysis",
+        "Guaranteeing the future returns of investment portfolios",
+        "Turning quarterly results into investment update reports",
+        "Replacing financial models with clinical research protocols"
+      ],
+      "answer": 2,
+      "where": "Deploying skills to new verticals → Financial Services，Earnings analysis 项",
+      "needle": "Earnings analysis: Processes quarterly results",
+      "explain": "C 是 Processes quarterly results and creates investment update reports 的同义转述。",
+      "traps": [
+        "A：尽职调查是用标准框架分析，并非自动批准所有收购。",
+        "B：文章没有承诺投资回报。",
+        "D：临床研究方案属于另一个行业的小节。"
+      ],
+      "tip": "跨行业细节题先定位小节，再匹配输入材料和输出成果。"
+    },
+    {
+      "type": "细节 / Detail",
+      "stem": "How is prior authorization review described as reducing administrative work?",
+      "options": [
+        "By creating presentation slides for investment clients",
+        "By cross-checking coverage requirements, guidelines, and patient records",
+        "By eliminating the need to consult coverage requirements",
+        "By replacing health-data interoperability code with financial models"
+      ],
+      "answer": 1,
+      "where": "Deploying skills to new verticals → Healthcare & Life Sciences，最后一项",
+      "needle": "Prior authorization review: Cuts administrative burden",
+      "explain": "B 对应 by cross-referencing 后面的三个信息来源：coverage requirements、clinical guidelines、patient records。题目考的是文章如何描述这项能力。",
+      "traps": [
+        "A：客户演示材料属于 Financial Services。",
+        "C：原文要求交叉核对保障要求，不能解释成无需查看。",
+        "D：混合了医疗互操作开发和财务模型两种不同应用。"
+      ],
+      "tip": "how 题常可定位 by 后面的方式说明。"
+    },
+    {
+      "type": "语境词义 / Vocabulary",
+      "stem": "In the standardization section, the word “portable” is closest in meaning to",
+      "options": [
+        "usable across different systems",
+        "small enough to fit on a phone",
+        "kept private within one organization",
+        "available only through a paid subscription"
+      ],
+      "answer": 0,
+      "where": "Standardizing Agent Skills 小节，第一段",
+      "needle": "skills should be portable across tools and platforms",
+      "explain": "A 符合 across tools and platforms 的语境。下一句说明同一个 Skill 应能用于 Claude 或其他 AI 平台，进一步限定了 portable 的含义。",
+      "traps": [
+        "B：把软件兼容性理解成物理尺寸。",
+        "C：与跨平台共享的方向不符。",
+        "D：原文没有把该词用于描述收费方式。"
+      ],
+      "tip": "抽象技术词也可用上下句释义；优先寻找作者自己的解释。"
+    },
+    {
+      "type": "综合推断 / Inference",
+      "stem": "Which action would best support the article’s concluding vision?",
+      "options": [
+        "Keeping useful workflows undocumented so each team must rediscover them",
+        "Designing every skill so it works with only one isolated platform",
+        "Removing domain experts from the process of improving agent workflows",
+        "Recording tested workflows in reusable skills that other teams can adapt"
+      ],
+      "answer": 3,
+      "where": "Getting started 结尾，以及前一节关于经验传递的段落",
+      "needle": "capturing expertise, transferring it across teams",
+      "explain": "D 把结尾的 capturing expertise 与 transferring it across teams 转换成具体行动：记录、复用并分享经验。",
+      "traps": [
+        "A：不记录流程会阻碍共同知识积累。",
+        "B：单一隔离平台的设计不符合可移植方向。",
+        "C：领域专家是捕获经验的重要参与者。"
+      ],
+      "tip": "综合推断把结尾抽象目标改写成可执行的行动，再逐项核对范围。"
+    }
+  ]
+}

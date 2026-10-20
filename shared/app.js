@@ -64,11 +64,12 @@
   function startTimer() { if (state.mode === 'review' || running) return; running = true; startedAt = Date.now(); renderTime(); }
 
   function appendInline(parent, text) {
-    const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
+    const pattern = /(`[^`\n]+`|\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
     let offset = 0;
     for (const match of text.matchAll(pattern)) {
       parent.append(document.createTextNode(text.slice(offset, match.index)));
-      if (match[0].startsWith('**')) parent.append(el('strong', {}, match[0].slice(2, -2)));
+      if (match[0].startsWith('`')) parent.append(el('code', {}, match[0].slice(1, -1)));
+      else if (match[0].startsWith('**')) parent.append(el('strong', {}, match[0].slice(2, -2)));
       else {
         const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(match[0]);
         parent.append(el('a', {href: safeURL(link[2]), target: '_blank', rel: 'noopener noreferrer'}, link[1]));
@@ -76,6 +77,41 @@
       offset = match.index + match[0].length;
     }
     parent.append(document.createTextNode(text.slice(offset)));
+  }
+  function appendArticleBlocks(reader, text) {
+    const lines = text.replace(/\r\n?/g, '\n').trim().split('\n');
+    const listItem = line => /^\s*(?:[-*]|\d+\.)\s+/.test(line);
+    for (let i = 0; i < lines.length;) {
+      if (!lines[i].trim()) { i++; continue; }
+      if (/^```/.test(lines[i])) {
+        const code = []; i++;
+        while (i < lines.length && !/^```\s*$/.test(lines[i])) code.push(lines[i++]);
+        if (i < lines.length) i++;
+        const pre = el('pre', {tabindex: '0', 'aria-label': '文章代码示例'});
+        pre.append(el('code', {}, code.join('\n'))); reader.append(pre); continue;
+      }
+      if (/^#{2,3}\s+/.test(lines[i])) {
+        const heading = el('h3'); appendInline(heading, lines[i++].replace(/^#{2,3}\s+/, ''));
+        reader.append(heading); continue;
+      }
+      if (/^####\s+/.test(lines[i])) {
+        const heading = el('h4'); appendInline(heading, lines[i++].replace(/^####\s+/, ''));
+        reader.append(heading); continue;
+      }
+      if (listItem(lines[i])) {
+        const ordered = /^\s*\d+\./.test(lines[i]);
+        const list = el(ordered ? 'ol' : 'ul');
+        if (ordered) list.start = Number(lines[i].trim().match(/^\d+/)[0]);
+        while (i < lines.length && listItem(lines[i]) && /^\s*\d+\./.test(lines[i]) === ordered) {
+          const item = el('li'); appendInline(item, lines[i++].replace(/^\s*(?:[-*]|\d+\.)\s+/, ''));
+          list.append(item);
+        }
+        reader.append(list); continue;
+      }
+      const paragraph = [];
+      while (i < lines.length && lines[i].trim() && !/^```|^#{2,4}\s+/.test(lines[i]) && !listItem(lines[i])) paragraph.push(lines[i++]);
+      const node = el('p'); appendInline(node, paragraph.join('\n')); reader.append(node);
+    }
   }
   function renderArticle() {
     document.title = lesson.article.title + ' · 阅读练习';
@@ -94,17 +130,12 @@
     $('progress').setAttribute('aria-valuemax', total);
     const reader = $('reader');
     reader.replaceChildren();
-    for (const block of lesson.article.body.trim().split(/\n\s*\n/).filter(Boolean)) {
-      const heading = /^###\s+/.test(block);
-      const node = el(heading ? 'h3' : 'p');
-      appendInline(node, heading ? block.replace(/^###\s+/, '') : block);
-      reader.append(node);
-    }
+    appendArticleBlocks(reader, lesson.article.body);
   }
 
   function scrollToQuestions() { $('questions-section').scrollIntoView({behavior: 'smooth', block: 'start'}); }
   function locateEvidence(question) {
-    const paragraphs = [...$('reader').querySelectorAll('p')];
+    const paragraphs = [...$('reader').querySelectorAll('p, li, pre')];
     paragraphs.forEach(p => p.classList.remove('evidence-highlight'));
     const found = paragraphs.find(p => p.textContent.toLowerCase().includes(question.needle.toLowerCase()));
     if (found) { found.classList.add('evidence-highlight'); found.scrollIntoView({behavior: 'smooth', block: 'center'}); announce('已高亮相关原文段落。'); }
