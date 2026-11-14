@@ -123,6 +123,12 @@
     $('article-meta').textContent = lesson.article.author + ' · ' + lesson.article.date;
     $('reading-kicker').textContent = lesson.collection + (lesson.article.sourceLabel ? ' / ' + lesson.article.sourceLabel : '');
     $('catalog-link').hidden = defaults.standalone === true;
+    const vocab = $('lesson-vocabulary');
+    if (vocab && defaults.standalone) {
+      vocab.href = '#offline-vocabulary';
+      $('offline-vocabulary').hidden = false;
+      vocab.addEventListener('click', () => { $('offline-vocabulary').open = true; });
+    }
     $('official-source').href = safeURL(lesson.article.url);
     $('passage-ref').textContent = `Questions ${start}–${start + total - 1} refer to the following article.`;
     $('source-note').textContent = lesson.exercise.note || '';

@@ -7,6 +7,7 @@
 ```text
 english-reading/
 ├── index.html                     # 全部练习的目录
+├── vocabulary.html                # 全部练习去重后的词汇表
 ├── build.py                       # 标准库构建脚本
 ├── shared/
 │   ├── template.html              # 公共页面结构
@@ -16,6 +17,8 @@ english-reading/
 │       └── reading.css            # 可切换的舒适阅读排版
 └── claude-code/
     ├── 2026-01-21-eight-trends/
+    │   ├── vocabulary.json        # 本篇词汇、原文用法与例句
+    │   ├── vocabulary.html        # 构建生成的本篇词汇表
     │   ├── lesson.json            # 文章和题目内容源
     │   ├── index.html             # 构建生成的独立成品
     │   └── verification/          # 浏览器检查与截图
@@ -35,9 +38,15 @@ english-reading/
 
 第一篇保留 147–156 共 10 道拓展题，12 分钟为自定练习目标。第二篇为 147–170 共 24 题，建议 35 分钟，覆盖主旨、细节、词义、指代、分类与推断。两篇原文均由用户提供并完整嵌入，保留作者与来源；网页的 Copy 按钮文字不作为正文，代码示例与列表按原有层级展示。
 
+## 词汇表
+
+每篇的 `vocabulary.json` 保存词或搭配、词性、中文释义、原文用法、英文例句及翻译。词汇页按「建议背诵」和「读懂即可」分组。选词侧重能用于日常沟通、通用职场场景的词和搭配，参考 [ETS TOEIC 听力与阅读考生手册](https://www.ets.org/pdfs/toeic/toeic-listening-reading-test-examinee-handbook.pdf)。篇目数量为学习安排：第一篇 18 项、第二篇 28 项建议背诵。
+
+各篇可收录相同词汇。构建时会以词条为单位自动合并总表，保留不同词义和各篇原文用法；同一词条在任一篇标为建议背诵，总表也列为建议背诵。可从目录进入总表，或从对应练习进入本篇词汇页。导出的单一 HTML 也包含本篇词汇，可离线展开。
+
 ## 修改和新增练习
 
-修改 `lesson.json` 后重新构建；修改共享模板、样式或逻辑后构建所有练习。请不要直接编辑生成的文章 `index.html`，构建时会覆盖。
+修改 `lesson.json` 后重新构建；修改共享模板、样式或逻辑后构建所有练习。修改 `vocabulary.json` 后同样重新构建。生成的练习页、本篇词汇页和总词汇表会被构建覆盖。
 
 ```sh
 # 在 english-reading 目录执行，构建全部文章

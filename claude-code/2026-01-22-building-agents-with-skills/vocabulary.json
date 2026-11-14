@@ -1,0 +1,299 @@
+[
+  {
+    "term": "adoption",
+    "pos": "名词",
+    "meaning": "采用；采纳",
+    "phrase": "rapid adoption",
+    "example": "The adoption of online invoices reduced paperwork.",
+    "translation": "采用电子账单后，文书工作减少了。",
+    "priority": "core"
+  },
+  {
+    "term": "launch",
+    "pos": "动词",
+    "meaning": "推出；启动",
+    "phrase": "we launched the Claude Agent SDK",
+    "example": "The company will launch a new rewards program in July.",
+    "translation": "公司将在七月推出新的奖励计划。",
+    "priority": "core"
+  },
+  {
+    "term": "out of the box",
+    "pos": "固定短语",
+    "meaning": "开箱即用；无需额外配置",
+    "phrase": "a production-ready agent out of the box",
+    "example": "The scanner works out of the box with most office computers.",
+    "translation": "这台扫描仪可直接在大多数办公电脑上使用。",
+    "priority": "core"
+  },
+  {
+    "term": "deploy",
+    "pos": "动词",
+    "meaning": "部署；调配；投入使用",
+    "phrase": "built and deployed these agents",
+    "example": "The retailer deployed a new checkout system in five stores.",
+    "translation": "零售商在五家门店部署了新的结账系统。",
+    "priority": "core"
+  },
+  {
+    "term": "run into",
+    "pos": "动词短语",
+    "meaning": "遇到（问题）；偶然碰到",
+    "phrase": "running into the same gap",
+    "example": "Let me know if you run into any problems with the new booking system.",
+    "translation": "如果使用新预订系统时遇到问题，请告诉我。",
+    "priority": "core"
+  },
+  {
+    "term": "capability",
+    "pos": "名词",
+    "meaning": "能力；功能",
+    "phrase": "agents have intelligence and capabilities",
+    "example": "The updated software has new reporting capabilities.",
+    "translation": "更新后的软件增加了报表功能。",
+    "priority": "core"
+  },
+  {
+    "term": "expertise",
+    "pos": "名词",
+    "meaning": "专长；专业知识",
+    "phrase": "package domain expertise",
+    "example": "We need someone with expertise in inventory management.",
+    "translation": "我们需要一位具备库存管理专长的人。",
+    "priority": "core"
+  },
+  {
+    "term": "tackle",
+    "pos": "动词",
+    "meaning": "着手解决；处理（难题）",
+    "phrase": "effectively tackle real work",
+    "example": "The committee met to tackle delays in processing refunds.",
+    "translation": "委员会开会设法解决退款处理延误的问题。",
+    "priority": "core"
+  },
+  {
+    "term": "workflow",
+    "pos": "名词",
+    "meaning": "工作流程",
+    "phrase": "codify their workflows",
+    "example": "The new workflow reduces the time needed to approve orders.",
+    "translation": "新流程缩短了审批订单所需的时间。",
+    "priority": "core"
+  },
+  {
+    "term": "extend",
+    "pos": "动词",
+    "meaning": "扩展；延长",
+    "phrase": "extending agent capabilities",
+    "example": "The supplier agreed to extend the payment deadline by a week.",
+    "translation": "供应商同意将付款期限延长一周。",
+    "priority": "core"
+  },
+  {
+    "term": "financial report",
+    "pos": "名词短语",
+    "meaning": "财务报告",
+    "phrase": "generate a financial report",
+    "example": "The financial report will be available before the board meeting.",
+    "translation": "董事会会议前将可查阅这份财务报告。",
+    "priority": "core"
+  },
+  {
+    "term": "file taxes",
+    "pos": "动词短语",
+    "meaning": "申报纳税；报税",
+    "phrase": "filing your taxes",
+    "example": "Employees can file their taxes online before the deadline.",
+    "translation": "员工可以在截止日期前在线报税。",
+    "priority": "core"
+  },
+  {
+    "term": "seasoned",
+    "pos": "形容词",
+    "meaning": "经验丰富的；资深的",
+    "phrase": "a seasoned professional",
+    "example": "We hired a seasoned supervisor to train the new team.",
+    "translation": "我们聘请了一位经验丰富的主管来培训新团队。",
+    "priority": "core"
+  },
+  {
+    "term": "bridge the gap",
+    "pos": "动词短语",
+    "meaning": "弥合差距；填补缺口",
+    "phrase": "Skills bridge this gap",
+    "example": "The workshop helps bridge the gap between classroom training and daily work.",
+    "translation": "这场研习班帮助弥合课堂培训和日常工作之间的差距。",
+    "priority": "core"
+  },
+  {
+    "term": "deliberate",
+    "pos": "形容词",
+    "meaning": "有意的；经过考虑的",
+    "phrase": "The simplicity of skills is deliberate",
+    "example": "The change was a deliberate effort to simplify the ordering process.",
+    "translation": "这项调整是为简化下单流程而有意采取的措施。",
+    "priority": "core"
+  },
+  {
+    "term": "be limited to",
+    "pos": "动词短语",
+    "meaning": "仅限于",
+    "phrase": "skill creation isn't limited to engineers",
+    "example": "The discount is limited to orders placed before Friday.",
+    "translation": "折扣仅适用于周五前下的订单。",
+    "priority": "core"
+  },
+  {
+    "term": "on demand",
+    "pos": "固定短语",
+    "meaning": "按需；在需要时",
+    "phrase": "supporting documentation loaded only on demand",
+    "example": "Training recordings are available on demand to all staff.",
+    "translation": "全体员工可按需观看培训录像。",
+    "priority": "core"
+  },
+  {
+    "term": "corresponding",
+    "pos": "形容词",
+    "meaning": "相应的；对应的",
+    "phrase": "The corresponding documentation",
+    "example": "Enter each product code in the corresponding field.",
+    "translation": "请在对应的栏位输入各产品代码。",
+    "priority": "core"
+  },
+  {
+    "term": "standardize",
+    "pos": "动词",
+    "meaning": "使标准化；统一",
+    "phrase": "skills standardize how agents interact",
+    "example": "The company standardized its expense forms across all branches.",
+    "translation": "公司统一了所有分店的费用报销表。",
+    "priority": "core"
+  },
+  {
+    "term": "internal",
+    "pos": "形容词",
+    "meaning": "内部的",
+    "phrase": "their internal processes",
+    "example": "The document is for internal use only.",
+    "translation": "这份文件仅供内部使用。",
+    "priority": "core"
+  },
+  {
+    "term": "compliance",
+    "pos": "名词",
+    "meaning": "合规；遵守",
+    "phrase": "compliance requirements",
+    "example": "The audit checks compliance with workplace safety rules.",
+    "translation": "这项审计检查工作场所安全规则的遵守情况。",
+    "priority": "core"
+  },
+  {
+    "term": "coordinate",
+    "pos": "动词",
+    "meaning": "协调；统筹",
+    "phrase": "coordinate data retrieval",
+    "example": "Maya will coordinate the training sessions for all three offices.",
+    "translation": "玛雅将统筹三个办公室的培训安排。",
+    "priority": "core"
+  },
+  {
+    "term": "comprehensive",
+    "pos": "形容词",
+    "meaning": "全面的；详尽的",
+    "phrase": "a comprehensive report",
+    "example": "The consultant provided a comprehensive review of our hiring process.",
+    "translation": "顾问对我们的招聘流程做了全面审查。",
+    "priority": "core"
+  },
+  {
+    "term": "expand",
+    "pos": "动词",
+    "meaning": "扩大；拓展",
+    "phrase": "expanding beyond engineers",
+    "example": "The company plans to expand its delivery service next month.",
+    "translation": "公司计划下个月扩大配送服务。",
+    "priority": "core"
+  },
+  {
+    "term": "relevant",
+    "pos": "形容词",
+    "meaning": "相关的；切题的",
+    "phrase": "loads only when relevant",
+    "example": "Please attach all relevant receipts to your expense report.",
+    "translation": "请将所有相关收据附在费用报告上。",
+    "priority": "core"
+  },
+  {
+    "term": "quarterly results",
+    "pos": "名词短语",
+    "meaning": "季度业绩",
+    "phrase": "Processes quarterly results",
+    "example": "The company will announce its quarterly results on Monday.",
+    "translation": "公司将于周一公布季度业绩。",
+    "priority": "core"
+  },
+  {
+    "term": "administrative burden",
+    "pos": "名词短语",
+    "meaning": "行政负担；文书事务负担",
+    "phrase": "Cuts administrative burden",
+    "example": "A shared booking system reduced the administrative burden on the front desk.",
+    "translation": "共享预订系统减轻了前台的行政负担。",
+    "priority": "core"
+  },
+  {
+    "term": "portable",
+    "pos": "形容词",
+    "meaning": "可携带的；可移植的（本文义）",
+    "phrase": "portable across tools and platforms",
+    "example": "The training materials are portable across different learning platforms.",
+    "translation": "这些培训材料可在不同的学习平台上使用。",
+    "priority": "core"
+  },
+  {
+    "term": "MCP",
+    "pos": "缩写",
+    "meaning": "Model Context Protocol；让 AI 应用连接外部工具和数据的协议",
+    "phrase": "internal databases via MCP",
+    "example": "The agent accesses the inventory database via MCP.",
+    "translation": "智能体通过 MCP 访问库存数据库。",
+    "priority": "context"
+  },
+  {
+    "term": "scaffolding",
+    "pos": "名词",
+    "meaning": "支撑结构；本文指智能体的配套工具和执行环境",
+    "phrase": "its own tools and scaffolding",
+    "example": "The prototype uses simple scaffolding to run commands and save output.",
+    "translation": "这个原型用简单的配套环境来运行命令并保存输出。",
+    "priority": "context"
+  },
+  {
+    "term": "progressive disclosure",
+    "pos": "名词短语",
+    "meaning": "渐进式披露；逐层显示所需信息",
+    "phrase": "they use progressive disclosure",
+    "example": "With progressive disclosure, the agent reads detailed instructions only when needed.",
+    "translation": "通过渐进式披露，智能体只在需要时读取详细说明。",
+    "priority": "context"
+  },
+  {
+    "term": "context window",
+    "pos": "名词短语",
+    "meaning": "上下文窗口；模型一次处理的输入与生成内容的容量范围",
+    "phrase": "protect the context window",
+    "example": "The agent summarizes old messages to save space in its context window.",
+    "translation": "智能体总结较早的消息以节省上下文空间。",
+    "priority": "context"
+  },
+  {
+    "term": "metadata",
+    "pos": "名词",
+    "meaning": "元数据；描述内容的信息",
+    "phrase": "only the metadata",
+    "example": "The catalog stores a title and description as metadata for each skill.",
+    "translation": "目录存储每个技能的名称和描述作为元数据。",
+    "priority": "context"
+  }
+]

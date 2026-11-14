@@ -1,0 +1,200 @@
+[
+  {
+    "term": "handle",
+    "pos": "动词",
+    "meaning": "处理；应对",
+    "phrase": "handle entire implementation workflows",
+    "example": "Our support team handles requests from overseas clients.",
+    "translation": "我们的客服团队处理海外客户的请求。",
+    "priority": "core"
+  },
+  {
+    "term": "workflow",
+    "pos": "名词",
+    "meaning": "工作流程",
+    "phrase": "entire implementation workflows",
+    "example": "The new workflow reduces the time needed to approve orders.",
+    "translation": "新流程缩短了审批订单所需的时间。",
+    "priority": "core"
+  },
+  {
+    "term": "capability",
+    "pos": "名词",
+    "meaning": "能力；功能",
+    "phrase": "these capabilities will expand significantly",
+    "example": "The updated software has new reporting capabilities.",
+    "translation": "更新后的软件增加了报表功能。",
+    "priority": "core"
+  },
+  {
+    "term": "expand",
+    "pos": "动词",
+    "meaning": "扩大；拓展",
+    "phrase": "expand significantly",
+    "example": "The company plans to expand its delivery service next month.",
+    "translation": "公司计划下个月扩大配送服务。",
+    "priority": "core"
+  },
+  {
+    "term": "significantly",
+    "pos": "副词",
+    "meaning": "显著地；大幅地",
+    "phrase": "expand significantly",
+    "example": "Wait times decreased significantly after we added another service desk.",
+    "translation": "增设一个服务台后，等候时间显著缩短。",
+    "priority": "core"
+  },
+  {
+    "term": "identify",
+    "pos": "动词",
+    "meaning": "识别；找出；明确",
+    "phrase": "identifies eight trends",
+    "example": "The survey helped us identify several problems with the booking process.",
+    "translation": "这项调查帮助我们找出了预订流程中的几个问题。",
+    "priority": "core"
+  },
+  {
+    "term": "accomplish",
+    "pos": "动词",
+    "meaning": "完成；实现",
+    "phrase": "what agents accomplish",
+    "example": "We accomplished most of our goals before the end of the quarter.",
+    "translation": "我们在本季度结束前完成了大部分目标。",
+    "priority": "core"
+  },
+  {
+    "term": "outcome",
+    "pos": "名词",
+    "meaning": "结果；成效",
+    "phrase": "business outcomes",
+    "example": "Please inform the applicants of the outcome by Friday.",
+    "translation": "请在周五前将结果通知申请人。",
+    "priority": "core"
+  },
+  {
+    "term": "pull ahead",
+    "pos": "动词短语",
+    "meaning": "取得领先；拉开差距",
+    "phrase": "The organizations pulling ahead",
+    "example": "Demand rose sharply, and our store pulled ahead of its competitors.",
+    "translation": "需求大幅上升，我们的门店超过了竞争对手。",
+    "priority": "core"
+  },
+  {
+    "term": "expertise",
+    "pos": "名词",
+    "meaning": "专长；专业知识",
+    "phrase": "engineer expertise",
+    "example": "We need someone with expertise in inventory management.",
+    "translation": "我们需要一位具备库存管理专长的人。",
+    "priority": "core"
+  },
+  {
+    "term": "coordinate",
+    "pos": "动词",
+    "meaning": "协调；统筹",
+    "phrase": "coordinating agents",
+    "example": "Maya will coordinate the training sessions for all three offices.",
+    "translation": "玛雅将统筹三个办公室的培训安排。",
+    "priority": "core"
+  },
+  {
+    "term": "rely on",
+    "pos": "动词短语",
+    "meaning": "依靠；依赖",
+    "phrase": "relies on active collaboration",
+    "example": "Several branches rely on this warehouse for supplies.",
+    "translation": "几家分店依赖这座仓库供货。",
+    "priority": "core"
+  },
+  {
+    "term": "delegate",
+    "pos": "动词",
+    "meaning": "委派；把任务交给",
+    "phrase": "fully delegate",
+    "example": "The manager delegated responsibility for scheduling to her assistant.",
+    "translation": "经理把排班职责交给了助理。",
+    "priority": "core"
+  },
+  {
+    "term": "oversight",
+    "pos": "名词",
+    "meaning": "监督；监管（本文义）",
+    "phrase": "human oversight",
+    "example": "The committee provides oversight of the renovation project.",
+    "translation": "委员会负责监督翻修项目。",
+    "priority": "core"
+  },
+  {
+    "term": "put into practice",
+    "pos": "动词短语",
+    "meaning": "把……付诸实践",
+    "phrase": "putting these patterns into practice",
+    "example": "The team put the recommendations into practice at its next event.",
+    "translation": "团队在下一场活动中落实了这些建议。",
+    "priority": "core"
+  },
+  {
+    "term": "adoption",
+    "pos": "名词",
+    "meaning": "采用；采纳",
+    "phrase": "89% AI adoption",
+    "example": "The adoption of online invoices reduced paperwork.",
+    "translation": "采用电子账单后，文书工作减少了。",
+    "priority": "core"
+  },
+  {
+    "term": "deploy",
+    "pos": "动词",
+    "meaning": "部署；调配；投入使用",
+    "phrase": "agents deployed internally",
+    "example": "The retailer deployed a new checkout system in five stores.",
+    "translation": "零售商在五家门店部署了新的结账系统。",
+    "priority": "core"
+  },
+  {
+    "term": "priority",
+    "pos": "名词",
+    "meaning": "优先事项",
+    "phrase": "a strategic priority",
+    "example": "Fulfilling existing orders is our top priority this week.",
+    "translation": "本周我们的首要任务是完成现有订单。",
+    "priority": "core"
+  },
+  {
+    "term": "agentic coding",
+    "pos": "名词短语",
+    "meaning": "由 AI 智能体自主推进部分任务的编程方式",
+    "phrase": "agentic coding this year",
+    "example": "The team is testing agentic coding on small maintenance tasks.",
+    "translation": "团队正在小型维护任务上试用智能体编程。",
+    "priority": "context"
+  },
+  {
+    "term": "autonomy",
+    "pos": "名词",
+    "meaning": "自主性；自主权",
+    "phrase": "agent autonomy",
+    "example": "The pilot gives the agent more autonomy over routine tasks.",
+    "translation": "这项试点让智能体在例行任务上拥有更多自主权。",
+    "priority": "context"
+  },
+  {
+    "term": "codebase",
+    "pos": "名词",
+    "meaning": "代码库；一个项目的整套源代码",
+    "phrase": "a 12.5-million-line codebase",
+    "example": "New developers spend a week getting familiar with the codebase.",
+    "translation": "新开发人员用一周熟悉项目代码库。",
+    "priority": "context"
+  },
+  {
+    "term": "activation vector extraction",
+    "pos": "名词短语",
+    "meaning": "提取模型内部激活向量（技术任务）",
+    "phrase": "an activation vector extraction method",
+    "example": "The research team compared two methods of activation vector extraction.",
+    "translation": "研究团队比较了两种激活向量提取方法。",
+    "priority": "context"
+  }
+]

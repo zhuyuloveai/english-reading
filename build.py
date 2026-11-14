@@ -3,6 +3,7 @@
 import argparse
 import json
 from pathlib import Path
+from vocabulary import build_total_vocabulary, build_vocabulary, load_vocabulary, sections, vocabulary_css
 
 ROOT = Path(__file__).resolve().parent
 
@@ -44,13 +45,21 @@ def build(source):
     source = source.resolve()
     data = json.loads(source.read_text())
     validate(data)
+    entries = load_vocabulary(source)
     encoded = json.dumps(data, ensure_ascii=False).replace('&', r'\u0026').replace('<', r'\u003c').replace('>', r'\u003e')
     styles = '\n'.join((ROOT / 'shared' / 'styles' / name).read_text() for name in ('exam.css', 'reading.css'))
     runtime = (ROOT / 'shared' / 'app.js').read_text()
     template = (ROOT / 'shared' / 'template.html').read_text()
     # Substitute once so article text containing a template token stays literal.
     import re
-    values = {'__STYLES__': styles, '__LESSON_JSON__': encoded, '__APP_SCRIPT__': runtime}
+    vocab_link, vocab_panel = '', ''
+    if entries:
+        styles += '\n' + vocabulary_css()
+        vocab_link = '<a id="lesson-vocabulary" class="paper-link" href="vocabulary.html">本篇词汇表</a>'
+        vocab_panel = '<details id="offline-vocabulary" class="vocab-embedded" hidden><summary>本篇词汇表</summary>' + sections(entries) + '</details>'
+        build_vocabulary(source, data, entries)
+    values = {'__STYLES__': styles, '__LESSON_JSON__': encoded, '__APP_SCRIPT__': runtime,
+              '__VOCAB_LINK__': vocab_link, '__VOCAB_PANEL__': vocab_panel}
     output = re.sub('|'.join(values), lambda m: values[m.group()], template)
     destination = source.with_name('index.html')
     destination.write_text(output)
@@ -61,7 +70,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('lesson', nargs='?', type=Path, help='Path to a lesson.json; omit to build all lessons')
     args = parser.parse_args()
-    sources = [args.lesson] if args.lesson else sorted(ROOT.glob('*/*/lesson.json'))
+    catalog_sources = sorted(ROOT.glob('*/*/lesson.json'))
+    sources = [args.lesson] if args.lesson else catalog_sources
     if not sources:
         parser.error('No lesson.json found')
     for source in sources:
@@ -69,3 +79,5 @@ if __name__ == '__main__':
             print(build(source))
         except (ValueError, TypeError, KeyError) as error:
             raise SystemExit(f'{source}: {error}')
+    if catalog_sources and (not args.lesson or args.lesson.resolve() in catalog_sources):
+        print(build_total_vocabulary(catalog_sources))

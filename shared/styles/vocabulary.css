@@ -1,0 +1,24 @@
+body.vocab-page{margin:0;background:#f3f5f2;color:#202e29;font:16px/1.65 system-ui,"PingFang SC",sans-serif}
+.vocab-wrap{max-width:940px;margin:auto;padding:32px 24px 48px;box-sizing:border-box}
+.vocab-page a{color:#22694d;text-underline-offset:3px}
+.vocab-page a:focus-visible,.vocab-embedded summary:focus-visible{outline:2px solid #22694d;outline-offset:3px}
+.vocab-nav,.vocab-counts{display:flex;flex-wrap:wrap;gap:4px 20px}
+.vocab-nav a,.vocab-counts a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+.vocab-header{margin:16px 0 12px}.vocab-header h1{font-size:29px;margin:0 0 6px}
+.vocab-header p,.vocab-hint,.vocab-footer,.vocab-translation{color:#586860;margin:0}
+.vocab-group{margin-top:28px}.vocab-group h2{font-size:20px;margin:0 0 4px}
+.vocab-group h2 span{font-size:13px;color:#586860;font-weight:400;margin-left:6px}
+.vocab-hint{font-size:14px;margin-bottom:14px}
+.vocab-entry{background:#fff;border:1px solid #dce3dd;border-radius:8px;padding:17px 20px;margin-bottom:10px;overflow-wrap:anywhere}
+.vocab-entry:target{border-color:#22694d}
+.vocab-entry h3{font:700 21px/1.35 Georgia,"Times New Roman",serif;margin:0 0 8px;color:#202e29}
+.vocab-meaning{font-size:15px;margin:0 0 8px}
+.vocab-meaning>span,.vocab-label{font-size:12px;color:#586860;margin-right:6px}
+.vocab-usage{font-size:14px}.vocab-usage p{margin:5px 0 0}
+.vocab-usage ul{padding-left:20px;margin:3px 0 9px}.vocab-usage li+li{margin-top:2px}
+.vocab-usage li a{font-size:12px;margin-left:5px;white-space:nowrap}
+.vocab-sense+.vocab-sense{margin-top:12px;padding-top:12px;border-top:1px solid #dce3dd}
+.vocab-footer{font-size:13px;margin-top:24px}
+.vocab-embedded{margin-top:24px}.vocab-embedded summary{cursor:pointer;font-weight:700;padding:10px 0}
+@media(max-width:520px){.vocab-wrap{padding:18px 14px 35px}.vocab-header h1{font-size:25px}.vocab-entry{padding:14px}.vocab-nav,.vocab-counts{gap:0 14px}}
+@media print{.vocab-nav,.vocab-counts,.vocab-embedded{display:none!important}body.vocab-page{background:#fff}.vocab-wrap{padding:0}.vocab-entry{break-inside:avoid}}

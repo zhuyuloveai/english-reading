@@ -48,6 +48,9 @@ body[data-layout="exam"] .reading-kicker,body[data-layout="exam"] .questions-tit
  .option{min-height:44px}
  .review-controls label{min-height:44px}
  .analysis summary{min-height:44px;line-height:44px}
- .article-tools a,.status-line a,.top-inner>a,.evidence .row>a{min-height:44px;display:inline-flex;align-items:center}
+ .article-tools a,.status-line a,.evidence .row>a{min-height:44px;display:inline-flex;align-items:center}
 }
 @media print{.reading-finish,.switches,.questions-title{display:none!important}body[data-layout="reading"]{background:white}body[data-layout="reading"] .layout{padding:0;border-radius:0;background:white}body[data-layout="reading"] .source-title{font-size:20pt}body[data-layout="reading"] .reading p{font-size:12pt;line-height:1.7}body[data-layout="reading"] .reading h3{font-size:14pt}body[data-layout="reading"] .article-lede{font-size:12pt}body[data-layout="reading"] .meta{margin-bottom:20pt}body[data-layout="reading"] .reading-kicker{display:none}body[data-layout="reading"] .stem{font-size:12pt}body[data-layout="reading"] .option{font-size:11pt;min-height:0;padding:4pt 0}body[data-layout="reading"] .question{margin-bottom:15pt;padding-bottom:15pt}}
+
+.lesson-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0 12px}
+.lesson-links a{display:inline-flex;align-items:center;min-height:44px}
